@@ -1,9 +1,8 @@
 <template>
-  <h2>Start New Game</h2>
-  <p>Create the players:</p>
-  <p><i>You need at least two to start a game</i></p>
   <v-card>
-    <v-container>
+    <v-card-title>Start new Game</v-card-title>
+    <v-card-subtitle>Enter the names of the players</v-card-subtitle>
+    <v-card-text>
       <v-text-field
         v-for="(player, index) in players"
         :label="`Player ${index + 1}`"
@@ -12,12 +11,14 @@
         :rules="[(v) => (!!v && v.length > 2) || 'Too short']"
         :key="index"
       ></v-text-field>
-      <v-btn @click="addPlayer" color="blue"><v-icon icon="mdi-plus" /></v-btn>
-      <v-divider />
-      <v-card-actions>
+      <v-btn @click="addPlayer" size="x-small" color="blue"
+        ><v-icon icon="mdi-plus"
+      /></v-btn>
+      Add More Players
+      <v-card-actions class="mt-5">
         <v-btn @click="startGame" color="success">Start</v-btn>
       </v-card-actions>
-    </v-container>
+    </v-card-text>
   </v-card>
 </template>
 
