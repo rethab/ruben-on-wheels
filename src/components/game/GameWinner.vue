@@ -11,14 +11,14 @@
       Congratulations!</v-card-text
     >
     <v-card-actions>
-      <v-btn color="success"
-        ><router-link to="/init">Play Again</router-link></v-btn
-      >
+      <ActionButton text="Play Again" link="init" />
     </v-card-actions>
   </v-card>
 </template>
 
 <script setup lang="ts">
+import ActionButton from "@/components/misc/ActionButton.vue";
+
 defineProps({
   winner: { type: String, required: true },
 });

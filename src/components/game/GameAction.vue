@@ -35,13 +35,26 @@
     </v-card-text>
 
     <v-card-actions>
-      <v-btn @click="nextStep" v-if="!looser && step === 0" color="success"
+      <v-spacer />
+      <v-btn
+        @click="nextStep"
+        v-if="!looser && step === 0"
+        color="primary"
+        variant="tonal"
         >Explore {{ city }}</v-btn
       >
-      <v-btn @click="nextStep" v-if="!looser && step === 1" color="success"
+      <v-btn
+        @click="nextStep"
+        v-if="!looser && step === 1"
+        color="primary"
+        variant="tonal"
         >Run Activity</v-btn
       >
-      <v-btn @click="nextPlayer" v-if="looser || step === 2" color="success"
+      <v-btn
+        @click="nextPlayer"
+        v-if="looser || step === 2"
+        color="primary"
+        variant="tonal"
         >Next Player</v-btn
       >
     </v-card-actions>

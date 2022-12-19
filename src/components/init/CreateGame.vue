@@ -11,14 +11,24 @@
         :rules="[(v) => (!!v && v.length > 2) || 'Too short']"
         :key="index"
       ></v-text-field>
-      <v-btn @click="addPlayer" size="x-small" color="blue"
-        ><v-icon icon="mdi-plus"
-      /></v-btn>
-      Add More Players
-      <v-card-actions class="mt-5">
-        <v-btn @click="startGame" color="success">Start</v-btn>
-      </v-card-actions>
     </v-card-text>
+    <v-card-actions>
+      <v-btn
+        @click="addPlayer"
+        prepend-icon="mdi-plus"
+        color="primary"
+        variant="outlined"
+        >Add More Players</v-btn
+      >
+      <v-spacer />
+      <v-btn
+        color="primary"
+        variant="tonal"
+        @click="startGame"
+        prepend-icon="mdi-play"
+        >Start</v-btn
+      >
+    </v-card-actions>
   </v-card>
 </template>
 

@@ -1,17 +1,28 @@
-<script setup lang="ts"></script>
+<script>
+import router from "@/router";
+import { defineComponent } from "vue";
+import ActionButton from "@/components/misc/ActionButton.vue";
+
+export default defineComponent({
+  components: { ActionButton },
+  methods: {
+    router() {
+      return router;
+    },
+  },
+});
+</script>
 
 <template>
   <main>
     <div>
-      <v-card elevation="0">
+      <v-card>
         <v-card-title>Welcome to Ruben on Wheels 🚴🏽</v-card-title>
         <v-card-text>
           This is a fun multiplayer game where everybody cycles from Zurich to
           Wageningen
         </v-card-text>
-      </v-card>
 
-      <v-card elevation="0">
         <v-card-title>How it Works</v-card-title>
         <v-card-text class="ml-5">
           <ul>
@@ -26,8 +37,8 @@
           </ul>
         </v-card-text>
         <v-card-actions>
-          <router-link :to="{ name: 'init' }">Begin</router-link
-          ><v-icon icon="mdi-play" />
+          <v-spacer />
+          <ActionButton text="Begin" link="init" />
         </v-card-actions>
       </v-card>
     </div>
