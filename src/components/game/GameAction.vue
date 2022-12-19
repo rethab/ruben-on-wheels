@@ -35,10 +35,15 @@
     </v-card-text>
 
     <v-card-actions>
-      <v-btn @click="nextStep" v-if="!looser && step < 2" color="success"
-        >Next</v-btn
+      <v-btn @click="nextStep" v-if="!looser && step === 0" color="success"
+        >Explore {{ city }}</v-btn
       >
-      <v-btn @click="nextPlayer" v-else color="success">Next Player</v-btn>
+      <v-btn @click="nextStep" v-if="!looser && step === 1" color="success"
+        >Run Activity</v-btn
+      >
+      <v-btn @click="nextPlayer" v-if="looser || step === 2" color="success"
+        >Next Player</v-btn
+      >
     </v-card-actions>
   </v-card>
 </template>

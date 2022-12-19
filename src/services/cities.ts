@@ -53,7 +53,7 @@ const genericActivities: Activity[] = [
     name: "Take a nap",
     run: (p: Player) => {
       p.points += ACTIVITY_POINTS_MOVE;
-      return "They snapping is good for you, but you can't be sure until you've done it! That's 150 points for you.";
+      return "They say napping is good for you, but you can't be sure until you've done it! That's 150 points for you.";
     },
   },
   {
