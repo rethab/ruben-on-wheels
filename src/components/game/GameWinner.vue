@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-card-title>{{ winner }} has arrived in Wageningen</v-card-title>
+    <v-card-title>{{ winner }} has arrived in Wageningen 🚲</v-card-title>
     <v-card-subtitle v-if="winner === 'Ruben' || winner === 'ruben'"
       >Of course he wins his own Game.</v-card-subtitle
     >

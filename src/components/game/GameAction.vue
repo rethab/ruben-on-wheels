@@ -1,13 +1,21 @@
 <template>
   <v-card>
-    <v-card-title>{{ currentPlayerName }}'s turn!</v-card-title>
-    <v-card-subtitle>{{ subtitle }}</v-card-subtitle>
-    <v-card-text v-if="step === 0"
-      >You are currently in {{ city }}. Click next to see what happens in
+    <v-card-title>{{ looser || currentPlayerName }}'s turn</v-card-title>
+    <v-card-subtitle>
+      <span v-if="looser" class="text-red">{{ subtitle }}</span>
+      <span v-else v-html="subtitle" />
+    </v-card-subtitle>
+
+    <v-card-text v-if="looser"
+      >😭 Oh no, {{ looser }}! You have to take the train from {{ city }} to
+      Wageningen.
+    </v-card-text>
+    <v-card-text v-else-if="step === 0"
+      >You are currently in {{ city }}. Click below to see what happens in
       {{ city }}, and decide what activity to do next.</v-card-text
     >
 
-    <v-card-text v-if="step === 1">
+    <v-card-text v-else-if="step === 1">
       {{ cityActionText }}
 
       <p class="my-5">How do you want to proceed?</p>
@@ -22,12 +30,14 @@
       </v-radio-group>
     </v-card-text>
 
-    <v-card-text v-if="step === 2">
+    <v-card-text v-else-if="step === 2">
       {{ cityActivityText }}
     </v-card-text>
 
     <v-card-actions>
-      <v-btn @click="nextStep" v-if="step < 2" color="success">Next</v-btn>
+      <v-btn @click="nextStep" v-if="!looser && step < 2" color="success"
+        >Next</v-btn
+      >
       <v-btn @click="nextPlayer" v-else color="success">Next Player</v-btn>
     </v-card-actions>
   </v-card>
@@ -47,6 +57,7 @@ export default defineComponent({
       cityActionText: "",
       selectedActivity: "",
       cityActivityText: "",
+      looser: "",
     };
   },
   setup() {
@@ -68,27 +79,35 @@ export default defineComponent({
       this.selectedActivity = "";
       this.cityActivityText = "";
 
-      const { nextPlayer } = useGameStore();
-      nextPlayer();
+      const store = useGameStore();
+      if (this.looser) {
+        store.playerOut();
+        this.looser = "";
+      } else {
+        store.nextPlayer();
+      }
     },
   },
   watch: {
     step(newStep: number) {
+      const { currentPlayer } = useGameStore();
       // just arrived in city, run action
       if (newStep === 1) {
-        const { currentPlayer } = useGameStore();
         const cityAction = getCityAction(this.city!);
         this.cityActionText = cityAction.run(currentPlayer!);
-        return;
       }
 
       // selected activity, run it
       if (newStep === 2) {
-        const { currentPlayer } = useGameStore();
         const activity: Activity = this.cityActivities.find(
           ({ name }) => name === this.selectedActivity
         )!;
         this.cityActivityText = activity.run(currentPlayer!);
+      }
+
+      const lost = currentPlayer!.points <= 0 || currentPlayer!.motivation <= 0;
+      if (lost) {
+        this.looser = this.currentPlayerName!;
       }
     },
   },
@@ -105,6 +124,7 @@ export default defineComponent({
     subtitle() {
       const { currentPlayer } = useGameStore();
       const { points, currentCity, motivation } = currentPlayer!;
+
       return `Points: ${points}, Motivation: ${motivation} City: ${currentCity}`;
     },
   },

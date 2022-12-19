@@ -29,9 +29,18 @@ export const useGameStore = defineStore("game", () => {
 
   function initPlayers(newPlayers: { name: string }[]) {
     players.value = newPlayers.map(({ name }) => {
-      return { name, currentCity: "Zurich", motivation: 100, points: 1000 };
+      return { name, currentCity: "Zurich", motivation: 75, points: 500 };
     });
     console.log(`registered ${newPlayers.length} players`);
+  }
+
+  function playerOut() {
+    players.value = players.value.filter(
+      (p, index) => currentPlayerIndex.value !== index
+    );
+    if (currentPlayerIndex.value === players.value.length) {
+      currentPlayerIndex.value = 0;
+    }
   }
 
   function playersInCity(cityName: string): Player[] {
@@ -47,6 +56,7 @@ export const useGameStore = defineStore("game", () => {
 
   return {
     players,
+    playerOut,
     isGameRunning,
     winner,
     playersInCity,

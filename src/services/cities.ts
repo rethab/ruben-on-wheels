@@ -1,28 +1,49 @@
 import type { Action, Activity, City, Player } from "@/services/types";
 
+const ACTIVITY_MOTIVATION_MOVE = 30;
+const ACTIVITY_POINTS_MOVE = 150;
+
+const ACTION_MOTIVATION_MOVE = 5;
+const ACTION_POINTS_MOVE = 20;
+
+const cycleToNextCity: (p: Player) => void = (p) => {
+  p.currentCity = getNextCity(p.currentCity);
+
+  const pointsCost =
+    p.motivation >= 75
+      ? 100
+      : p.motivation >= 50
+      ? 125
+      : p.motivation >= 25
+      ? 150
+      : 200;
+  p.points -= pointsCost;
+  p.motivation -= 15;
+};
+
 const genericActions: Action[] = [
   {
     run: (p: Player) => {
-      p.motivation += 5;
+      p.motivation += ACTION_MOTIVATION_MOVE;
       return "What a nice weather today! Your motivation increases by 5 and you can't wait to get on.";
     },
   },
   {
     run: (p: Player) => {
-      p.motivation -= 5;
+      p.motivation -= ACTION_MOTIVATION_MOVE;
       return "Uuuuh this rain. If you only you had stayed at home and not started this adventure! Your motivation drops by 5.";
     },
   },
   {
     run: (p: Player) => {
-      p.points -= 10;
-      return "You have a flat tire. Repairing it costs you 10 points.";
+      p.points -= ACTION_POINTS_MOVE;
+      return "You have a flat tire. Repairing it costs you 20 points.";
     },
   },
   {
     run: (p: Player) => {
-      p.points -= 10;
-      return "You got stopped by the police, because you were cycling without light. The fine costs you 10 points.";
+      p.points -= ACTION_POINTS_MOVE;
+      return "You got stopped by the police, because you were cycling without light. The fine costs you 20 points.";
     },
   },
 ];
@@ -31,17 +52,20 @@ const genericActivities: Activity[] = [
   {
     name: "Take a nap",
     run: (p: Player) => {
-      p.motivation -= 5;
-      p.points += 10;
-      return "You feel ready for the next step, but napping also felt very nice and its difficult to get back on the bike. Your motivation drops by 5, but your points increase 10";
+      p.points += ACTIVITY_POINTS_MOVE;
+      return "They snapping is good for you, but you can't be sure until you've done it! That's 150 points for you.";
     },
   },
   {
     name: "Cycle to the next city",
     run: (p: Player) => {
-      p.currentCity = getNextCity(p.currentCity);
-      p.points -= 10;
-      return `Well done, you have cycled to ${p.currentCity}. Your points may have dropped by 10, but that was worth it!`;
+      const pointsBefore = p.points;
+      const motivationBefore = p.motivation;
+      cycleToNextCity(p);
+      const pointsCost = pointsBefore - p.points;
+      const motivationCost = motivationBefore - p.motivation;
+
+      return `Well done, you have cycled to ${p.currentCity}. Your points have dropped by ${pointsCost} and the motivation by ${motivationCost}.`;
     },
   },
 ];
@@ -52,7 +76,7 @@ export const cities: City[] = [
     actions: [
       {
         run: (p: Player) => {
-          p.motivation -= 5;
+          p.motivation -= ACTION_MOTIVATION_MOVE;
           return "You had a coffee in the city center. When you paid for it, you realised how expensive coffees are in Zurich. Your motivation drops by 5 points.";
         },
       },
@@ -61,8 +85,8 @@ export const cities: City[] = [
       {
         name: "Visit Laurie & Reto",
         run: (p: Player) => {
-          p.motivation += 5;
-          return "You had some fondue with white wine. You feel very full, but your ready for your adventure. Your motivation increases by 5 points.";
+          p.motivation += ACTIVITY_MOTIVATION_MOVE;
+          return "You had some fondue with white wine. You feel very full, but you're ready for your adventure. Your motivation increases by 5 points.";
         },
       },
     ],
@@ -74,7 +98,7 @@ export const cities: City[] = [
       {
         name: "Party at the Carnival of Basel",
         run: (p: Player) => {
-          p.points -= 20;
+          p.points -= ACTIVITY_POINTS_MOVE;
           return "You had a great time partying with the people of Basel, but your bike got stolen. Replacing it costs you 20 points.";
         },
       },
