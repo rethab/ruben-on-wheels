@@ -8,8 +8,8 @@
         :label="`Player ${index + 1}`"
         v-model="player.name"
         clearable
-        :rules="[(v) => (!!v && v.length > 2) || 'Too short']"
         :key="index"
+        :error-messages="errors[index]"
       ></v-text-field>
     </v-card-text>
     <v-card-actions>
@@ -32,20 +32,41 @@
   </v-card>
 </template>
 
-<script setup lang="ts">
-import { reactive } from "vue";
+<script lang="ts">
+import { defineComponent } from "vue";
 import { useGameStore } from "@/stores/game";
 import router from "@/router";
 
-const players = reactive([{ name: "" }, { name: "" }]);
+export default defineComponent({
+  data() {
+    return {
+      players: [{ name: "" }, { name: "" }],
+      errors: ["", ""],
+    };
+  },
+  methods: {
+    addPlayer() {
+      this.players.push({ name: "" });
+      this.errors.push();
+    },
 
-function addPlayer() {
-  players.push({ name: "" });
-}
+    startGame() {
+      let hasError = false;
+      for (let i = 0; i < this.players.length; i++) {
+        if (!this.players[i].name) {
+          this.errors[i] = "Please enter a name";
+          hasError = true;
+        } else this.errors[i] = "";
+      }
 
-function startGame() {
-  const { initPlayers } = useGameStore();
-  initPlayers(players);
-  router.push({ name: "play" });
-}
+      if (hasError) {
+        return;
+      }
+
+      const { initPlayers } = useGameStore();
+      initPlayers(this.players);
+      router.push({ name: "play" });
+    },
+  },
+});
 </script>
