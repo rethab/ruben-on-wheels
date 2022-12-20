@@ -24,7 +24,7 @@
         <v-radio
           v-for="(activity, index) in cityActivities"
           :key="index"
-          :label="activity.name"
+          :label="activityLabel(activity)"
           :value="activity.name"
         ></v-radio>
       </v-radio-group>
@@ -65,7 +65,11 @@
 import { useGameStore } from "@/stores/game";
 import { storeToRefs } from "pinia";
 import { defineComponent } from "vue";
-import { getCityAction, getCityActivities } from "@/services/cities";
+import {
+  costDescription,
+  getCityAction,
+  getCityActivities,
+} from "@/services/cities";
 import type { Activity } from "@/services/types";
 
 export default defineComponent({
@@ -80,10 +84,15 @@ export default defineComponent({
   },
   setup() {
     const store = useGameStore();
-    const { currentPlayerName } = storeToRefs(store);
-    return { currentPlayerName };
+    const { currentPlayerName, currentPlayer } = storeToRefs(store);
+    return { currentPlayerName, currentPlayer };
   },
   methods: {
+    activityLabel(a: Activity) {
+      const currentPlayer = useGameStore().currentPlayer!;
+
+      return `${a.name} (${costDescription(a, currentPlayer)})`;
+    },
     nextStep() {
       if (this.step === 1 && !this.selectedActivity) {
         console.log("no activity selected");

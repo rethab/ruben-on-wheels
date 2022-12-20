@@ -11,6 +11,7 @@ export interface Action {
 
 export interface Activity {
   name: string;
+  type: "motivation" | "points" | "cycle";
   run: (p: Player) => string;
 }
 

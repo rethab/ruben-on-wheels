@@ -6,19 +6,35 @@ const ACTIVITY_POINTS_MOVE = 150;
 const ACTION_MOTIVATION_MOVE = 5;
 const ACTION_POINTS_MOVE = 20;
 
+const CYCLE_MOTIVATION_COST = 15;
+
+export const costDescription: (a: Activity, p: Player) => string = (a, p) => {
+  switch (a.type) {
+    case "points":
+      return `+${ACTIVITY_POINTS_MOVE} points`;
+    case "motivation":
+      return `+${ACTIVITY_MOTIVATION_MOVE} motivation`;
+    case "cycle":
+      return `-${getCyclePointsCost(
+        p
+      )} points, -${CYCLE_MOTIVATION_COST} motivation`;
+  }
+};
+
 const cycleToNextCity: (p: Player) => void = (p) => {
   p.currentCity = getNextCity(p.currentCity);
+  p.points -= getCyclePointsCost(p);
+  p.motivation -= CYCLE_MOTIVATION_COST;
+};
 
-  const pointsCost =
-    p.motivation >= 75
-      ? 100
-      : p.motivation >= 50
-      ? 125
-      : p.motivation >= 25
-      ? 150
-      : 200;
-  p.points -= pointsCost;
-  p.motivation -= 15;
+const getCyclePointsCost: (p: Player) => number = (p) => {
+  return p.motivation >= 75
+    ? 100
+    : p.motivation >= 50
+    ? 125
+    : p.motivation >= 25
+    ? 150
+    : 200;
 };
 
 const genericActions: Action[] = [
@@ -56,6 +72,7 @@ const genericActions: Action[] = [
 
 const genericActivities: Activity[] = [
   {
+    type: "points",
     name: "Take a nap",
     run: (p: Player) => {
       p.points += ACTIVITY_POINTS_MOVE;
@@ -63,6 +80,7 @@ const genericActivities: Activity[] = [
     },
   },
   {
+    type: "motivation",
     name: "Have your bike cleaned",
     run: (p: Player) => {
       p.motivation += ACTIVITY_MOTIVATION_MOVE;
@@ -71,6 +89,7 @@ const genericActivities: Activity[] = [
   },
   {
     name: "Cycle to the next city",
+    type: "cycle",
     run: (p: Player) => {
       const pointsBefore = p.points;
       const motivationBefore = p.motivation;
@@ -102,6 +121,7 @@ export const cities: City[] = [
     ],
     activities: [
       {
+        type: "motivation",
         name: "Visit Laurie & Reto",
         run: (p: Player) => {
           p.motivation += ACTIVITY_MOTIVATION_MOVE;
@@ -109,6 +129,7 @@ export const cities: City[] = [
         },
       },
       {
+        type: "points",
         name: "Cycle up the Uetliberg",
         run: (p: Player) => {
           p.points += ACTIVITY_POINTS_MOVE;
@@ -129,6 +150,7 @@ export const cities: City[] = [
     ],
     activities: [
       {
+        type: "points",
         name: "Party at the Carnival of Basel",
         run: (p: Player) => {
           p.points += ACTIVITY_POINTS_MOVE;
@@ -137,6 +159,7 @@ export const cities: City[] = [
       },
       {
         name: "Tal to a stranger",
+        type: "motivation",
         run: (p: Player) => {
           p.motivation += ACTIVITY_MOTIVATION_MOVE;
           return `You're lucky! The stranger told explained to you how beautiful the route to Wageningen is. Your motivation increases by ${ACTIVITY_MOTIVATION_MOVE}`;
@@ -157,6 +180,7 @@ export const cities: City[] = [
     activities: [
       {
         name: "Visit the Cologne Cathedral",
+        type: "points",
         run: (p: Player) => {
           p.points += ACTIVITY_POINTS_MOVE;
           return `You climb all the way up to the south tower of the Cathedral. What a view! Your points increase by ${ACTIVITY_POINTS_MOVE}.`;
@@ -177,6 +201,7 @@ export const cities: City[] = [
     activities: [
       {
         name: "Cycle on the Magic Mountain",
+        type: "motivation",
         run: (p: Player) => {
           p.motivation += ACTIVITY_MOTIVATION_MOVE;
           return `Well.. turns out this sculpture is not suited for cycling, but there were many tourists cheering you on anyways. Your motivation increases by ${ACTIVITY_MOTIVATION_MOVE}.`;
@@ -203,6 +228,7 @@ export const cities: City[] = [
     activities: [
       {
         name: "Visit Milou",
+        type: "motivation",
         run: (p: Player) => {
           const tips = [
             "Milou tells you a secret shortcut how to cycle faster to Wageningen.",
