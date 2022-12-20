@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import router from "@/router";
 import { defineComponent } from "vue";
 import ActionButton from "@/components/misc/ActionButton.vue";
