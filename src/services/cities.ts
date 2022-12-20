@@ -25,25 +25,31 @@ const genericActions: Action[] = [
   {
     run: (p: Player) => {
       p.motivation += ACTION_MOTIVATION_MOVE;
-      return "What a nice weather today! Your motivation increases by 5 and you can't wait to get on.";
+      return `What a nice weather today! Your motivation increases by ${ACTION_MOTIVATION_MOVE} and you can't wait to get on.`;
     },
   },
   {
     run: (p: Player) => {
       p.motivation -= ACTION_MOTIVATION_MOVE;
-      return "Uuuuh this rain. If you only you had stayed at home and not started this adventure! Your motivation drops by 5.";
+      return `Uuuuh this rain. If you only you had stayed at home and not started this adventure! Your motivation drops by ${ACTION_MOTIVATION_MOVE}.`;
     },
   },
   {
     run: (p: Player) => {
       p.points -= ACTION_POINTS_MOVE;
-      return "You have a flat tire. Repairing it costs you 20 points.";
+      return `You have a flat tire. Repairing it costs you ${ACTION_POINTS_MOVE} points.`;
     },
   },
   {
     run: (p: Player) => {
       p.points -= ACTION_POINTS_MOVE;
-      return "You got stopped by the police, because you were cycling without light. The fine costs you 20 points.";
+      return `You got stopped by the police, because you were cycling without light. The fine costs you ${ACTION_POINTS_MOVE} points.`;
+    },
+  },
+  {
+    run: (p: Player) => {
+      p.points -= ACTION_POINTS_MOVE;
+      return `You met a very talkative stranger. This is was not helpful in getting to Wageningen quickly.. You've lost ${ACTION_POINTS_MOVE}.`;
     },
   },
 ];
@@ -53,7 +59,14 @@ const genericActivities: Activity[] = [
     name: "Take a nap",
     run: (p: Player) => {
       p.points += ACTIVITY_POINTS_MOVE;
-      return "They say napping is good for you, but you can't be sure until you've done it! That's 150 points for you.";
+      return `They say napping is good for you, but you can't be sure until you've done it! That's ${ACTIVITY_POINTS_MOVE} points for you.`;
+    },
+  },
+  {
+    name: "Have your bike cleaned",
+    run: (p: Player) => {
+      p.motivation += ACTIVITY_MOTIVATION_MOVE;
+      return `Your bike is all shiny again. You're not sure if this helps how fast you can cycle, but you're motivation is up ${ACTIVITY_MOTIVATION_MOVE}.`;
     },
   },
   {
@@ -77,7 +90,13 @@ export const cities: City[] = [
       {
         run: (p: Player) => {
           p.motivation -= ACTION_MOTIVATION_MOVE;
-          return "You had a coffee in the city center. When you paid for it, you realised how expensive coffees are in Zurich. Your motivation drops by 5 points.";
+          return `You had a coffee in the city center. When you paid for it, you realised how expensive coffees are in Zurich. Your motivation drops by ${ACTION_MOTIVATION_MOVE} points.`;
+        },
+      },
+      {
+        run: (p: Player) => {
+          p.points -= ACTION_POINTS_MOVE;
+          return `Laurie convinced you to row with her. You forgot that the goal of this game is to cycle. You loose ${ACTION_POINTS_MOVE} points.`;
         },
       },
     ],
@@ -86,27 +105,121 @@ export const cities: City[] = [
         name: "Visit Laurie & Reto",
         run: (p: Player) => {
           p.motivation += ACTIVITY_MOTIVATION_MOVE;
-          return "You had some fondue with white wine. You feel very full, but you're ready for your adventure. Your motivation increases by 5 points.";
+          return `You had some fondue with white wine. You feel very full, but you're ready for your adventure. Your motivation increases by ${ACTION_MOTIVATION_MOVE} points.`;
+        },
+      },
+      {
+        name: "Cycle up the Uetliberg",
+        run: (p: Player) => {
+          p.points += ACTIVITY_POINTS_MOVE;
+          return `Once you're on the top and you can enjoy the view over the city and lake, you know why you love cycling so much. Your points increase by ${ACTIVITY_POINTS_MOVE}.`;
         },
       },
     ],
   },
   {
     name: "Basel",
-    actions: [],
+    actions: [
+      {
+        run: (p: Player) => {
+          p.motivation += ACTION_MOTIVATION_MOVE;
+          return `On this beautiful day, you're cooling off in the Rhine. Your motivation is up by ${ACTION_MOTIVATION_MOVE}.`;
+        },
+      },
+    ],
     activities: [
       {
         name: "Party at the Carnival of Basel",
         run: (p: Player) => {
-          p.points -= ACTIVITY_POINTS_MOVE;
-          return "You had a great time partying with the people of Basel, but your bike got stolen. Replacing it costs you 20 points.";
+          p.points += ACTIVITY_POINTS_MOVE;
+          return "You had a great time partying with the people of Basel. You're all recovered!";
+        },
+      },
+      {
+        name: "Tal to a stranger",
+        run: (p: Player) => {
+          p.motivation += ACTIVITY_MOTIVATION_MOVE;
+          return `You're lucky! The stranger told explained to you how beautiful the route to Wageningen is. Your motivation increases by ${ACTIVITY_MOTIVATION_MOVE}`;
         },
       },
     ],
   },
-  { name: "Köln", actions: [], activities: [] },
-  { name: "Duisburg", actions: [], activities: [] },
-  { name: "Arnhem", actions: [], activities: [] },
+  {
+    name: "Köln",
+    actions: [
+      {
+        run: (p: Player) => {
+          p.motivation -= ACTION_MOTIVATION_MOVE;
+          return `You're annoyed how ill-equipped Köln is for cycling. Your motivation drops by ${ACTION_MOTIVATION_MOVE}.`;
+        },
+      },
+    ],
+    activities: [
+      {
+        name: "Visit the Cologne Cathedral",
+        run: (p: Player) => {
+          p.points += ACTIVITY_POINTS_MOVE;
+          return `You climb all the way up to the south tower of the Cathedral. What a view! Your points increase by ${ACTIVITY_POINTS_MOVE}.`;
+        },
+      },
+    ],
+  },
+  {
+    name: "Duisburg",
+    actions: [
+      {
+        run: (p: Player) => {
+          p.points -= ACTION_POINTS_MOVE;
+          return `You wanted to relax in the Landschaftspark, but it turns out the park is not quite what you expected. Your points drop by ${ACTION_POINTS_MOVE}.`;
+        },
+      },
+    ],
+    activities: [
+      {
+        name: "Cycle on the Magic Mountain",
+        run: (p: Player) => {
+          p.motivation += ACTIVITY_MOTIVATION_MOVE;
+          return `Well.. turns out this sculpture is not suited for cycling, but there were many tourists cheering you on anyways. Your motivation increases by ${ACTIVITY_MOTIVATION_MOVE}.`;
+        },
+      },
+    ],
+  },
+  {
+    name: "Arnhem",
+    actions: [
+      {
+        run: (p: Player) => {
+          p.points += ACTION_POINTS_MOVE;
+          return `You step off your bike in the Sonsbeek park. The peacefulness restores your points by ${ACTION_POINTS_MOVE}.`;
+        },
+      },
+      {
+        run: (p: Player) => {
+          p.points -= ACTION_POINTS_MOVE;
+          return `You did a detour to Doetinchem. This cost you ${ACTION_POINTS_MOVE} points.`;
+        },
+      },
+    ],
+    activities: [
+      {
+        name: "Visit Milou",
+        run: (p: Player) => {
+          const tips = [
+            "Milou tells you a secret shortcut how to cycle faster to Wageningen.",
+            "Milou pumps your bikes tires.",
+            "Milou explains to you why cycling is the best sport.",
+          ];
+          const prefix =
+            p.name.toLowerCase() === "milou"
+              ? "You take a quick nap on your couch."
+              : tips[Math.floor(Math.random() * tips.length)];
+
+          p.motivation += ACTIVITY_MOTIVATION_MOVE;
+          return `${prefix} You points increase by ${ACTIVITY_MOTIVATION_MOVE}.`;
+        },
+      },
+    ],
+  },
   { name: "Wageningen", actions: [], activities: [] },
 ];
 
