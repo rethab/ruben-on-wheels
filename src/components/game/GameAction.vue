@@ -12,8 +12,8 @@
     </v-card-text>
     <v-card-text v-else-if="step === 0"
       >You are currently in <strong>{{ city }}</strong
-      >. Click below to see what happens in {{ city }}, and decide what activity
-      to do next.</v-card-text
+      >. Click below to explore {{ city }} and decide what activity to do
+      next.</v-card-text
     >
 
     <v-card-text v-else-if="step === 1">
@@ -161,7 +161,9 @@ export default defineComponent({
 
       let fullText = text;
       fullText += "<br /><br />";
-      fullText += `${smiley} Your ${type} ${effect}s by ${move}.`;
+      fullText += `${smiley} Your ${type} ${effect}${
+        type === "points" ? "" : "s"
+      } by ${move}.`;
 
       return fullText;
     },
