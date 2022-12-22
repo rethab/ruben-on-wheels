@@ -63,6 +63,7 @@ export const useGameStore = defineStore("game", () => {
     initPlayers,
     currentPlayerName,
     currentPlayer,
+    currentPlayerIndex,
     nextPlayer,
   };
 });
