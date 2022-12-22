@@ -31,7 +31,7 @@
     </v-card-text>
 
     <v-card-text v-else-if="step === 2">
-      {{ cityActivityText }}
+      <p v-html="cityActivityText" />
     </v-card-text>
 
     <v-card-actions>
@@ -72,6 +72,7 @@ import {
   getCityAction,
   getCityActivities,
   runActionOnPlayer,
+  runActivityOnPlayer,
 } from "@/services/cities";
 import type { Action, Activity, Player } from "@/services/types";
 
@@ -121,6 +122,28 @@ export default defineComponent({
       this.cityAction = action;
       runActionOnPlayer(action, player);
     },
+    runActivity(player: Player, activity: Activity) {
+      const pointsBefore = player.points;
+      const motivationBefore = player.motivation;
+      runActivityOnPlayer(activity, player);
+      const pointsCost = pointsBefore - player.points;
+      const motivationCost = motivationBefore - player.motivation;
+
+      if (activity.type === "cycle") {
+        this.cityActivityText = `Well done, you have cycled to <strong>${player.currentCity}</strong>. Your points have dropped by ${pointsCost} and the motivation by ${motivationCost}.`;
+      } else {
+        const smilies = ["😀", "☺️", "😌️", "😏", "🥳"];
+        const smiley = smilies[Math.floor(Math.random() * smilies.length)];
+        const move =
+          (activity.type === "motivation" ? motivationCost : pointsCost) * -1;
+
+        this.cityActivityText = activity.text();
+        this.cityActivityText += "<br /><br/>";
+        this.cityActivityText += `${smiley} Your ${activity.type} increase${
+          activity.type === "motivation" ? "s" : ""
+        } by ${move}.`;
+      }
+    },
   },
   watch: {
     step(newStep: number) {
@@ -136,7 +159,7 @@ export default defineComponent({
         const activity: Activity = this.cityActivities.find(
           ({ name }) => name === this.selectedActivity
         )!;
-        this.cityActivityText = activity.run(currentPlayer!);
+        this.runActivity(currentPlayer!, activity);
       }
 
       const lost = currentPlayer!.points <= 0 || currentPlayer!.motivation <= 0;

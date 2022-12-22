@@ -5,8 +5,10 @@ export interface Player {
   currentCity: string;
 }
 
+export type Type = "motivation" | "points";
+
 export interface Action {
-  type: "motivation" | "points";
+  type: Type;
   effect: "increase" | "decrease";
   text: string;
 }
@@ -14,7 +16,7 @@ export interface Action {
 export interface Activity {
   name: string;
   type: "motivation" | "points" | "cycle";
-  run: (p: Player) => string;
+  text: () => string;
 }
 
 export interface City {

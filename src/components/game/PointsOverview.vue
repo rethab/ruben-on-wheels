@@ -7,12 +7,14 @@
             :class="{
               'text-medium-emphasis': !active(index),
               'text-subtitle-1': true,
+              'pb-0': true,
             }"
             >{{ player.name }}</v-card-title
           >
-          <v-card-text>
+          <v-card-subtitle>City: {{ player.currentCity }}</v-card-subtitle>
+          <v-card-text class="pt-1">
             <v-progress-linear
-              height="12"
+              height="15"
               :class="{
                 'mb-2': true,
                 'text-medium-emphasis': !active(index),
@@ -24,7 +26,7 @@
               >{{ player.motivation }} Motivation</v-progress-linear
             >
             <v-progress-linear
-              height="12"
+              height="15"
               :class="{ 'text-medium-emphasis': !active(index) }"
               :color="active(index) ? 'orange' : 'grey'"
               style="white-space: nowrap"

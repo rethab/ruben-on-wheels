@@ -1,4 +1,4 @@
-import type { Action, Activity, City, Player } from "@/services/types";
+import type { Action, Activity, City, Player, Type } from "@/services/types";
 
 const ACTIVITY_MOTIVATION_MOVE = 30;
 const ACTIVITY_POINTS_MOVE = 150;
@@ -11,9 +11,9 @@ const CYCLE_MOTIVATION_COST = 15;
 export const costDescription: (a: Activity, p: Player) => string = (a, p) => {
   switch (a.type) {
     case "points":
-      return `+${ACTIVITY_POINTS_MOVE} points`;
+      return `++ points`;
     case "motivation":
-      return `+${ACTIVITY_MOTIVATION_MOVE} motivation`;
+      return `++ motivation`;
     case "cycle":
       return `-${getCyclePointsCost(
         p
@@ -28,9 +28,38 @@ export const runActionOnPlayer: (a: Action, p: Player) => void = (a, p) => {
       p.points += ACTION_POINTS_MOVE * factor;
       break;
     case "motivation":
-      p.motivation += ACTION_MOTIVATION_MOVE;
+      p.motivation += ACTION_MOTIVATION_MOVE * factor;
       break;
   }
+};
+
+export const runActivityOnPlayer: (a: Activity, p: Player) => void = (a, p) => {
+  if (a.type === "cycle") {
+    cycleToNextCity(p);
+    return;
+  }
+
+  const variation = getVariation(a.type);
+
+  switch (a.type) {
+    case "points":
+      p.points += ACTIVITY_POINTS_MOVE;
+      p.points += variation;
+      break;
+    case "motivation":
+      p.motivation += ACTIVITY_MOTIVATION_MOVE;
+      p.motivation += variation;
+      break;
+  }
+};
+
+const getVariation: (type: Type) => number = (type) => {
+  const max = type === "points" ? 30 : 7;
+  const baseVariation = Math.round(Math.random() * max);
+  if (Math.random() > 0.5) {
+    return baseVariation * -1;
+  }
+  return baseVariation;
 };
 
 const cycleToNextCity: (p: Player) => void = (p) => {
@@ -81,31 +110,17 @@ const genericActivities: Activity[] = [
   {
     type: "points",
     name: "Take a nap",
-    run: (p: Player) => {
-      p.points += ACTIVITY_POINTS_MOVE;
-      return `They say napping is good for you, but you can't be sure until you've done it! That's ${ACTIVITY_POINTS_MOVE} points for you.`;
-    },
+    text: () => "You really needed this. Now you're ready to cycle on.",
   },
   {
     type: "motivation",
     name: "Have your bike cleaned",
-    run: (p: Player) => {
-      p.motivation += ACTIVITY_MOTIVATION_MOVE;
-      return `Your bike is all shiny again. You're not sure if this helps how fast you can cycle, but you're motivation is up ${ACTIVITY_MOTIVATION_MOVE}.`;
-    },
+    text: () => "Your bike is all shiny again.",
   },
   {
     name: "Cycle to the next city",
     type: "cycle",
-    run: (p: Player) => {
-      const pointsBefore = p.points;
-      const motivationBefore = p.motivation;
-      cycleToNextCity(p);
-      const pointsCost = pointsBefore - p.points;
-      const motivationCost = motivationBefore - p.motivation;
-
-      return `Well done, you have cycled to ${p.currentCity}. Your points have dropped by ${pointsCost} and the motivation by ${motivationCost}.`;
-    },
+    text: () => "",
   },
 ];
 
@@ -128,18 +143,14 @@ export const cities: City[] = [
       {
         type: "motivation",
         name: "Visit Laurie & Reto",
-        run: (p: Player) => {
-          p.motivation += ACTIVITY_MOTIVATION_MOVE;
-          return `You had some fondue with white wine. You feel very full, but you're ready for your adventure. Your motivation increases by ${ACTION_MOTIVATION_MOVE} points.`;
-        },
+        text: () =>
+          "You had some fondue with white wine. You feel very full, but you're ready for your adventure.",
       },
       {
         type: "points",
         name: "Cycle up the Uetliberg",
-        run: (p: Player) => {
-          p.points += ACTIVITY_POINTS_MOVE;
-          return `Once you're on the top and you can enjoy the view over the city and lake, you know why you love cycling so much. Your points increase by ${ACTIVITY_POINTS_MOVE}.`;
-        },
+        text: () =>
+          "Once you're on the top and you can enjoy the view over the city and lake, you know why you love cycling so much.",
       },
     ],
   },
@@ -156,18 +167,14 @@ export const cities: City[] = [
       {
         type: "points",
         name: "Party at the Carnival of Basel",
-        run: (p: Player) => {
-          p.points += ACTIVITY_POINTS_MOVE;
-          return "You had a great time partying with the people of Basel. You're all recovered!";
-        },
+        text: () =>
+          "You had a great time partying with the people of Basel. You're all recovered!",
       },
       {
-        name: "Tal to a stranger",
+        name: "Talk to a stranger",
         type: "motivation",
-        run: (p: Player) => {
-          p.motivation += ACTIVITY_MOTIVATION_MOVE;
-          return `You're lucky! The stranger explained to you how beautiful the route to Wageningen is. Your motivation increases by ${ACTIVITY_MOTIVATION_MOVE}.`;
-        },
+        text: () =>
+          "You're lucky! The stranger explained to you how beautiful the route to Wageningen is.",
       },
     ],
   },
@@ -184,10 +191,8 @@ export const cities: City[] = [
       {
         name: "Visit the Cologne Cathedral",
         type: "points",
-        run: (p: Player) => {
-          p.points += ACTIVITY_POINTS_MOVE;
-          return `You climb all the way up to the south tower of the Cathedral. What a view! Your points increase by ${ACTIVITY_POINTS_MOVE}.`;
-        },
+        text: () =>
+          "You climb all the way up to the south tower of the Cathedral. What a view!",
       },
     ],
   },
@@ -204,10 +209,8 @@ export const cities: City[] = [
       {
         name: "Cycle on the Magic Mountain",
         type: "motivation",
-        run: (p: Player) => {
-          p.motivation += ACTIVITY_MOTIVATION_MOVE;
-          return `Well.. turns out this sculpture is not suited for cycling, but there were many tourists cheering you on anyways. Your motivation increases by ${ACTIVITY_MOTIVATION_MOVE}.`;
-        },
+        text: () =>
+          "Well.. turns out this sculpture is not suited for cycling, but there were many tourists cheering you on anyways.",
       },
     ],
   },
@@ -229,19 +232,15 @@ export const cities: City[] = [
       {
         name: "Visit Milou",
         type: "motivation",
-        run: (p: Player) => {
+        text: () => {
           const tips = [
             "Milou tells you a secret shortcut how to cycle faster to Wageningen.",
             "Milou pumps your bikes tires.",
             "Milou explains to you why cycling is the best sport.",
           ];
-          const prefix =
-            p.name.toLowerCase() === "milou"
-              ? "You take a quick nap on your couch."
-              : tips[Math.floor(Math.random() * tips.length)];
-
-          p.motivation += ACTIVITY_MOTIVATION_MOVE;
-          return `${prefix} You points increase by ${ACTIVITY_MOTIVATION_MOVE}.`;
+          return `${
+            tips[Math.floor(Math.random() * tips.length)]
+          } You points increase by ${ACTIVITY_MOTIVATION_MOVE}.`;
         },
       },
     ],
