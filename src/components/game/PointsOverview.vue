@@ -18,6 +18,7 @@
                 'text-medium-emphasis': !active(index),
               }"
               :color="active(index) ? 'orange' : 'grey'"
+              style="white-space: nowrap"
               :model-value="player.motivation"
               max="100"
               >{{ player.motivation }} Motivation</v-progress-linear
@@ -26,6 +27,7 @@
               height="12"
               :class="{ 'text-medium-emphasis': !active(index) }"
               :color="active(index) ? 'orange' : 'grey'"
+              style="white-space: nowrap"
               :model-value="player.points"
               max="500"
               >{{ player.points }} Points</v-progress-linear
