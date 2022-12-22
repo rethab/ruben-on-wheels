@@ -18,7 +18,7 @@
                 'text-medium-emphasis': !active(index),
               }"
               :color="active(index) ? 'orange' : 'grey'"
-              style="white-space: nowrap"
+              style="white-space: nowrap; overflow: hidden"
               :model-value="player.motivation"
               max="100"
               >{{ player.motivation }} Motivation</v-progress-linear
@@ -38,6 +38,13 @@
     </v-row>
   </v-container>
 </template>
+
+<style>
+.v-progress-linear__content {
+  justify-content: left !important;
+  margin-left: 0.25em;
+}
+</style>
 
 <script lang="ts">
 import { defineComponent } from "vue";
