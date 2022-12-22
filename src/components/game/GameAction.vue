@@ -22,6 +22,7 @@
 
       <v-radio-group v-model="selectedActivity">
         <v-radio
+          :disabled="!selectableActivity(activity)"
           v-for="(activity, index) in cityActivities"
           :key="index"
           :label="activityLabel(activity)"
@@ -69,6 +70,7 @@ import {
   ACTION_MOTIVATION_MOVE,
   ACTION_POINTS_MOVE,
   costDescription,
+  cycleCost,
   getCityAction,
   getCityActivities,
   runActionOnPlayer,
@@ -96,6 +98,17 @@ export default defineComponent({
       const currentPlayer = useGameStore().currentPlayer!;
 
       return `${a.name} (${costDescription(a, currentPlayer)})`;
+    },
+    selectableActivity(a: Activity): boolean {
+      if (a.type !== "cycle") {
+        return true;
+      }
+
+      return this.canAffordToCycle(this.currentPlayer!);
+    },
+    canAffordToCycle(p: Player): boolean {
+      const { motivation, points } = cycleCost(p);
+      return p.motivation >= motivation && p.points >= points;
     },
     nextStep() {
       if (this.step === 1 && !this.selectedActivity) {

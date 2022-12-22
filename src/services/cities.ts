@@ -14,11 +14,21 @@ export const costDescription: (a: Activity, p: Player) => string = (a, p) => {
       return `++ points`;
     case "motivation":
       return `++ motivation`;
-    case "cycle":
-      return `-${getCyclePointsCost(
-        p
-      )} points, -${CYCLE_MOTIVATION_COST} motivation`;
+    case "cycle": {
+      const { motivation, points } = cycleCost(p);
+      return `-${points} points, -${motivation} motivation`;
+    }
   }
+};
+
+export const cycleCost: (p: Player) => {
+  motivation: number;
+  points: number;
+} = (p) => {
+  return {
+    points: getCyclePointsCost(p),
+    motivation: CYCLE_MOTIVATION_COST,
+  };
 };
 
 export const runActionOnPlayer: (a: Action, p: Player) => void = (a, p) => {
