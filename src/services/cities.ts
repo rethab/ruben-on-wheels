@@ -162,7 +162,7 @@ export const cities: City[] = [
         type: "motivation",
         run: (p: Player) => {
           p.motivation += ACTIVITY_MOTIVATION_MOVE;
-          return `You're lucky! The stranger told explained to you how beautiful the route to Wageningen is. Your motivation increases by ${ACTIVITY_MOTIVATION_MOVE}`;
+          return `You're lucky! The stranger explained to you how beautiful the route to Wageningen is. Your motivation increases by ${ACTIVITY_MOTIVATION_MOVE}.`;
         },
       },
     ],
