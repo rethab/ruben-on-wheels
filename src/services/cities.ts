@@ -3,8 +3,8 @@ import type { Action, Activity, City, Player } from "@/services/types";
 const ACTIVITY_MOTIVATION_MOVE = 30;
 const ACTIVITY_POINTS_MOVE = 150;
 
-const ACTION_MOTIVATION_MOVE = 5;
-const ACTION_POINTS_MOVE = 20;
+export const ACTION_MOTIVATION_MOVE = 5;
+export const ACTION_POINTS_MOVE = 20;
 
 const CYCLE_MOTIVATION_COST = 15;
 
@@ -18,6 +18,18 @@ export const costDescription: (a: Activity, p: Player) => string = (a, p) => {
       return `-${getCyclePointsCost(
         p
       )} points, -${CYCLE_MOTIVATION_COST} motivation`;
+  }
+};
+
+export const runActionOnPlayer: (a: Action, p: Player) => void = (a, p) => {
+  const factor = a.effect === "decrease" ? -1 : 1;
+  switch (a.type) {
+    case "points":
+      p.points += ACTION_POINTS_MOVE * factor;
+      break;
+    case "motivation":
+      p.motivation += ACTION_MOTIVATION_MOVE;
+      break;
   }
 };
 
@@ -39,34 +51,29 @@ const getCyclePointsCost: (p: Player) => number = (p) => {
 
 const genericActions: Action[] = [
   {
-    run: (p: Player) => {
-      p.motivation += ACTION_MOTIVATION_MOVE;
-      return `What a nice weather today! Your motivation increases by ${ACTION_MOTIVATION_MOVE} and you can't wait to get on.`;
-    },
+    type: "motivation",
+    effect: "increase",
+    text: "What a nice weather today! You can't wait to get on.",
   },
   {
-    run: (p: Player) => {
-      p.motivation -= ACTION_MOTIVATION_MOVE;
-      return `Uuuuh this rain. If you only you had stayed at home and not started this adventure! Your motivation drops by ${ACTION_MOTIVATION_MOVE}.`;
-    },
+    type: "motivation",
+    effect: "decrease",
+    text: "Uuuuh this rain. If you only you had stayed at home and not started this adventure!",
   },
   {
-    run: (p: Player) => {
-      p.points -= ACTION_POINTS_MOVE;
-      return `You have a flat tire. Repairing it costs you ${ACTION_POINTS_MOVE} points.`;
-    },
+    type: "points",
+    effect: "decrease",
+    text: "You have a flat tire. You need to repair it.",
   },
   {
-    run: (p: Player) => {
-      p.points -= ACTION_POINTS_MOVE;
-      return `You got stopped by the police, because you were cycling without light. The fine costs you ${ACTION_POINTS_MOVE} points.`;
-    },
+    type: "points",
+    effect: "decrease",
+    text: "You got stopped by the police, because you were cycling without light. You get fined.",
   },
   {
-    run: (p: Player) => {
-      p.points -= ACTION_POINTS_MOVE;
-      return `You met a very talkative stranger. This is was not helpful in getting to Wageningen quickly.. You've lost ${ACTION_POINTS_MOVE}.`;
-    },
+    type: "points",
+    effect: "decrease",
+    text: "You met a very talkative stranger. This is was not helpful in getting to Wageningen quickly.",
   },
 ];
 
@@ -107,16 +114,14 @@ export const cities: City[] = [
     name: "Zurich",
     actions: [
       {
-        run: (p: Player) => {
-          p.motivation -= ACTION_MOTIVATION_MOVE;
-          return `You had a coffee in the city center. When you paid for it, you realised how expensive coffees are in Zurich. Your motivation drops by ${ACTION_MOTIVATION_MOVE} points.`;
-        },
+        type: "motivation",
+        effect: "decrease",
+        text: "You had a coffee in the city center. When you paid for it, you realised how expensive coffees are in Zurich.",
       },
       {
-        run: (p: Player) => {
-          p.points -= ACTION_POINTS_MOVE;
-          return `Laurie convinced you to row with her. You forgot that the goal of this game is to cycle. You loose ${ACTION_POINTS_MOVE} points.`;
-        },
+        type: "points",
+        effect: "decrease",
+        text: "Laurie convinced you to row with her. You forgot that the goal of this game is to cycle.",
       },
     ],
     activities: [
@@ -142,10 +147,9 @@ export const cities: City[] = [
     name: "Basel",
     actions: [
       {
-        run: (p: Player) => {
-          p.motivation += ACTION_MOTIVATION_MOVE;
-          return `On this beautiful day, you're cooling off in the Rhine. Your motivation is up by ${ACTION_MOTIVATION_MOVE}.`;
-        },
+        type: "motivation",
+        effect: "increase",
+        text: "On this beautiful day, you're cooling off in the Rhine.",
       },
     ],
     activities: [
@@ -171,10 +175,9 @@ export const cities: City[] = [
     name: "Köln",
     actions: [
       {
-        run: (p: Player) => {
-          p.motivation -= ACTION_MOTIVATION_MOVE;
-          return `You're annoyed how ill-equipped Köln is for cycling. Your motivation drops by ${ACTION_MOTIVATION_MOVE}.`;
-        },
+        type: "motivation",
+        effect: "decrease",
+        text: "You're annoyed how ill-equipped Köln is for cycling.",
       },
     ],
     activities: [
@@ -192,10 +195,9 @@ export const cities: City[] = [
     name: "Duisburg",
     actions: [
       {
-        run: (p: Player) => {
-          p.points -= ACTION_POINTS_MOVE;
-          return `You wanted to relax in the Landschaftspark, but it turns out the park is not quite what you expected. Your points drop by ${ACTION_POINTS_MOVE}.`;
-        },
+        type: "points",
+        effect: "decrease",
+        text: "You wanted to relax in the Landschaftspark, but it turns out the park is not quite what you expected.",
       },
     ],
     activities: [
@@ -213,16 +215,14 @@ export const cities: City[] = [
     name: "Arnhem",
     actions: [
       {
-        run: (p: Player) => {
-          p.points += ACTION_POINTS_MOVE;
-          return `You step off your bike in the Sonsbeek park. The peacefulness restores your points by ${ACTION_POINTS_MOVE}.`;
-        },
+        type: "points",
+        effect: "increase",
+        text: "You step off your bike in the Sonsbeek park",
       },
       {
-        run: (p: Player) => {
-          p.points -= ACTION_POINTS_MOVE;
-          return `You did a detour to Doetinchem. This cost you ${ACTION_POINTS_MOVE} points.`;
-        },
+        type: "points",
+        effect: "decrease",
+        text: "You did a detour to Doetinchem.",
       },
     ],
     activities: [

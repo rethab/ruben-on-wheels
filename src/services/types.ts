@@ -6,7 +6,9 @@ export interface Player {
 }
 
 export interface Action {
-  run: (p: Player) => string;
+  type: "motivation" | "points";
+  effect: "increase" | "decrease";
+  text: string;
 }
 
 export interface Activity {

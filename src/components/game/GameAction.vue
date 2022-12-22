@@ -11,13 +11,13 @@
       Wageningen.
     </v-card-text>
     <v-card-text v-else-if="step === 0"
-      >You are currently in {{ city }}. Click below to see what happens in
-      {{ city }}, and decide what activity to do next.</v-card-text
+      >You are currently in <strong>{{ city }}</strong
+      >. Click below to see what happens in {{ city }}, and decide what activity
+      to do next.</v-card-text
     >
 
     <v-card-text v-else-if="step === 1">
-      {{ cityActionText }}
-
+      <p v-html="cityActionText" />
       <p class="my-5">How do you want to proceed?</p>
 
       <v-radio-group v-model="selectedActivity">
@@ -66,17 +66,20 @@ import { useGameStore } from "@/stores/game";
 import { storeToRefs } from "pinia";
 import { defineComponent } from "vue";
 import {
+  ACTION_MOTIVATION_MOVE,
+  ACTION_POINTS_MOVE,
   costDescription,
   getCityAction,
   getCityActivities,
+  runActionOnPlayer,
 } from "@/services/cities";
-import type { Activity } from "@/services/types";
+import type { Action, Activity, Player } from "@/services/types";
 
 export default defineComponent({
   data() {
     return {
       step: 0,
-      cityActionText: "",
+      cityAction: undefined as undefined | Action,
       selectedActivity: "",
       cityActivityText: "",
       looser: "",
@@ -102,7 +105,7 @@ export default defineComponent({
     },
     nextPlayer() {
       this.step = 0;
-      this.cityActionText = "";
+      this.cityAction = undefined;
       this.selectedActivity = "";
       this.cityActivityText = "";
 
@@ -114,14 +117,18 @@ export default defineComponent({
         store.nextPlayer();
       }
     },
+    runAction(player: Player, action: Action) {
+      this.cityAction = action;
+      runActionOnPlayer(action, player);
+    },
   },
   watch: {
     step(newStep: number) {
       const { currentPlayer } = useGameStore();
       // just arrived in city, run action
       if (newStep === 1) {
-        const cityAction = getCityAction(this.city!);
-        this.cityActionText = cityAction.run(currentPlayer!);
+        this.cityAction = getCityAction(this.city!);
+        this.runAction(currentPlayer!, this.cityAction);
       }
 
       // selected activity, run it
@@ -143,6 +150,20 @@ export default defineComponent({
       const { currentPlayer } = useGameStore();
       const city = currentPlayer?.currentCity;
       return getCityActivities(city!);
+    },
+    cityActionText() {
+      console.log(this.cityAction?.text);
+      if (!this.cityAction) return "";
+      const { text, type, effect } = this.cityAction;
+      const move =
+        type === "motivation" ? ACTION_MOTIVATION_MOVE : ACTION_POINTS_MOVE;
+      const smiley = effect === "decrease" ? "😭" : "😎";
+
+      let fullText = text;
+      fullText += "<br /><br />";
+      fullText += `${smiley} Your ${type} ${effect}s by ${move}.`;
+
+      return fullText;
     },
     city() {
       const { currentPlayer } = useGameStore();
