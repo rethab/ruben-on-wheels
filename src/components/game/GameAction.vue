@@ -130,7 +130,9 @@ export default defineComponent({
       const motivationCost = motivationBefore - player.motivation;
 
       if (activity.type === "cycle") {
-        this.cityActivityText = `Well done, you have cycled to <strong>${player.currentCity}</strong>. Your points have dropped by ${pointsCost} and the motivation by ${motivationCost}.`;
+        this.cityActivityText = `Well done, you have cycled to <strong>${player.currentCity}</strong>.`;
+        this.cityActivityText += "<br /><br />";
+        this.cityActivityText += `Your points have dropped by ${pointsCost} and the motivation by ${motivationCost}.`;
       } else {
         const smilies = ["😀", "☺️", "😌️", "😏", "🥳"];
         const smiley = smilies[Math.floor(Math.random() * smilies.length)];

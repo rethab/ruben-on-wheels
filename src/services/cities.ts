@@ -210,7 +210,7 @@ export const cities: City[] = [
         name: "Cycle on the Magic Mountain",
         type: "motivation",
         text: () =>
-          "Well.. turns out this sculpture is not suited for cycling, but there were many tourists cheering you on anyways.",
+          "Well.. turns out this sculpture is not suited for cycling, but there were many tourists cheering you on anyway.",
       },
     ],
   },
