@@ -79,13 +79,17 @@ const cycleToNextCity: (p: Player) => void = (p) => {
 };
 
 const getCyclePointsCost: (p: Player) => number = (p) => {
-  return p.motivation >= 75
-    ? 100
-    : p.motivation >= 50
-    ? 125
-    : p.motivation >= 25
-    ? 150
-    : 200;
+  if (p.motivation >= 95) return 90;
+  if (p.motivation >= 90) return 100; //  10
+  if (p.motivation >= 80) return 110; //  10 // 0
+  if (p.motivation >= 70) return 120; //  10 // 0
+  if (p.motivation >= 60) return 135; //  15 // 5
+  if (p.motivation >= 50) return 160; //  25 // 10
+  if (p.motivation >= 40) return 195; //  35 // 10
+  if (p.motivation >= 30) return 245; //  50 // 15
+  if (p.motivation >= 20) return 310; //  65 // 15
+  if (p.motivation >= 10) return 395; //  85 // 20
+  else return 500; // 105 // 20
 };
 
 const genericActions: Action[] = [
