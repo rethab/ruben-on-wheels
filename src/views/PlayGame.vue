@@ -7,7 +7,10 @@
           <GameWinner v-else-if="winner" :winner="winner" />
           <div v-else>
             <GameAction />
-            <PointsOverview />
+            <PointsOverview
+              :players="players"
+              :current-player-index="currentPlayerIndex"
+            />
           </div>
         </v-col>
         <v-col cols="3"><RouteOverview /></v-col>
@@ -27,4 +30,8 @@ import { computed } from "vue";
 
 const winner = computed(() => useGameStore().winner?.name);
 const gameOver = computed(() => useGameStore().players.length === 0);
+
+const store = useGameStore();
+const players = store.players;
+const currentPlayerIndex = store.currentPlayerIndex;
 </script>

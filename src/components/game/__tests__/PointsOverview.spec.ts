@@ -5,7 +5,9 @@ import PointsOverview from "../PointsOverview.vue";
 
 describe("PointsOverview", () => {
   it("renders properly", () => {
-    const wrapper = mount(PointsOverview, { props: { msg: "Hello Vitest" } });
+    const wrapper = mount(PointsOverview, {
+      props: { players: [], currentPlayerIndex: 0 },
+    });
     expect(wrapper.text()).toContain("Hello Vitest");
   });
 });

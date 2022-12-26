@@ -9,22 +9,22 @@
     />
     <CityIntro
       v-else-if="step === 0"
-      :player="currentPlayer"
+      :player="player"
       :subtitle="subtitle"
       @explore-city="exploreCity"
     />
     <SelectActivity
-      v-else-if="step === 1"
-      :city-action="action"
+      v-else-if="step === 1 && action"
+      :action="action"
       :subtitle="subtitle"
-      :player="currentPlayer"
+      :player="player"
       @selected-activity="runActivity"
     />
     <ShowActivityText
-      v-else-if="step === 2"
+      v-else-if="step === 2 && activity"
       :activity="activity"
       :subtitle="subtitle"
-      :player="currentPlayer"
+      :player="player"
       :points-cost="pointsCost"
       :motivation-cost="motivationCost"
       @next-player="nextPlayer"
@@ -34,7 +34,6 @@
 
 <script setup lang="ts">
 import { useGameStore } from "@/stores/game";
-import { storeToRefs } from "pinia";
 import { computed, ref, watch } from "vue";
 import {
   selectRandomAction,
@@ -50,12 +49,11 @@ import ShowLooser from "@/components/game/turn/ShowLooser.vue";
 const step = ref<number>(0);
 const action = ref<Action>();
 const activity = ref<Activity>();
-const pointsCost = ref<number>();
-const motivationCost = ref<number>();
+const pointsCost = ref<number>(0);
+const motivationCost = ref<number>(0);
 const looser = ref<string>();
 
 const store = useGameStore();
-const { currentPlayer } = storeToRefs(store);
 
 const player = computed<Player>(() => {
   return store.currentPlayer!;
@@ -95,8 +93,8 @@ function nextPlayer() {
   step.value = 0;
   action.value = undefined;
   activity.value = undefined;
-  pointsCost.value = undefined;
-  motivationCost.value = undefined;
+  pointsCost.value = 0;
+  motivationCost.value = 0;
 
   const store = useGameStore();
   if (looser.value) {

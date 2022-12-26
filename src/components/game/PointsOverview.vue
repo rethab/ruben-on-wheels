@@ -1,7 +1,7 @@
 <template>
   <v-container class="px-0">
     <v-row>
-      <v-col :cols="cols" v-for="(player, index) in players" :key="index">
+      <v-col :cols="cols" v-for="(player, index) in sortedPlayers" :key="index">
         <v-card>
           <v-card-title
             :class="{
@@ -50,12 +50,23 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import { useGameStore } from "@/stores/game";
 import { useDisplay } from "vuetify";
+import type { Player } from "@/services/types";
 
-const players = computed(() => {
-  const { players, currentPlayerIndex: idx } = useGameStore();
-  return [...players.slice(idx, players.length), ...players.slice(0, idx)];
+interface Props {
+  players: Player[];
+  currentPlayerIndex: number;
+}
+
+const props = defineProps<Props>();
+
+const sortedPlayers = computed(() => {
+  const currentAndAfter = props.players.slice(
+    props.currentPlayerIndex,
+    props.players.length
+  );
+  const untilCurrent = props.players.slice(0, props.currentPlayerIndex);
+  return [...currentAndAfter, ...untilCurrent];
 });
 
 const cols = computed(() => {

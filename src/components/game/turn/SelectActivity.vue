@@ -4,7 +4,7 @@
     <v-card-subtitle><span v-html="props.subtitle" /></v-card-subtitle>
 
     <v-card-text>
-      <p v-html="cityActionText" />
+      <p v-html="actionText" />
       <p class="my-5">How do you want to proceed?</p>
 
       <v-radio-group v-model="activityName">
@@ -28,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Action, Activity } from "@/services/types";
+import type { Action, Activity, Player } from "@/services/types";
 import {
   ACTION_MOTIVATION_MOVE,
   ACTION_POINTS_MOVE,
@@ -36,13 +36,12 @@ import {
   cycleCost,
   getCityActivities,
 } from "@/services/cities";
-import { Player } from "@/services/types";
 import { computed, ref } from "vue";
 
 interface Props {
   player: Player;
   subtitle: string;
-  cityAction: Action;
+  action: Action;
 }
 
 const props = defineProps<Props>();
@@ -89,9 +88,9 @@ const cityActivities = computed(() => {
   return getCityActivities(city!);
 });
 
-const cityActionText = computed(() => {
+const actionText = computed(() => {
   const {
-    cityAction: { text, type, effect },
+    action: { text, type, effect },
   } = props;
 
   const move =
