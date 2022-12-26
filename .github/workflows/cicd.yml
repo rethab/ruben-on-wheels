@@ -42,6 +42,9 @@ jobs:
         with:
           node-version: 16
 
+      - name: Install Dependencies
+        run: npm ci
+
       - name: Download Dist
         uses: actions/download-artifact@v1
         with:
@@ -52,7 +55,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run E2E Tests
-        run: npx playwright test
+        run: npm run test:e2e
 
       - uses: actions/upload-artifact@v3
         if: always()
