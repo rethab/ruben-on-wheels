@@ -82,7 +82,8 @@ jobs:
 
       - name: Configure Git
         run: |
-          git config --global user.name actions-bot
+          git config user.name action-deployments
+          git config user.email actions@github.com
 
       - name: Commit and Push
         run: |
