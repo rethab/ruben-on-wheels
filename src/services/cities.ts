@@ -262,7 +262,7 @@ export const cities: City[] = [
   { name: "Wageningen", actions: [], activities: [] },
 ];
 
-export const getCityAction: (cityName: string) => Action = (cityName) => {
+export const selectRandomAction: (cityName: string) => Action = (cityName) => {
   const city = getCityByName(cityName);
   const actions = [...city.actions, ...genericActions];
   return actions[Math.floor(Math.random() * actions.length)];

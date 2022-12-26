@@ -1,65 +1,35 @@
 <template>
-  <v-card>
-    <v-card-title>{{ looser || currentPlayerName }}'s turn</v-card-title>
-    <v-card-subtitle>
-      <span v-if="looser" class="text-red">{{ subtitle }}</span>
-      <span v-else v-html="subtitle" />
-    </v-card-subtitle>
-
-    <v-card-text v-if="looser"
-      >😭 Oh no, {{ looser }}! You have to take the train from {{ city }} to
-      Wageningen.
-    </v-card-text>
-    <v-card-text v-else-if="step === 0"
-      >You are currently in <strong>{{ city }}</strong
-      >. Click below to explore {{ city }} and decide what activity to do
-      next.</v-card-text
-    >
-
-    <v-card-text v-else-if="step === 1">
-      <p v-html="cityActionText" />
-      <p class="my-5">How do you want to proceed?</p>
-
-      <v-radio-group v-model="selectedActivity">
-        <v-radio
-          :disabled="!selectableActivity(activity)"
-          v-for="(activity, index) in cityActivities"
-          :key="index"
-          :label="activityLabel(activity)"
-          :value="activity.name"
-        ></v-radio>
-      </v-radio-group>
-    </v-card-text>
-
-    <v-card-text v-else-if="step === 2">
-      <p v-html="cityActivityText" />
-    </v-card-text>
-
-    <v-card-actions>
-      <v-spacer />
-      <v-btn
-        @click="nextStep"
-        v-if="!looser && step === 0"
-        color="primary"
-        variant="tonal"
-        >Explore {{ city }}</v-btn
-      >
-      <v-btn
-        @click="nextStep"
-        v-if="!looser && step === 1"
-        color="primary"
-        variant="tonal"
-        >Run Activity</v-btn
-      >
-      <v-btn
-        @click="nextPlayer"
-        v-if="looser || step === 2"
-        color="primary"
-        variant="tonal"
-        >Next Player</v-btn
-      >
-    </v-card-actions>
-  </v-card>
+  <div>
+    <ShowLooser
+      v-if="looser"
+      :city-name="city"
+      :player-name="looser"
+      :subtitle="subtitle"
+      @next-player="nextPlayer"
+    />
+    <CityIntro
+      v-else-if="step === 0"
+      :player="currentPlayer"
+      :subtitle="subtitle"
+      @explore-city="exploreCity"
+    />
+    <SelectActivity
+      v-else-if="step === 1"
+      :city-action="action"
+      :subtitle="subtitle"
+      :player="currentPlayer"
+      @selected-activity="runActivity"
+    />
+    <ShowActivityText
+      v-else-if="step === 2"
+      :activity="activity"
+      :subtitle="subtitle"
+      :player="currentPlayer"
+      :points-cost="pointsCost"
+      :motivation-cost="motivationCost"
+      @next-player="nextPlayer"
+    />
+  </div>
 </template>
 
 <script lang="ts">
@@ -67,25 +37,26 @@ import { useGameStore } from "@/stores/game";
 import { storeToRefs } from "pinia";
 import { defineComponent } from "vue";
 import {
-  ACTION_MOTIVATION_MOVE,
-  ACTION_POINTS_MOVE,
-  costDescription,
-  cycleCost,
-  getCityAction,
-  getCityActivities,
+  selectRandomAction,
   runActionOnPlayer,
   runActivityOnPlayer,
 } from "@/services/cities";
-import type { Action, Activity, Player } from "@/services/types";
+import type { Action, Activity } from "@/services/types";
+import CityIntro from "@/components/game/turn/CityIntro.vue";
+import SelectActivity from "@/components/game/turn/SelectActivity.vue";
+import ShowActivityText from "@/components/game/turn/ShowActivityText.vue";
+import ShowLooser from "@/components/game/turn/ShowLooser.vue";
 
 export default defineComponent({
+  components: { ShowLooser, ShowActivityText, SelectActivity, CityIntro },
   data() {
     return {
       step: 0,
-      cityAction: undefined as undefined | Action,
-      selectedActivity: "",
-      cityActivityText: "",
-      looser: "",
+      action: undefined as undefined | Action,
+      activity: undefined as undefined | Activity,
+      pointsCost: undefined as undefined | number,
+      motivationCost: undefined as undefined | number,
+      looser: undefined as undefined | string,
     };
   },
   setup() {
@@ -94,34 +65,37 @@ export default defineComponent({
     return { currentPlayerName, currentPlayer };
   },
   methods: {
-    activityLabel(a: Activity) {
-      const currentPlayer = useGameStore().currentPlayer!;
+    exploreCity() {
+      this.action = selectRandomAction(this.city!);
+      console.log(
+        `Picked action ${this.action.text} for player ${
+          this.currentPlayer!.name
+        }`
+      );
 
-      return `${a.name} (${costDescription(a, currentPlayer)})`;
-    },
-    selectableActivity(a: Activity): boolean {
-      if (a.type !== "cycle") {
-        return true;
-      }
+      runActionOnPlayer(this.action, this.currentPlayer!);
 
-      return this.canAffordToCycle(this.currentPlayer!);
+      this.step++;
     },
-    canAffordToCycle(p: Player): boolean {
-      const { motivation, points } = cycleCost(p);
-      return p.motivation >= motivation && p.points >= points;
-    },
-    nextStep() {
-      if (this.step === 1 && !this.selectedActivity) {
-        console.log("no activity selected");
-        return;
-      }
+    runActivity(activity: Activity) {
+      const player = this.currentPlayer!;
+      const pointsBefore = player.points;
+      const motivationBefore = player.motivation;
+
+      runActivityOnPlayer(activity, player);
+
+      this.activity = activity;
+      this.pointsCost = pointsBefore - player.points;
+      this.motivationCost = motivationBefore - player.motivation;
+
       this.step++;
     },
     nextPlayer() {
       this.step = 0;
-      this.cityAction = undefined;
-      this.selectedActivity = "";
-      this.cityActivityText = "";
+      this.action = undefined;
+      this.activity = undefined;
+      this.pointsCost = undefined;
+      this.motivationCost = undefined;
 
       const store = useGameStore();
       if (this.looser) {
@@ -131,80 +105,18 @@ export default defineComponent({
         store.nextPlayer();
       }
     },
-    runAction(player: Player, action: Action) {
-      this.cityAction = action;
-      runActionOnPlayer(action, player);
-    },
-    runActivity(player: Player, activity: Activity) {
-      const pointsBefore = player.points;
-      const motivationBefore = player.motivation;
-      runActivityOnPlayer(activity, player);
-      const pointsCost = pointsBefore - player.points;
-      const motivationCost = motivationBefore - player.motivation;
-
-      if (activity.type === "cycle") {
-        this.cityActivityText = `Well done, you have cycled to <strong>${player.currentCity}</strong>.`;
-        this.cityActivityText += "<br /><br />";
-        this.cityActivityText += `Your points have dropped by ${pointsCost} and the motivation by ${motivationCost}.`;
-      } else {
-        const smilies = ["😀", "☺️", "😌️", "😏", "🥳"];
-        const smiley = smilies[Math.floor(Math.random() * smilies.length)];
-        const move =
-          (activity.type === "motivation" ? motivationCost : pointsCost) * -1;
-
-        this.cityActivityText = activity.text();
-        this.cityActivityText += "<br /><br/>";
-        this.cityActivityText += `${smiley} Your ${activity.type} increase${
-          activity.type === "motivation" ? "s" : ""
-        } by ${move}.`;
-      }
-    },
   },
   watch: {
-    step(newStep: number) {
-      const { currentPlayer } = useGameStore();
-      // just arrived in city, run action
-      if (newStep === 1) {
-        this.cityAction = getCityAction(this.city!);
-        this.runAction(currentPlayer!, this.cityAction);
-      }
+    step() {
+      const player = this.currentPlayer!;
+      const lost = player.points <= 0 || player.motivation <= 0;
 
-      // selected activity, run it
-      if (newStep === 2) {
-        const activity: Activity = this.cityActivities.find(
-          ({ name }) => name === this.selectedActivity
-        )!;
-        this.runActivity(currentPlayer!, activity);
-      }
-
-      const lost = currentPlayer!.points <= 0 || currentPlayer!.motivation <= 0;
       if (lost) {
         this.looser = this.currentPlayerName!;
       }
     },
   },
   computed: {
-    cityActivities() {
-      const { currentPlayer } = useGameStore();
-      const city = currentPlayer?.currentCity;
-      return getCityActivities(city!);
-    },
-    cityActionText() {
-      console.log(this.cityAction?.text);
-      if (!this.cityAction) return "";
-      const { text, type, effect } = this.cityAction;
-      const move =
-        type === "motivation" ? ACTION_MOTIVATION_MOVE : ACTION_POINTS_MOVE;
-      const smiley = effect === "decrease" ? "😭" : "😎";
-
-      let fullText = text;
-      fullText += "<br /><br />";
-      fullText += `${smiley} Your ${type} ${effect}${
-        type === "points" ? "" : "s"
-      } by ${move}.`;
-
-      return fullText;
-    },
     city() {
       const { currentPlayer } = useGameStore();
       return currentPlayer?.currentCity;
