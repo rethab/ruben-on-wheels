@@ -33,16 +33,13 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { ref } from "vue";
 import { useGameStore } from "@/stores/game";
 import router from "@/router";
 
-const players = computed<{ name: string }[]>(() => [
-  { name: "" },
-  { name: "" },
-]);
+const players = ref([{ name: "" }, { name: "" }]);
 
-const errors = computed<string[]>(() => ["", ""]);
+const errors = ref(["", ""]);
 
 function addPlayer() {
   players.value.push({ name: "" });
@@ -55,7 +52,9 @@ function startGame() {
     if (!players.value[i].name) {
       errors.value[i] = "Please enter a name";
       hasError = true;
-    } else errors.value[i] = "";
+    } else {
+      errors.value[i] = "";
+    }
   }
 
   if (hasError) {
