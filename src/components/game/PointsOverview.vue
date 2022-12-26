@@ -48,28 +48,22 @@
 }
 </style>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import { computed } from "vue";
 import { useGameStore } from "@/stores/game";
+import { useDisplay } from "vuetify";
 
-export default defineComponent({
-  computed: {
-    players() {
-      const { players, currentPlayerIndex: idx } = useGameStore();
-      return [...players.slice(idx, players.length), ...players.slice(0, idx)];
-    },
-    currentPlayerIndex() {
-      return useGameStore().currentPlayerIndex;
-    },
-    cols() {
-      const { xs } = this.$vuetify.display;
-      return xs ? 6 : 4;
-    },
-  },
-  methods: {
-    active(index: number): boolean {
-      return index === 0;
-    },
-  },
+const players = computed(() => {
+  const { players, currentPlayerIndex: idx } = useGameStore();
+  return [...players.slice(idx, players.length), ...players.slice(0, idx)];
 });
+
+const cols = computed(() => {
+  const { xs } = useDisplay();
+  return xs ? 6 : 4;
+});
+
+function active(index: number): boolean {
+  return index === 0;
+}
 </script>

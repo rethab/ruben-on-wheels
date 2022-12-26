@@ -11,6 +11,7 @@
       Congratulations!</v-card-text
     >
     <v-card-actions>
+      <v-spacer />
       <ActionButton text="Play Again" link="init" />
     </v-card-actions>
   </v-card>

@@ -32,41 +32,38 @@
   </v-card>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import { computed } from "vue";
 import { useGameStore } from "@/stores/game";
 import router from "@/router";
 
-export default defineComponent({
-  data() {
-    return {
-      players: [{ name: "" }, { name: "" }],
-      errors: ["", ""],
-    };
-  },
-  methods: {
-    addPlayer() {
-      this.players.push({ name: "" });
-      this.errors.push();
-    },
+const players = computed<{ name: string }[]>(() => [
+  { name: "" },
+  { name: "" },
+]);
 
-    startGame() {
-      let hasError = false;
-      for (let i = 0; i < this.players.length; i++) {
-        if (!this.players[i].name) {
-          this.errors[i] = "Please enter a name";
-          hasError = true;
-        } else this.errors[i] = "";
-      }
+const errors = computed<string[]>(() => ["", ""]);
 
-      if (hasError) {
-        return;
-      }
+function addPlayer() {
+  players.value.push({ name: "" });
+  errors.value.push();
+}
 
-      const { initPlayers } = useGameStore();
-      initPlayers(this.players);
-      router.push({ name: "play" });
-    },
-  },
-});
+function startGame() {
+  let hasError = false;
+  for (let i = 0; i < players.value.length; i++) {
+    if (!players.value[i].name) {
+      errors.value[i] = "Please enter a name";
+      hasError = true;
+    } else errors.value[i] = "";
+  }
+
+  if (hasError) {
+    return;
+  }
+
+  const { initPlayers } = useGameStore();
+  initPlayers(players.value);
+  router.push({ name: "play" });
+}
 </script>

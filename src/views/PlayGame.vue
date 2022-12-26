@@ -1,39 +1,3 @@
-<script lang="ts">
-import router from "@/router";
-import { useGameStore } from "@/stores/game";
-import GameAction from "@/components/game/GameAction.vue";
-import RouteOverview from "@/components/game/RouteOverview.vue";
-import PointsOverview from "@/components/game/PointsOverview.vue";
-import GameWinner from "@/components/game/GameWinner.vue";
-import GameOver from "@/components/game/GameOver.vue";
-import { defineComponent } from "vue";
-const store = useGameStore();
-
-export default defineComponent({
-  components: {
-    PointsOverview,
-    GameAction,
-    RouteOverview,
-    GameWinner,
-    GameOver,
-  },
-  beforeRouteEnter() {
-    if (!store.isGameRunning) {
-      router.push({ name: "home" });
-    }
-  },
-  computed: {
-    winner() {
-      return store.winner?.name;
-    },
-    gameOver() {
-      const { players } = useGameStore();
-      return players.length === 0;
-    },
-  },
-});
-</script>
-
 <template>
   <div>
     <v-container>
@@ -51,3 +15,16 @@ export default defineComponent({
     </v-container>
   </div>
 </template>
+
+<script setup lang="ts">
+import { useGameStore } from "@/stores/game";
+import GameAction from "@/components/game/GameAction.vue";
+import RouteOverview from "@/components/game/RouteOverview.vue";
+import PointsOverview from "@/components/game/PointsOverview.vue";
+import GameWinner from "@/components/game/GameWinner.vue";
+import GameOver from "@/components/game/GameOver.vue";
+import { computed } from "vue";
+
+const winner = computed(() => useGameStore().winner?.name);
+const gameOver = computed(() => useGameStore().players.length === 0);
+</script>

@@ -1,18 +1,3 @@
-<script lang="ts">
-import router from "@/router";
-import { defineComponent } from "vue";
-import ActionButton from "@/components/misc/ActionButton.vue";
-
-export default defineComponent({
-  components: { ActionButton },
-  methods: {
-    router() {
-      return router;
-    },
-  },
-});
-</script>
-
 <template>
   <main>
     <div>
@@ -44,3 +29,7 @@ export default defineComponent({
     </div>
   </main>
 </template>
+
+<script setup lang="ts">
+import ActionButton from "@/components/misc/ActionButton.vue";
+</script>

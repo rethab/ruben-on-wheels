@@ -1,7 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
+import InitView from "../views/InitView.vue";
+import PlayGame from "../views/PlayGame.vue";
+import { useGameStore } from "@/stores/game";
 
-const router = createRouter({
+export default createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
@@ -12,14 +15,17 @@ const router = createRouter({
     {
       path: "/init",
       name: "init",
-      component: () => import("../views/InitView.vue"),
+      component: InitView,
     },
     {
       path: "/play",
       name: "play",
-      component: () => import("../views/PlayGame.vue"),
+      component: PlayGame,
+      beforeEnter: () => {
+        if (!useGameStore().isGameRunning) {
+          return "/";
+        }
+      },
     },
   ],
 });
-
-export default router;
