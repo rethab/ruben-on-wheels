@@ -6,7 +6,7 @@ import PointsOverview from "../PointsOverview.vue";
 import vuetify from "@/plugins/vuetify";
 
 function mountComponent() {
-  return mount(PointsOverview, {
+  return mount(PointsOverview as any, {
     props: {
       players: [
         { name: "Alice", currentCity: "Zurich", motivation: 10, points: 131 },
