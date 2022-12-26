@@ -2,7 +2,7 @@
   <div>
     <ShowLooser
       v-if="looser"
-      :city-name="city"
+      :city-name="player.currentCity"
       :player-name="looser"
       :subtitle="subtitle"
       @next-player="nextPlayer"
@@ -32,101 +32,86 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { useGameStore } from "@/stores/game";
 import { storeToRefs } from "pinia";
-import { defineComponent } from "vue";
+import { computed, ref, watch } from "vue";
 import {
   selectRandomAction,
   runActionOnPlayer,
   runActivityOnPlayer,
 } from "@/services/cities";
-import type { Action, Activity } from "@/services/types";
+import type { Action, Activity, Player } from "@/services/types";
 import CityIntro from "@/components/game/turn/CityIntro.vue";
 import SelectActivity from "@/components/game/turn/SelectActivity.vue";
 import ShowActivityText from "@/components/game/turn/ShowActivityText.vue";
 import ShowLooser from "@/components/game/turn/ShowLooser.vue";
 
-export default defineComponent({
-  components: { ShowLooser, ShowActivityText, SelectActivity, CityIntro },
-  data() {
-    return {
-      step: 0,
-      action: undefined as undefined | Action,
-      activity: undefined as undefined | Activity,
-      pointsCost: undefined as undefined | number,
-      motivationCost: undefined as undefined | number,
-      looser: undefined as undefined | string,
-    };
-  },
-  setup() {
-    const store = useGameStore();
-    const { currentPlayerName, currentPlayer } = storeToRefs(store);
-    return { currentPlayerName, currentPlayer };
-  },
-  methods: {
-    exploreCity() {
-      this.action = selectRandomAction(this.city!);
-      console.log(
-        `Picked action ${this.action.text} for player ${
-          this.currentPlayer!.name
-        }`
-      );
+const step = ref<number>(0);
+const action = ref<Action>();
+const activity = ref<Activity>();
+const pointsCost = ref<number>();
+const motivationCost = ref<number>();
+const looser = ref<string>();
 
-      runActionOnPlayer(this.action, this.currentPlayer!);
+const store = useGameStore();
+const { currentPlayer } = storeToRefs(store);
 
-      this.step++;
-    },
-    runActivity(activity: Activity) {
-      const player = this.currentPlayer!;
-      const pointsBefore = player.points;
-      const motivationBefore = player.motivation;
+const player = computed<Player>(() => {
+  return store.currentPlayer!;
+});
 
-      runActivityOnPlayer(activity, player);
+const subtitle = computed(() => {
+  const { points, currentCity, motivation } = player.value;
 
-      this.activity = activity;
-      this.pointsCost = pointsBefore - player.points;
-      this.motivationCost = motivationBefore - player.motivation;
+  return `Points: ${points}, Motivation: ${motivation} City: ${currentCity}`;
+});
 
-      this.step++;
-    },
-    nextPlayer() {
-      this.step = 0;
-      this.action = undefined;
-      this.activity = undefined;
-      this.pointsCost = undefined;
-      this.motivationCost = undefined;
+function exploreCity() {
+  action.value = selectRandomAction(player.value.currentCity);
+  console.log(
+    `Picked action ${action.value.text} for player ${player.value.name}`
+  );
 
-      const store = useGameStore();
-      if (this.looser) {
-        store.playerOut();
-        this.looser = "";
-      } else {
-        store.nextPlayer();
-      }
-    },
-  },
-  watch: {
-    step() {
-      const player = this.currentPlayer!;
-      const lost = player.points <= 0 || player.motivation <= 0;
+  runActionOnPlayer(action.value, player.value);
 
-      if (lost) {
-        this.looser = this.currentPlayerName!;
-      }
-    },
-  },
-  computed: {
-    city() {
-      const { currentPlayer } = useGameStore();
-      return currentPlayer?.currentCity;
-    },
-    subtitle() {
-      const { currentPlayer } = useGameStore();
-      const { points, currentCity, motivation } = currentPlayer!;
+  step.value++;
+}
 
-      return `Points: ${points}, Motivation: ${motivation} City: ${currentCity}`;
-    },
-  },
+function runActivity(selectedActivity: Activity) {
+  const pointsBefore = player.value.points;
+  const motivationBefore = player.value.motivation;
+
+  runActivityOnPlayer(selectedActivity, player.value);
+
+  activity.value = selectedActivity;
+  pointsCost.value = pointsBefore - player.value.points;
+  motivationCost.value = motivationBefore - player.value.motivation;
+
+  step.value++;
+}
+
+function nextPlayer() {
+  step.value = 0;
+  action.value = undefined;
+  activity.value = undefined;
+  pointsCost.value = undefined;
+  motivationCost.value = undefined;
+
+  const store = useGameStore();
+  if (looser.value) {
+    store.playerOut();
+    looser.value = "";
+  } else {
+    store.nextPlayer();
+  }
+}
+
+watch(step, () => {
+  const lost = player.value.points <= 0 || player.value.motivation <= 0;
+
+  if (lost) {
+    looser.value = player.value.name;
+  }
 });
 </script>
