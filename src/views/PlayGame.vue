@@ -13,7 +13,12 @@
             />
           </div>
         </v-col>
-        <v-col cols="3"><RouteOverview /></v-col>
+        <v-col cols="3"
+          ><RouteOverview
+            :cities="cities"
+            :players="players"
+            :current-player="currentPlayer"
+        /></v-col>
       </v-row>
     </v-container>
   </div>
@@ -21,6 +26,7 @@
 
 <script setup lang="ts">
 import { useGameStore } from "@/stores/game";
+import { cities } from "@/services/cities";
 import GameAction from "@/components/game/GameAction.vue";
 import RouteOverview from "@/components/game/RouteOverview.vue";
 import PointsOverview from "@/components/game/PointsOverview.vue";
@@ -28,10 +34,12 @@ import GameWinner from "@/components/game/GameWinner.vue";
 import GameOver from "@/components/game/GameOver.vue";
 import { computed } from "vue";
 
-const winner = computed(() => useGameStore().winner?.name);
-const gameOver = computed(() => useGameStore().players.length === 0);
-
 const store = useGameStore();
+
+const winner = computed(() => store.winner?.name);
+const gameOver = computed(() => store.players.length === 0);
+const currentPlayer = computed(() => store.players[store.currentPlayerIndex]);
+
 const players = store.players;
 const currentPlayerIndex = store.currentPlayerIndex;
 </script>

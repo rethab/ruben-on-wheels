@@ -43,10 +43,6 @@ export const useGameStore = defineStore("game", () => {
     }
   }
 
-  function playersInCity(cityName: string): Player[] {
-    return players.value.filter(({ currentCity }) => currentCity === cityName);
-  }
-
   function nextPlayer() {
     currentPlayerIndex.value++;
     if (currentPlayerIndex.value >= players.value.length) {
@@ -59,7 +55,6 @@ export const useGameStore = defineStore("game", () => {
     playerOut,
     isGameRunning,
     winner,
-    playersInCity,
     initPlayers,
     currentPlayerName,
     currentPlayer,

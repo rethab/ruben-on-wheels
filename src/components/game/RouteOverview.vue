@@ -19,17 +19,27 @@
 </template>
 
 <script setup lang="ts">
-import { useGameStore } from "@/stores/game";
-import { cities } from "@/services/cities";
+import type { City, Player } from "@/services/types";
+
+interface Props {
+  currentPlayer?: Player;
+  players: Player[];
+  cities: City[];
+}
+
+const props = defineProps<Props>();
 
 function dotColor(cityName: string) {
-  const { currentPlayer } = useGameStore();
-  const color = currentPlayer?.currentCity === cityName ? "orange" : "grey";
+  const color =
+    props.currentPlayer?.currentCity === cityName ? "orange" : "grey";
   return `${color}-lighten-2`;
 }
 
+function playersInCity(cityName: string): Player[] {
+  return props.players.filter(({ currentCity }) => currentCity === cityName);
+}
+
 function showPlayers(name: string) {
-  const { playersInCity } = useGameStore();
   const players = playersInCity(name);
 
   if (players.length === 0) return;
