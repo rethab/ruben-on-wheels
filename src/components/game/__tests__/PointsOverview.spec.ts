@@ -22,6 +22,12 @@ function mountComponent() {
 }
 
 describe("PointsOverview", () => {
+  it("renders full component", () => {
+    const wrapper = mountComponent();
+
+    expect(wrapper.html()).toMatchSnapshot();
+  });
+
   it("shows current player first", () => {
     const wrapper = mountComponent();
 

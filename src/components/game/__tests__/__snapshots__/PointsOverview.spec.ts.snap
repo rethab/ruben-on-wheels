@@ -1,0 +1,134 @@
+// Vitest Snapshot v1
+
+exports[`PointsOverview > renders full component 1`] = `
+"<div class=\\"v-container px-0\\">
+  <div class=\\"v-row\\">
+    <div class=\\"v-col v-col-6\\">
+      <div class=\\"v-card v-theme--light v-card--density-default v-card--variant-elevated\\">
+        <!---->
+        <div class=\\"v-card__loader\\">
+          <div class=\\"v-progress-linear v-theme--light\\" style=\\"height: 0px; --v-progress-linear-height: 2px;\\" role=\\"progressbar\\" aria-hidden=\\"true\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\">
+            <!---->
+            <div class=\\"v-progress-linear__background\\" style=\\"width: 100%;\\"></div>
+            <transition-stub name=\\"fade-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+              <div class=\\"v-progress-linear__indeterminate\\">
+                <div class=\\"v-progress-linear__indeterminate long\\"></div>
+                <div class=\\"v-progress-linear__indeterminate short\\"></div>
+              </div>
+            </transition-stub>
+            <!---->
+          </div>
+        </div>
+        <!---->
+        <!---->
+        <div class=\\"v-card-title text-subtitle-1 pb-0\\">Bob</div>
+        <div class=\\"v-card-subtitle\\">City: Basel</div>
+        <div class=\\"v-card-text pt-1\\">
+          <div class=\\"v-progress-linear v-theme--light mb-2\\" style=\\"height: 15px; --v-progress-linear-height: 15px; white-space: nowrap; overflow: hidden;\\" role=\\"progressbar\\" aria-hidden=\\"false\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"0\\">
+            <!---->
+            <div class=\\"v-progress-linear__background bg-orange\\" style=\\"width: 100%;\\"></div>
+            <transition-stub name=\\"slide-x-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+              <div class=\\"v-progress-linear__determinate bg-orange\\" style=\\"width: 0%;\\"></div>
+            </transition-stub>
+            <div class=\\"v-progress-linear__content\\"> Motivation</div>
+          </div>
+          <div class=\\"v-progress-linear v-theme--light\\" style=\\"height: 15px; --v-progress-linear-height: 15px; white-space: nowrap;\\" role=\\"progressbar\\" aria-hidden=\\"false\\" aria-valuemin=\\"0\\" aria-valuemax=\\"500\\" aria-valuenow=\\"0\\">
+            <!---->
+            <div class=\\"v-progress-linear__background bg-orange\\" style=\\"width: 100%;\\"></div>
+            <transition-stub name=\\"slide-x-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+              <div class=\\"v-progress-linear__determinate bg-orange\\" style=\\"width: 0%;\\"></div>
+            </transition-stub>
+            <div class=\\"v-progress-linear__content\\"> Points</div>
+          </div>
+        </div>
+        <!---->
+        <!----><span class=\\"v-card__underlay\\"></span>
+      </div>
+    </div>
+    <div class=\\"v-col v-col-6\\">
+      <div class=\\"v-card v-theme--light v-card--density-default v-card--variant-elevated\\">
+        <!---->
+        <div class=\\"v-card__loader\\">
+          <div class=\\"v-progress-linear v-theme--light\\" style=\\"height: 0px; --v-progress-linear-height: 2px;\\" role=\\"progressbar\\" aria-hidden=\\"true\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\">
+            <!---->
+            <div class=\\"v-progress-linear__background\\" style=\\"width: 100%;\\"></div>
+            <transition-stub name=\\"fade-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+              <div class=\\"v-progress-linear__indeterminate\\">
+                <div class=\\"v-progress-linear__indeterminate long\\"></div>
+                <div class=\\"v-progress-linear__indeterminate short\\"></div>
+              </div>
+            </transition-stub>
+            <!---->
+          </div>
+        </div>
+        <!---->
+        <!---->
+        <div class=\\"v-card-title text-medium-emphasis text-subtitle-1 pb-0\\">Carl</div>
+        <div class=\\"v-card-subtitle\\">City: Cologne</div>
+        <div class=\\"v-card-text pt-1\\">
+          <div class=\\"v-progress-linear v-theme--light mb-2 text-medium-emphasis\\" style=\\"height: 15px; --v-progress-linear-height: 15px; white-space: nowrap; overflow: hidden;\\" role=\\"progressbar\\" aria-hidden=\\"false\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"0\\">
+            <!---->
+            <div class=\\"v-progress-linear__background bg-grey\\" style=\\"width: 100%;\\"></div>
+            <transition-stub name=\\"slide-x-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+              <div class=\\"v-progress-linear__determinate bg-grey\\" style=\\"width: 0%;\\"></div>
+            </transition-stub>
+            <div class=\\"v-progress-linear__content\\"> Motivation</div>
+          </div>
+          <div class=\\"v-progress-linear v-theme--light text-medium-emphasis\\" style=\\"height: 15px; --v-progress-linear-height: 15px; white-space: nowrap;\\" role=\\"progressbar\\" aria-hidden=\\"false\\" aria-valuemin=\\"0\\" aria-valuemax=\\"500\\" aria-valuenow=\\"0\\">
+            <!---->
+            <div class=\\"v-progress-linear__background bg-grey\\" style=\\"width: 100%;\\"></div>
+            <transition-stub name=\\"slide-x-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+              <div class=\\"v-progress-linear__determinate bg-grey\\" style=\\"width: 0%;\\"></div>
+            </transition-stub>
+            <div class=\\"v-progress-linear__content\\"> Points</div>
+          </div>
+        </div>
+        <!---->
+        <!----><span class=\\"v-card__underlay\\"></span>
+      </div>
+    </div>
+    <div class=\\"v-col v-col-6\\">
+      <div class=\\"v-card v-theme--light v-card--density-default v-card--variant-elevated\\">
+        <!---->
+        <div class=\\"v-card__loader\\">
+          <div class=\\"v-progress-linear v-theme--light\\" style=\\"height: 0px; --v-progress-linear-height: 2px;\\" role=\\"progressbar\\" aria-hidden=\\"true\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\">
+            <!---->
+            <div class=\\"v-progress-linear__background\\" style=\\"width: 100%;\\"></div>
+            <transition-stub name=\\"fade-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+              <div class=\\"v-progress-linear__indeterminate\\">
+                <div class=\\"v-progress-linear__indeterminate long\\"></div>
+                <div class=\\"v-progress-linear__indeterminate short\\"></div>
+              </div>
+            </transition-stub>
+            <!---->
+          </div>
+        </div>
+        <!---->
+        <!---->
+        <div class=\\"v-card-title text-medium-emphasis text-subtitle-1 pb-0\\">Alice</div>
+        <div class=\\"v-card-subtitle\\">City: Zurich</div>
+        <div class=\\"v-card-text pt-1\\">
+          <div class=\\"v-progress-linear v-theme--light mb-2 text-medium-emphasis\\" style=\\"height: 15px; --v-progress-linear-height: 15px; white-space: nowrap; overflow: hidden;\\" role=\\"progressbar\\" aria-hidden=\\"false\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"10\\">
+            <!---->
+            <div class=\\"v-progress-linear__background bg-grey\\" style=\\"width: 100%;\\"></div>
+            <transition-stub name=\\"slide-x-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+              <div class=\\"v-progress-linear__determinate bg-grey\\" style=\\"width: 10%;\\"></div>
+            </transition-stub>
+            <div class=\\"v-progress-linear__content\\">10 Motivation</div>
+          </div>
+          <div class=\\"v-progress-linear v-theme--light text-medium-emphasis\\" style=\\"height: 15px; --v-progress-linear-height: 15px; white-space: nowrap;\\" role=\\"progressbar\\" aria-hidden=\\"false\\" aria-valuemin=\\"0\\" aria-valuemax=\\"500\\" aria-valuenow=\\"26.200000000000003\\">
+            <!---->
+            <div class=\\"v-progress-linear__background bg-grey\\" style=\\"width: 100%;\\"></div>
+            <transition-stub name=\\"slide-x-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+              <div class=\\"v-progress-linear__determinate bg-grey\\" style=\\"width: 26.200000000000003%;\\"></div>
+            </transition-stub>
+            <div class=\\"v-progress-linear__content\\">131 Points</div>
+          </div>
+        </div>
+        <!---->
+        <!----><span class=\\"v-card__underlay\\"></span>
+      </div>
+    </div>
+  </div>
+</div>"
+`;

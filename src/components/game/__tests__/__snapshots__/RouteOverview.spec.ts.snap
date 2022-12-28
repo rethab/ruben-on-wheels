@@ -1,0 +1,116 @@
+// Vitest Snapshot v1
+
+exports[`RouteOverview > renders full component 1`] = `
+"<div>
+  <div class=\\"v-timeline v-timeline--vertical v-timeline--align-center v-timeline--justify-auto v-theme--light v-timeline--density-compact v-timeline--side-end\\" style=\\"--v-timeline-line-thickness: 2px;\\">
+    <div class=\\"v-timeline-item\\" style=\\"--v-timeline-dot-size: 0px; --v-timeline-line-inset: 0px;\\">
+      <div class=\\"v-timeline-item__body\\">
+        <div class=\\"v-card v-theme--light v-card--density-compact v-card--variant-elevated\\">
+          <!---->
+          <div class=\\"v-card__loader\\">
+            <div class=\\"v-progress-linear v-theme--light\\" style=\\"height: 0px; --v-progress-linear-height: 2px;\\" role=\\"progressbar\\" aria-hidden=\\"true\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\">
+              <!---->
+              <div class=\\"v-progress-linear__background\\" style=\\"width: 100%;\\"></div>
+              <transition-stub name=\\"fade-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+                <div class=\\"v-progress-linear__indeterminate\\">
+                  <div class=\\"v-progress-linear__indeterminate long\\"></div>
+                  <div class=\\"v-progress-linear__indeterminate short\\"></div>
+                </div>
+              </transition-stub>
+              <!---->
+            </div>
+          </div>
+          <!---->
+          <!---->
+          <div class=\\"v-card-subtitle\\">Zurich</div>
+          <div class=\\"v-card-text\\">Alice</div>
+          <!---->
+          <!----><span class=\\"v-card__underlay\\"></span>
+        </div>
+      </div>
+      <div class=\\"v-timeline-divider\\">
+        <div class=\\"v-timeline-divider__before\\"></div>
+        <div class=\\"v-timeline-divider__dot v-timeline-divider__dot--size-x-small\\">
+          <div class=\\"v-timeline-divider__inner-dot bg-grey-lighten-2\\">
+            <!---->
+          </div>
+        </div>
+        <div class=\\"v-timeline-divider__after\\"></div>
+      </div>
+      <!---->
+    </div>
+    <div class=\\"v-timeline-item\\" style=\\"--v-timeline-dot-size: 0px; --v-timeline-line-inset: 0px;\\">
+      <div class=\\"v-timeline-item__body\\">
+        <div class=\\"v-card v-theme--light v-card--density-compact v-card--variant-elevated\\">
+          <!---->
+          <div class=\\"v-card__loader\\">
+            <div class=\\"v-progress-linear v-theme--light\\" style=\\"height: 0px; --v-progress-linear-height: 2px;\\" role=\\"progressbar\\" aria-hidden=\\"true\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\">
+              <!---->
+              <div class=\\"v-progress-linear__background\\" style=\\"width: 100%;\\"></div>
+              <transition-stub name=\\"fade-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+                <div class=\\"v-progress-linear__indeterminate\\">
+                  <div class=\\"v-progress-linear__indeterminate long\\"></div>
+                  <div class=\\"v-progress-linear__indeterminate short\\"></div>
+                </div>
+              </transition-stub>
+              <!---->
+            </div>
+          </div>
+          <!---->
+          <!---->
+          <div class=\\"v-card-subtitle\\">Basel</div>
+          <div class=\\"v-card-text\\">Bob, Carl</div>
+          <!---->
+          <!----><span class=\\"v-card__underlay\\"></span>
+        </div>
+      </div>
+      <div class=\\"v-timeline-divider\\">
+        <div class=\\"v-timeline-divider__before\\"></div>
+        <div class=\\"v-timeline-divider__dot v-timeline-divider__dot--size-x-small\\">
+          <div class=\\"v-timeline-divider__inner-dot bg-orange-lighten-2\\">
+            <!---->
+          </div>
+        </div>
+        <div class=\\"v-timeline-divider__after\\"></div>
+      </div>
+      <!---->
+    </div>
+    <div class=\\"v-timeline-item\\" style=\\"--v-timeline-dot-size: 0px; --v-timeline-line-inset: 0px;\\">
+      <div class=\\"v-timeline-item__body\\">
+        <div class=\\"v-card v-theme--light v-card--density-compact v-card--variant-elevated\\">
+          <!---->
+          <div class=\\"v-card__loader\\">
+            <div class=\\"v-progress-linear v-theme--light\\" style=\\"height: 0px; --v-progress-linear-height: 2px;\\" role=\\"progressbar\\" aria-hidden=\\"true\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\">
+              <!---->
+              <div class=\\"v-progress-linear__background\\" style=\\"width: 100%;\\"></div>
+              <transition-stub name=\\"fade-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+                <div class=\\"v-progress-linear__indeterminate\\">
+                  <div class=\\"v-progress-linear__indeterminate long\\"></div>
+                  <div class=\\"v-progress-linear__indeterminate short\\"></div>
+                </div>
+              </transition-stub>
+              <!---->
+            </div>
+          </div>
+          <!---->
+          <!---->
+          <div class=\\"v-card-subtitle\\">Köln</div>
+          <div class=\\"v-card-text\\"></div>
+          <!---->
+          <!----><span class=\\"v-card__underlay\\"></span>
+        </div>
+      </div>
+      <div class=\\"v-timeline-divider\\">
+        <div class=\\"v-timeline-divider__before\\"></div>
+        <div class=\\"v-timeline-divider__dot v-timeline-divider__dot--size-x-small\\">
+          <div class=\\"v-timeline-divider__inner-dot bg-grey-lighten-2\\">
+            <!---->
+          </div>
+        </div>
+        <div class=\\"v-timeline-divider__after\\"></div>
+      </div>
+      <!---->
+    </div>
+  </div>
+</div>"
+`;

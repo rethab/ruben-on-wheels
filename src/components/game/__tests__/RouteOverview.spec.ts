@@ -26,6 +26,12 @@ function mountComponent() {
 }
 
 describe("RouteOverview", () => {
+  it("renders full component", () => {
+    const wrapper = mountComponent();
+
+    expect(wrapper.html()).toMatchSnapshot();
+  });
+
   it("players are shown in their city", () => {
     const wrapper = mountComponent();
     const [zurich, basel, cologne] = wrapper.findAll(".v-timeline-item");

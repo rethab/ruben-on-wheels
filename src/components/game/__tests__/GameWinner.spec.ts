@@ -27,12 +27,10 @@ function mountComponent(winner: string) {
 }
 
 describe("GameWinner", () => {
-  it("winner is shown in title", () => {
+  it("renders full component", () => {
     const wrapper = mountComponent("Alice");
 
-    expect(wrapper.find(".v-card-title").text()).toBe(
-      "Alice has arrived in Wageningen 🚲"
-    );
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
   it.each(["ruben", "Ruben"])("%s wins his own game", (winner) => {

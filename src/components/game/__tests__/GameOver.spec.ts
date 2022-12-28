@@ -24,6 +24,12 @@ function mountComponent() {
 }
 
 describe("GameOver", () => {
+  it("renders full component", () => {
+    const wrapper = mountComponent();
+
+    expect(wrapper.html()).toMatchSnapshot();
+  });
+
   it("clicking on Play Again redirects to the init view", async () => {
     const wrapper = mountComponent();
 
