@@ -6,7 +6,11 @@
           <GameOver v-if="gameOver" />
           <GameWinner v-else-if="winner" :winner="winner" />
           <div v-else>
-            <GameAction />
+            <GameAction
+              :player="store.currentPlayer"
+              @next-player="store.nextPlayer()"
+              @player-out="store.playerOut()"
+            />
             <PointsOverview
               :players="players"
               :current-player-index="currentPlayerIndex"

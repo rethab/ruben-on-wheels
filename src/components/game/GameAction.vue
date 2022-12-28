@@ -33,7 +33,6 @@
 </template>
 
 <script setup lang="ts">
-import { useGameStore } from "@/stores/game";
 import { computed, ref, watch } from "vue";
 import {
   selectRandomAction,
@@ -46,6 +45,14 @@ import SelectActivity from "@/components/game/turn/SelectActivity.vue";
 import ShowActivityText from "@/components/game/turn/ShowActivityText.vue";
 import ShowLooser from "@/components/game/turn/ShowLooser.vue";
 
+interface Props {
+  player: Player;
+}
+
+const props = defineProps<Props>();
+
+const emits = defineEmits(["playerOut", "nextPlayer"]);
+
 const step = ref<number>(0);
 const action = ref<Action>();
 const activity = ref<Activity>();
@@ -53,38 +60,32 @@ const pointsCost = ref<number>(0);
 const motivationCost = ref<number>(0);
 const looser = ref<string>();
 
-const store = useGameStore();
-
-const player = computed<Player>(() => {
-  return store.currentPlayer!;
-});
-
 const subtitle = computed(() => {
-  const { points, currentCity, motivation } = player.value;
+  const { points, currentCity, motivation } = props.player;
 
   return `Points: ${points}, Motivation: ${motivation} City: ${currentCity}`;
 });
 
 function exploreCity() {
-  action.value = selectRandomAction(player.value.currentCity);
+  action.value = selectRandomAction(props.player.currentCity);
   console.log(
-    `Picked action ${action.value.text} for player ${player.value.name}`
+    `Picked action ${action.value.text} for player ${props.player.name}`
   );
 
-  runActionOnPlayer(action.value, player.value);
+  runActionOnPlayer(action.value, props.player);
 
   step.value++;
 }
 
 function runActivity(selectedActivity: Activity) {
-  const pointsBefore = player.value.points;
-  const motivationBefore = player.value.motivation;
+  const pointsBefore = props.player.points;
+  const motivationBefore = props.player.motivation;
 
-  runActivityOnPlayer(selectedActivity, player.value);
+  runActivityOnPlayer(selectedActivity, props.player);
 
   activity.value = selectedActivity;
-  pointsCost.value = pointsBefore - player.value.points;
-  motivationCost.value = motivationBefore - player.value.motivation;
+  pointsCost.value = pointsBefore - props.player.points;
+  motivationCost.value = motivationBefore - props.player.motivation;
 
   step.value++;
 }
@@ -96,20 +97,19 @@ function nextPlayer() {
   pointsCost.value = 0;
   motivationCost.value = 0;
 
-  const store = useGameStore();
   if (looser.value) {
-    store.playerOut();
+    emits("playerOut");
     looser.value = "";
   } else {
-    store.nextPlayer();
+    emits("nextPlayer");
   }
 }
 
 watch(step, () => {
-  const lost = player.value.points <= 0 || player.value.motivation <= 0;
+  const lost = props.player.points <= 0 || props.player.motivation <= 0;
 
   if (lost) {
-    looser.value = player.value.name;
+    looser.value = props.player.name;
   }
 });
 </script>
