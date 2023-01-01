@@ -9,11 +9,6 @@ export const useGameStore = defineStore("game", () => {
 
   const isGameRunning = computed(() => players.value.length != 0);
 
-  const currentPlayerName = computed(() => {
-    if (!isGameRunning.value) return;
-    return players.value[currentPlayerIndex.value].name;
-  });
-
   const currentPlayer = computed(() => {
     if (!isGameRunning.value) return;
     return players.value[currentPlayerIndex.value];
@@ -56,7 +51,6 @@ export const useGameStore = defineStore("game", () => {
     isGameRunning,
     winner,
     initPlayers,
-    currentPlayerName,
     currentPlayer,
     currentPlayerIndex,
     nextPlayer,
