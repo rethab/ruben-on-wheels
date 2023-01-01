@@ -1,7 +1,7 @@
 <template>
   <v-card>
-    <v-card-title>{{ props.player.name }}'s turn</v-card-title>
-    <v-card-subtitle><span v-html="subtitle" /></v-card-subtitle>
+    <v-card-title>{{ player.name }}'s turn</v-card-title>
+    <CardSubtitle :player="player" />
 
     <v-card-text>
       <p v-html="cityActivityText" />
@@ -18,13 +18,13 @@
 
 <script setup lang="ts">
 import type { Activity, Player } from "@/services/types";
+import CardSubtitle from "@/components/game/turn/CardSubtitle.vue";
 
 interface Props {
   player: Player;
   activity: Activity;
   motivationCost: number;
   pointsCost: number;
-  subtitle: string;
 }
 
 const props = defineProps<Props>();

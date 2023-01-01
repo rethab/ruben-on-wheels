@@ -1,13 +1,11 @@
 <template>
   <v-card>
-    <v-card-title>{{ playerName }}'s turn</v-card-title>
-    <v-card-subtitle>
-      <span class="text-red">{{ subtitle }}</span>
-    </v-card-subtitle>
+    <v-card-title>{{ player.name }}'s turn</v-card-title>
+    <CardSubtitle :lost="true" :player="player" />
 
     <v-card-text
-      >😭 Oh no, {{ playerName }}! You have to take the train from
-      {{ cityName }} to Wageningen.
+      >😭 Oh no, {{ player.name }}! You have to take the train from
+      {{ player.currentCity }} to Wageningen.
     </v-card-text>
 
     <v-card-actions>
@@ -20,10 +18,12 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
-  playerName: { type: String, required: true },
-  subtitle: { type: String, required: true },
-  cityName: { type: String, required: true },
-});
+import CardSubtitle from "@/components/game/turn/CardSubtitle.vue";
+import type { Player } from "@/services/types";
+
+interface Props {
+  player: Player;
+}
+defineProps<Props>();
 defineEmits(["nextPlayer"]);
 </script>

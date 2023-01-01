@@ -1,0 +1,203 @@
+// Vitest Snapshot v1
+
+exports[`SelectActivity > renders full component: motivation increase 1`] = `
+"<div class=\\"v-card v-theme--light v-card--density-default v-card--variant-elevated\\">
+  <!---->
+  <div class=\\"v-card__loader\\">
+    <div class=\\"v-progress-linear v-theme--light\\" style=\\"height: 0px; --v-progress-linear-height: 2px;\\" role=\\"progressbar\\" aria-hidden=\\"true\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\">
+      <!---->
+      <div class=\\"v-progress-linear__background\\" style=\\"width: 100%;\\"></div>
+      <transition-stub name=\\"fade-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+        <div class=\\"v-progress-linear__indeterminate\\">
+          <div class=\\"v-progress-linear__indeterminate long\\"></div>
+          <div class=\\"v-progress-linear__indeterminate short\\"></div>
+        </div>
+      </transition-stub>
+      <!---->
+    </div>
+  </div>
+  <!---->
+  <!---->
+  <div class=\\"v-card-title\\">Alice's turn</div>
+  <div class=\\"v-card-subtitle\\"><span class=\\"\\"> Points: 143, Motivation: 13, City: Zurich</span></div>
+  <div class=\\"v-card-text\\">
+    <p>sample action text<br><br>😎 Your motivation increases by 5.</p>
+    <p class=\\"my-5\\">How do you want to proceed?</p>
+    <div class=\\"v-input v-input--horizontal v-input--density-default v-radio-group\\">
+      <!---->
+      <div class=\\"v-input__control\\">
+        <!---->
+        <div class=\\"v-selection-control-group\\" aria-labelled-by=\\"radio-group-0\\" role=\\"radiogroup\\">
+          <div class=\\"v-selection-control v-selection-control--density-default v-radio\\">
+            <div class=\\"v-selection-control__wrapper\\">
+              <!---->
+              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input id=\\"input-3\\" aria-readonly=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Visit Laurie &amp; Reto\\">
+                <!---->
+              </div>
+            </div><label class=\\"v-label v-label--clickable\\" for=\\"input-3\\">
+              <!---->Visit Laurie &amp; Reto (++ motivation)
+            </label>
+          </div>
+          <div class=\\"v-selection-control v-selection-control--density-default v-radio\\">
+            <div class=\\"v-selection-control__wrapper\\">
+              <!---->
+              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input id=\\"input-4\\" aria-readonly=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Cycle up the Uetliberg\\">
+                <!---->
+              </div>
+            </div><label class=\\"v-label v-label--clickable\\" for=\\"input-4\\">
+              <!---->Cycle up the Uetliberg (++ points)
+            </label>
+          </div>
+          <div class=\\"v-selection-control v-selection-control--density-default v-radio\\">
+            <div class=\\"v-selection-control__wrapper\\">
+              <!---->
+              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input id=\\"input-5\\" aria-readonly=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Take a nap\\">
+                <!---->
+              </div>
+            </div><label class=\\"v-label v-label--clickable\\" for=\\"input-5\\">
+              <!---->Take a nap (++ points)
+            </label>
+          </div>
+          <div class=\\"v-selection-control v-selection-control--density-default v-radio\\">
+            <div class=\\"v-selection-control__wrapper\\">
+              <!---->
+              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input id=\\"input-6\\" aria-readonly=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Have your bike cleaned\\">
+                <!---->
+              </div>
+            </div><label class=\\"v-label v-label--clickable\\" for=\\"input-6\\">
+              <!---->Have your bike cleaned (++ motivation)
+            </label>
+          </div>
+          <div class=\\"v-selection-control v-selection-control--disabled v-selection-control--density-default v-radio\\">
+            <div class=\\"v-selection-control__wrapper\\">
+              <!---->
+              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input disabled=\\"\\" id=\\"input-7\\" aria-readonly=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Cycle to the next city\\">
+                <!---->
+              </div>
+            </div><label class=\\"v-label v-label--clickable\\" for=\\"input-7\\">
+              <!---->Cycle to the next city (-395 points, -15 motivation)
+            </label>
+          </div>
+        </div>
+      </div>
+      <!---->
+      <div class=\\"v-input__details\\">
+        <transition-group-stub name=\\"slide-y-transition\\" tag=\\"div\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" class=\\"v-messages\\">
+          <!---->
+        </transition-group-stub>
+        <!---->
+      </div>
+    </div>
+  </div>
+  <div class=\\"v-card-actions\\">
+    <div class=\\"flex-grow-1\\"></div><button type=\\"button\\" class=\\"v-btn v-theme--light text-primary v-btn--density-default v-btn--size-default v-btn--variant-tonal\\"><span class=\\"v-btn__overlay\\"></span><span class=\\"v-btn__underlay\\"></span>
+      <!----><span class=\\"v-btn__content\\" data-no-activator=\\"\\">Run Activity</span>
+      <!---->
+      <!---->
+    </button>
+  </div>
+  <!---->
+  <!----><span class=\\"v-card__underlay\\"></span>
+</div>"
+`;
+
+exports[`SelectActivity > renders full component: points decrease 1`] = `
+"<div class=\\"v-card v-theme--light v-card--density-default v-card--variant-elevated\\">
+  <!---->
+  <div class=\\"v-card__loader\\">
+    <div class=\\"v-progress-linear v-theme--light\\" style=\\"height: 0px; --v-progress-linear-height: 2px;\\" role=\\"progressbar\\" aria-hidden=\\"true\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\">
+      <!---->
+      <div class=\\"v-progress-linear__background\\" style=\\"width: 100%;\\"></div>
+      <transition-stub name=\\"fade-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+        <div class=\\"v-progress-linear__indeterminate\\">
+          <div class=\\"v-progress-linear__indeterminate long\\"></div>
+          <div class=\\"v-progress-linear__indeterminate short\\"></div>
+        </div>
+      </transition-stub>
+      <!---->
+    </div>
+  </div>
+  <!---->
+  <!---->
+  <div class=\\"v-card-title\\">Alice's turn</div>
+  <div class=\\"v-card-subtitle\\"><span class=\\"\\"> Points: 143, Motivation: 13, City: Zurich</span></div>
+  <div class=\\"v-card-text\\">
+    <p>sample action text<br><br>😭 Your points decrease by 20.</p>
+    <p class=\\"my-5\\">How do you want to proceed?</p>
+    <div class=\\"v-input v-input--horizontal v-input--density-default v-radio-group\\">
+      <!---->
+      <div class=\\"v-input__control\\">
+        <!---->
+        <div class=\\"v-selection-control-group\\" aria-labelled-by=\\"radio-group-0\\" role=\\"radiogroup\\">
+          <div class=\\"v-selection-control v-selection-control--density-default v-radio\\">
+            <div class=\\"v-selection-control__wrapper\\">
+              <!---->
+              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input id=\\"input-3\\" aria-readonly=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Visit Laurie &amp; Reto\\">
+                <!---->
+              </div>
+            </div><label class=\\"v-label v-label--clickable\\" for=\\"input-3\\">
+              <!---->Visit Laurie &amp; Reto (++ motivation)
+            </label>
+          </div>
+          <div class=\\"v-selection-control v-selection-control--density-default v-radio\\">
+            <div class=\\"v-selection-control__wrapper\\">
+              <!---->
+              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input id=\\"input-4\\" aria-readonly=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Cycle up the Uetliberg\\">
+                <!---->
+              </div>
+            </div><label class=\\"v-label v-label--clickable\\" for=\\"input-4\\">
+              <!---->Cycle up the Uetliberg (++ points)
+            </label>
+          </div>
+          <div class=\\"v-selection-control v-selection-control--density-default v-radio\\">
+            <div class=\\"v-selection-control__wrapper\\">
+              <!---->
+              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input id=\\"input-5\\" aria-readonly=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Take a nap\\">
+                <!---->
+              </div>
+            </div><label class=\\"v-label v-label--clickable\\" for=\\"input-5\\">
+              <!---->Take a nap (++ points)
+            </label>
+          </div>
+          <div class=\\"v-selection-control v-selection-control--density-default v-radio\\">
+            <div class=\\"v-selection-control__wrapper\\">
+              <!---->
+              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input id=\\"input-6\\" aria-readonly=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Have your bike cleaned\\">
+                <!---->
+              </div>
+            </div><label class=\\"v-label v-label--clickable\\" for=\\"input-6\\">
+              <!---->Have your bike cleaned (++ motivation)
+            </label>
+          </div>
+          <div class=\\"v-selection-control v-selection-control--disabled v-selection-control--density-default v-radio\\">
+            <div class=\\"v-selection-control__wrapper\\">
+              <!---->
+              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input disabled=\\"\\" id=\\"input-7\\" aria-readonly=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Cycle to the next city\\">
+                <!---->
+              </div>
+            </div><label class=\\"v-label v-label--clickable\\" for=\\"input-7\\">
+              <!---->Cycle to the next city (-395 points, -15 motivation)
+            </label>
+          </div>
+        </div>
+      </div>
+      <!---->
+      <div class=\\"v-input__details\\">
+        <transition-group-stub name=\\"slide-y-transition\\" tag=\\"div\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" class=\\"v-messages\\">
+          <!---->
+        </transition-group-stub>
+        <!---->
+      </div>
+    </div>
+  </div>
+  <div class=\\"v-card-actions\\">
+    <div class=\\"flex-grow-1\\"></div><button type=\\"button\\" class=\\"v-btn v-theme--light text-primary v-btn--density-default v-btn--size-default v-btn--variant-tonal\\"><span class=\\"v-btn__overlay\\"></span><span class=\\"v-btn__underlay\\"></span>
+      <!----><span class=\\"v-btn__content\\" data-no-activator=\\"\\">Run Activity</span>
+      <!---->
+      <!---->
+    </button>
+  </div>
+  <!---->
+  <!----><span class=\\"v-card__underlay\\"></span>
+</div>"
+`;

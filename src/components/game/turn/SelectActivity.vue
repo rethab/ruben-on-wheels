@@ -1,26 +1,30 @@
 <template>
   <v-card>
-    <v-card-title>{{ props.player.name }}'s turn</v-card-title>
-    <v-card-subtitle><span v-html="props.subtitle" /></v-card-subtitle>
+    <v-card-title>{{ player.name }}'s turn</v-card-title>
+    <CardSubtitle :player="player" />
 
     <v-card-text>
       <p v-html="actionText" />
       <p class="my-5">How do you want to proceed?</p>
 
-      <v-radio-group v-model="activityName">
+      <v-radio-group>
         <v-radio
           :disabled="!selectableActivity(activity)"
           v-for="(activity, index) in cityActivities"
           :key="index"
           :label="activityLabel(activity)"
           :value="activity.name"
+          @change="selectedActivity = activity"
         ></v-radio>
       </v-radio-group>
     </v-card-text>
 
     <v-card-actions>
       <v-spacer />
-      <v-btn @click="selectActivity" color="primary" variant="tonal"
+      <v-btn
+        @click="selectedActivity && $emit('selectedActivity', selectedActivity)"
+        color="primary"
+        variant="tonal"
         >Run Activity</v-btn
       >
     </v-card-actions>
@@ -37,33 +41,20 @@ import {
   getCityActivities,
 } from "@/services/cities";
 import { computed, ref } from "vue";
+import CardSubtitle from "@/components/game/turn/CardSubtitle.vue";
 
 interface Props {
   player: Player;
-  subtitle: string;
   action: Action;
 }
 
 const props = defineProps<Props>();
 
-const emits = defineEmits<{
+defineEmits<{
   (e: "selectedActivity", activity: Activity): void;
 }>();
 
-const activityName = ref("");
-
-function selectActivity(): void {
-  if (!activityName.value) {
-    console.log("no activity selected");
-    return;
-  }
-
-  const activity = cityActivities.value.find(
-    (a) => a.name === activityName.value
-  );
-
-  emits("selectedActivity", activity!);
-}
+const selectedActivity = ref<Activity>();
 
 function activityLabel(activity: Activity): string {
   return `${activity.name} (${costDescription(activity, props.player)})`;

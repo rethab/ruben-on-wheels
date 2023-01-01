@@ -1,29 +1,20 @@
 <template>
   <div>
-    <ShowLooser
-      v-if="looser"
-      :city-name="player.currentCity"
-      :player-name="looser"
-      :subtitle="subtitle"
-      @next-player="nextPlayer"
-    />
+    <ShowLooser v-if="looser" :player="player" @next-player="nextPlayer" />
     <CityIntro
       v-else-if="step === 0"
       :player="player"
-      :subtitle="subtitle"
       @explore-city="exploreCity"
     />
     <SelectActivity
       v-else-if="step === 1 && action"
       :action="action"
-      :subtitle="subtitle"
       :player="player"
       @selected-activity="runActivity"
     />
     <ShowActivityText
       v-else-if="step === 2 && activity"
       :activity="activity"
-      :subtitle="subtitle"
       :player="player"
       :points-cost="pointsCost"
       :motivation-cost="motivationCost"
@@ -33,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from "vue";
+import { ref, watch } from "vue";
 import {
   selectRandomAction,
   runActionOnPlayer,
@@ -59,12 +50,6 @@ const activity = ref<Activity>();
 const pointsCost = ref<number>(0);
 const motivationCost = ref<number>(0);
 const looser = ref<string>();
-
-const subtitle = computed(() => {
-  const { points, currentCity, motivation } = props.player;
-
-  return `Points: ${points}, Motivation: ${motivation} City: ${currentCity}`;
-});
 
 function exploreCity() {
   action.value = selectRandomAction(props.player.currentCity);

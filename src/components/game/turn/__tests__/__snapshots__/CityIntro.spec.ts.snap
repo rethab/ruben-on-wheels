@@ -1,0 +1,34 @@
+// Vitest Snapshot v1
+
+exports[`CityIntro > renders full component 1`] = `
+"<div class=\\"v-card v-theme--light v-card--density-default v-card--variant-elevated\\">
+  <!---->
+  <div class=\\"v-card__loader\\">
+    <div class=\\"v-progress-linear v-theme--light\\" style=\\"height: 0px; --v-progress-linear-height: 2px;\\" role=\\"progressbar\\" aria-hidden=\\"true\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\">
+      <!---->
+      <div class=\\"v-progress-linear__background\\" style=\\"width: 100%;\\"></div>
+      <transition-stub name=\\"fade-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+        <div class=\\"v-progress-linear__indeterminate\\">
+          <div class=\\"v-progress-linear__indeterminate long\\"></div>
+          <div class=\\"v-progress-linear__indeterminate short\\"></div>
+        </div>
+      </transition-stub>
+      <!---->
+    </div>
+  </div>
+  <!---->
+  <!---->
+  <div class=\\"v-card-title\\">Alice's turn</div>
+  <div class=\\"v-card-subtitle\\"><span class=\\"\\"> Points: 143, Motivation: 13, City: Zurich</span></div>
+  <div class=\\"v-card-text\\"> You are currently in <strong>Zurich</strong>. Click below to explore Zurich and decide what activity to do next. </div>
+  <div class=\\"v-card-actions\\">
+    <div class=\\"flex-grow-1\\"></div><button type=\\"button\\" class=\\"v-btn v-theme--light text-primary v-btn--density-default v-btn--size-default v-btn--variant-tonal\\"><span class=\\"v-btn__overlay\\"></span><span class=\\"v-btn__underlay\\"></span>
+      <!----><span class=\\"v-btn__content\\" data-no-activator=\\"\\">Explore Zurich</span>
+      <!---->
+      <!---->
+    </button>
+  </div>
+  <!---->
+  <!----><span class=\\"v-card__underlay\\"></span>
+</div>"
+`;

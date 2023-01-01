@@ -7,7 +7,7 @@
           <GameWinner v-else-if="winner" :winner="winner" />
           <div v-else>
             <GameAction
-              :player="store.currentPlayer"
+              :player="currentPlayer"
               @next-player="store.nextPlayer()"
               @player-out="store.playerOut()"
             />

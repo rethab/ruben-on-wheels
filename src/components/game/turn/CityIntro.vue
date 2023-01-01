@@ -1,18 +1,18 @@
 <template>
   <v-card>
-    <v-card-title>{{ props.player.name }}'s turn</v-card-title>
-    <v-card-subtitle><span v-html="subtitle" /></v-card-subtitle>
+    <v-card-title>{{ player.name }}'s turn</v-card-title>
+    <CardSubtitle :player="player" />
 
     <v-card-text>
-      You are currently in <strong>{{ props.player.currentCity }}</strong
-      >. Click below to explore {{ props.player.currentCity }} and decide what
+      You are currently in <strong>{{ player.currentCity }}</strong
+      >. Click below to explore {{ player.currentCity }} and decide what
       activity to do next.
     </v-card-text>
 
     <v-card-actions>
       <v-spacer />
       <v-btn @click="$emit('exploreCity')" color="primary" variant="tonal"
-        >Explore {{ props.player.currentCity }}</v-btn
+        >Explore {{ player.currentCity }}</v-btn
       >
     </v-card-actions>
   </v-card>
@@ -20,11 +20,11 @@
 
 <script setup lang="ts">
 import type { Player } from "@/services/types";
+import CardSubtitle from "@/components/game/turn/CardSubtitle.vue";
 
 interface Props {
   player: Player;
-  subtitle: string;
 }
-const props = defineProps<Props>();
+defineProps<Props>();
 defineEmits(["exploreCity"]);
 </script>
