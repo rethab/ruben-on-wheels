@@ -51,22 +51,22 @@ const pointsCost = ref<number>(0);
 const motivationCost = ref<number>(0);
 const looser = ref<string>();
 
-function exploreCity() {
+async function exploreCity() {
   action.value = selectRandomAction(props.player.currentCity);
   console.log(
     `Picked action ${action.value.text} for player ${props.player.name}`
   );
 
-  gameService.runActionOnPlayer(action.value, props.player);
+  await gameService.runActionOnPlayer(action.value, props.player);
 
   step.value++;
 }
 
-function runActivity(selectedActivity: Activity) {
+async function runActivity(selectedActivity: Activity) {
   const pointsBefore = props.player.points;
   const motivationBefore = props.player.motivation;
 
-  gameService.runActivityOnPlayer(selectedActivity, props.player);
+  await gameService.runActivityOnPlayer(selectedActivity, props.player);
 
   activity.value = selectedActivity;
   pointsCost.value = pointsBefore - props.player.points;

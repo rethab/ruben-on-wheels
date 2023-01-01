@@ -21,7 +21,7 @@ interface Store {
 export class GameService {
   constructor(private store: Store) {}
 
-  runActionOnPlayer: (a: Action, p: Player) => void = (a, p) => {
+  async runActionOnPlayer(a: Action, p: Player) {
     const factor = a.effect === "decrease" ? -1 : 1;
     let newPoints = p.points;
     let newMotivation = p.motivation;
@@ -33,12 +33,12 @@ export class GameService {
         newMotivation += ACTION_MOTIVATION_MOVE * factor;
         break;
     }
-    this.store.updatePlayer(p, p.currentCity, newPoints, newMotivation);
-  };
+    await this.store.updatePlayer(p, p.currentCity, newPoints, newMotivation);
+  }
 
-  runActivityOnPlayer: (a: Activity, p: Player) => void = (a, p) => {
+  async runActivityOnPlayer(a: Activity, p: Player) {
     if (a.type === "cycle") {
-      this.cycleToNextCity(p);
+      await this.cycleToNextCity(p);
       return;
     }
 
@@ -57,23 +57,23 @@ export class GameService {
         break;
     }
 
-    this.store.updatePlayer(p, p.currentCity, newPoints, newMotivation);
-  };
+    await this.store.updatePlayer(p, p.currentCity, newPoints, newMotivation);
+  }
 
-  getVariation: (type: Type) => number = (type) => {
+  getVariation(type: Type) {
     const max = type === "points" ? 30 : 7;
     const baseVariation = Math.round(Math.random() * max);
     if (Math.random() > 0.5) {
       return baseVariation * -1;
     }
     return baseVariation;
-  };
+  }
 
-  cycleToNextCity: (p: Player) => void = (p) => {
+  private async cycleToNextCity(p: Player) {
     const newCity = getNextCity(p.currentCity);
     const newPoints = p.points - getCyclePointsCost(p);
     const newMotivation = p.motivation - CYCLE_MOTIVATION_COST;
 
-    this.store.updatePlayer(p, newCity, newPoints, newMotivation);
-  };
+    await this.store.updatePlayer(p, newCity, newPoints, newMotivation);
+  }
 }

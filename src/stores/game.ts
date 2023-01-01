@@ -2,6 +2,7 @@ import { computed, ref } from "vue";
 import { defineStore } from "pinia";
 import type { Player } from "@/services/types";
 import { cities } from "@/services/cities";
+import { RemoteStoreService } from "@/services/remote";
 
 export const useGameStore = defineStore("game", () => {
   const players = ref([] as Player[]);
@@ -29,7 +30,7 @@ export const useGameStore = defineStore("game", () => {
 
   // ACTIONS
 
-  function createGame(newPlayers: { name: string }[]): string {
+  async function createGame(newPlayers: { name: string }[]): Promise<string> {
     players.value = newPlayers.map(({ name }) => {
       return { name, currentCity: "Zurich", motivation: 75, points: 500 };
     });
@@ -37,10 +38,12 @@ export const useGameStore = defineStore("game", () => {
 
     gameId.value = crypto.randomUUID();
 
+    await persist();
+
     return gameId.value;
   }
 
-  function updatePlayer(
+  async function updatePlayer(
     player: Player,
     city: string,
     points: number,
@@ -50,28 +53,54 @@ export const useGameStore = defineStore("game", () => {
     p.currentCity = city;
     p.points = points;
     p.motivation = motivation;
+
+    await persist();
   }
 
-  function playerOut() {
+  async function playerOut() {
     players.value = players.value.filter(
       (p, index) => currentPlayerIndex.value !== index
     );
     if (currentPlayerIndex.value === players.value.length) {
       currentPlayerIndex.value = 0;
     }
+
+    await persist();
   }
 
-  function nextPlayer() {
+  async function nextPlayer() {
     currentPlayerIndex.value++;
     if (currentPlayerIndex.value >= players.value.length) {
       currentPlayerIndex.value = 0;
     }
+    await persist();
+  }
+
+  // REMOTE
+
+  async function persist() {
+    const remoteStoreService = new RemoteStoreService();
+    await remoteStoreService.save(gameId.value, {
+      players: players.value,
+      currentPlayerIndex: currentPlayerIndex.value,
+    });
+  }
+
+  async function restore(id: string): Promise<boolean> {
+    const remoteStoreService = new RemoteStoreService();
+    const state = await remoteStoreService.fetch(id);
+
+    gameId.value = id;
+    players.value = state.players;
+    currentPlayerIndex.value = state.currentPlayerIndex;
+
+    return players.value.length > 0;
   }
 
   return {
     players,
     playerOut,
-    isGameRunning,
+    restore,
     winner,
     createGame,
     currentPlayer,

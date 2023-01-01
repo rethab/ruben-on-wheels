@@ -37,6 +37,7 @@ import { ref } from "vue";
 import { useGameStore } from "@/stores/game";
 import router from "@/router";
 
+const store = useGameStore();
 const players = ref([{ name: "" }, { name: "" }]);
 
 const errors = ref(["", ""]);
@@ -46,7 +47,7 @@ function addPlayer() {
   errors.value.push();
 }
 
-function startGame() {
+async function startGame() {
   let hasError = false;
   for (let i = 0; i < players.value.length; i++) {
     if (!players.value[i].name) {
@@ -61,8 +62,8 @@ function startGame() {
     return;
   }
 
-  const { createGame } = useGameStore();
-  const id = createGame(players.value);
-  router.push({ name: "play", params: { id } });
+  const id = await store.createGame(players.value);
+
+  await router.push({ name: "play", params: { id } });
 }
 </script>

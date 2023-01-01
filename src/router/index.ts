@@ -21,8 +21,15 @@ export default createRouter({
       path: "/play/:id",
       name: "play",
       component: PlayGame,
-      beforeEnter: () => {
-        if (!useGameStore().isGameRunning) {
+      beforeEnter: async (to) => {
+        const gameId = to.params.id as string;
+        if (!gameId) {
+          console.log("Missing game id in url");
+          return "/";
+        }
+
+        if (!(await useGameStore().restore(gameId))) {
+          console.log(`no game running: ${gameId}`);
           return "/";
         }
       },
