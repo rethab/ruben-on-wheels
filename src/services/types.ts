@@ -1,5 +1,5 @@
 export interface Player {
-  name: string;
+  readonly name: string;
   points: number;
   motivation: number;
   currentCity: string;

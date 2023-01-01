@@ -6,8 +6,13 @@ import { cities } from "@/services/cities";
 export const useGameStore = defineStore("game", () => {
   const players = ref([] as Player[]);
   const currentPlayerIndex = ref(0);
+  const gameId = ref();
 
-  const isGameRunning = computed(() => players.value.length != 0);
+  // GETTERS
+
+  const isGameRunning = computed(
+    () => gameId.value && players.value.length != 0
+  );
 
   const currentPlayer = computed(() => {
     if (!isGameRunning.value) return;
@@ -22,11 +27,29 @@ export const useGameStore = defineStore("game", () => {
     );
   });
 
-  function initPlayers(newPlayers: { name: string }[]) {
+  // ACTIONS
+
+  function createGame(newPlayers: { name: string }[]): string {
     players.value = newPlayers.map(({ name }) => {
       return { name, currentCity: "Zurich", motivation: 75, points: 500 };
     });
     console.log(`registered ${newPlayers.length} players`);
+
+    gameId.value = crypto.randomUUID();
+
+    return gameId.value;
+  }
+
+  function updatePlayer(
+    player: Player,
+    city: string,
+    points: number,
+    motivation: number
+  ) {
+    const p = players.value.find(({ name }) => name === player.name)!;
+    p.currentCity = city;
+    p.points = points;
+    p.motivation = motivation;
   }
 
   function playerOut() {
@@ -50,9 +73,10 @@ export const useGameStore = defineStore("game", () => {
     playerOut,
     isGameRunning,
     winner,
-    initPlayers,
+    createGame,
     currentPlayer,
     currentPlayerIndex,
     nextPlayer,
+    updatePlayer,
   };
 });

@@ -25,16 +25,14 @@
 
 <script setup lang="ts">
 import { ref, watch } from "vue";
-import {
-  selectRandomAction,
-  runActionOnPlayer,
-  runActivityOnPlayer,
-} from "@/services/cities";
+import { selectRandomAction } from "@/services/cities";
 import type { Action, Activity, Player } from "@/services/types";
 import CityIntro from "@/components/game/turn/CityIntro.vue";
 import SelectActivity from "@/components/game/turn/SelectActivity.vue";
 import ShowActivityText from "@/components/game/turn/ShowActivityText.vue";
 import ShowLooser from "@/components/game/turn/ShowLooser.vue";
+import { GameService } from "@/services/game";
+import { useGameStore } from "@/stores/game";
 
 interface Props {
   player: Player;
@@ -43,6 +41,8 @@ interface Props {
 const props = defineProps<Props>();
 
 const emits = defineEmits(["playerOut", "nextPlayer"]);
+
+const gameService = new GameService(useGameStore());
 
 const step = ref<number>(0);
 const action = ref<Action>();
@@ -57,7 +57,7 @@ function exploreCity() {
     `Picked action ${action.value.text} for player ${props.player.name}`
   );
 
-  runActionOnPlayer(action.value, props.player);
+  gameService.runActionOnPlayer(action.value, props.player);
 
   step.value++;
 }
@@ -66,7 +66,7 @@ function runActivity(selectedActivity: Activity) {
   const pointsBefore = props.player.points;
   const motivationBefore = props.player.motivation;
 
-  runActivityOnPlayer(selectedActivity, props.player);
+  gameService.runActivityOnPlayer(selectedActivity, props.player);
 
   activity.value = selectedActivity;
   pointsCost.value = pointsBefore - props.player.points;

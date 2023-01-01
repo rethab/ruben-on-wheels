@@ -18,7 +18,7 @@ export default createRouter({
       component: InitView,
     },
     {
-      path: "/play",
+      path: "/play/:id",
       name: "play",
       component: PlayGame,
       beforeEnter: () => {

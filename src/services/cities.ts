@@ -1,12 +1,12 @@
-import type { Action, Activity, City, Player, Type } from "@/services/types";
+import type { Action, Activity, City, Player } from "@/services/types";
 
-const ACTIVITY_MOTIVATION_MOVE = 30;
-const ACTIVITY_POINTS_MOVE = 150;
+export const ACTIVITY_MOTIVATION_MOVE = 30;
+export const ACTIVITY_POINTS_MOVE = 150;
 
 export const ACTION_MOTIVATION_MOVE = 5;
 export const ACTION_POINTS_MOVE = 20;
 
-const CYCLE_MOTIVATION_COST = 15;
+export const CYCLE_MOTIVATION_COST = 15;
 
 export const costDescription: (a: Activity, p: Player) => string = (a, p) => {
   switch (a.type) {
@@ -31,54 +31,7 @@ export const cycleCost: (p: Player) => {
   };
 };
 
-export const runActionOnPlayer: (a: Action, p: Player) => void = (a, p) => {
-  const factor = a.effect === "decrease" ? -1 : 1;
-  switch (a.type) {
-    case "points":
-      p.points += ACTION_POINTS_MOVE * factor;
-      break;
-    case "motivation":
-      p.motivation += ACTION_MOTIVATION_MOVE * factor;
-      break;
-  }
-};
-
-export const runActivityOnPlayer: (a: Activity, p: Player) => void = (a, p) => {
-  if (a.type === "cycle") {
-    cycleToNextCity(p);
-    return;
-  }
-
-  const variation = getVariation(a.type);
-
-  switch (a.type) {
-    case "points":
-      p.points += ACTIVITY_POINTS_MOVE;
-      p.points += variation;
-      break;
-    case "motivation":
-      p.motivation += ACTIVITY_MOTIVATION_MOVE;
-      p.motivation += variation;
-      break;
-  }
-};
-
-const getVariation: (type: Type) => number = (type) => {
-  const max = type === "points" ? 30 : 7;
-  const baseVariation = Math.round(Math.random() * max);
-  if (Math.random() > 0.5) {
-    return baseVariation * -1;
-  }
-  return baseVariation;
-};
-
-const cycleToNextCity: (p: Player) => void = (p) => {
-  p.currentCity = getNextCity(p.currentCity);
-  p.points -= getCyclePointsCost(p);
-  p.motivation -= CYCLE_MOTIVATION_COST;
-};
-
-const getCyclePointsCost: (p: Player) => number = (p) => {
+export const getCyclePointsCost: (p: Player) => number = (p) => {
   if (p.motivation >= 95) return 90;
   if (p.motivation >= 90) return 100; //  10
   if (p.motivation >= 80) return 110; //  10 // 0

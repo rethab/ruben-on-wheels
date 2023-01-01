@@ -61,8 +61,8 @@ function startGame() {
     return;
   }
 
-  const { initPlayers } = useGameStore();
-  initPlayers(players.value);
-  router.push({ name: "play" });
+  const { createGame } = useGameStore();
+  const id = createGame(players.value);
+  router.push({ name: "play", params: { id } });
 }
 </script>
