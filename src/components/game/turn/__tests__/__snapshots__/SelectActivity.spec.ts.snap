@@ -27,11 +27,11 @@ exports[`SelectActivity > renders full component: motivation increase 1`] = `
       <!---->
       <div class=\\"v-input__control\\">
         <!---->
-        <div class=\\"v-selection-control-group\\" aria-labelled-by=\\"radio-group-0\\" role=\\"radiogroup\\">
+        <div class=\\"v-selection-control-group\\" role=\\"radiogroup\\" aria-describedby=\\"radio-group-0-messages\\">
           <div class=\\"v-selection-control v-selection-control--density-default v-radio\\">
             <div class=\\"v-selection-control__wrapper\\">
               <!---->
-              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input id=\\"input-3\\" aria-readonly=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Visit Laurie &amp; Reto\\">
+              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input id=\\"input-3\\" aria-disabled=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Visit Laurie &amp; Reto\\">
                 <!---->
               </div>
             </div><label class=\\"v-label v-label--clickable\\" for=\\"input-3\\">
@@ -41,7 +41,7 @@ exports[`SelectActivity > renders full component: motivation increase 1`] = `
           <div class=\\"v-selection-control v-selection-control--density-default v-radio\\">
             <div class=\\"v-selection-control__wrapper\\">
               <!---->
-              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input id=\\"input-4\\" aria-readonly=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Cycle up the Uetliberg\\">
+              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input id=\\"input-4\\" aria-disabled=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Cycle up the Uetliberg\\">
                 <!---->
               </div>
             </div><label class=\\"v-label v-label--clickable\\" for=\\"input-4\\">
@@ -51,7 +51,7 @@ exports[`SelectActivity > renders full component: motivation increase 1`] = `
           <div class=\\"v-selection-control v-selection-control--density-default v-radio\\">
             <div class=\\"v-selection-control__wrapper\\">
               <!---->
-              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input id=\\"input-5\\" aria-readonly=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Take a nap\\">
+              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input id=\\"input-5\\" aria-disabled=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Take a nap\\">
                 <!---->
               </div>
             </div><label class=\\"v-label v-label--clickable\\" for=\\"input-5\\">
@@ -61,7 +61,7 @@ exports[`SelectActivity > renders full component: motivation increase 1`] = `
           <div class=\\"v-selection-control v-selection-control--density-default v-radio\\">
             <div class=\\"v-selection-control__wrapper\\">
               <!---->
-              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input id=\\"input-6\\" aria-readonly=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Have your bike cleaned\\">
+              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input id=\\"input-6\\" aria-disabled=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Have your bike cleaned\\">
                 <!---->
               </div>
             </div><label class=\\"v-label v-label--clickable\\" for=\\"input-6\\">
@@ -71,7 +71,7 @@ exports[`SelectActivity > renders full component: motivation increase 1`] = `
           <div class=\\"v-selection-control v-selection-control--disabled v-selection-control--density-default v-radio\\">
             <div class=\\"v-selection-control__wrapper\\">
               <!---->
-              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input disabled=\\"\\" id=\\"input-7\\" aria-readonly=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Cycle to the next city\\">
+              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input disabled=\\"\\" id=\\"input-7\\" aria-disabled=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Cycle to the next city\\">
                 <!---->
               </div>
             </div><label class=\\"v-label v-label--clickable\\" for=\\"input-7\\">
@@ -82,7 +82,7 @@ exports[`SelectActivity > renders full component: motivation increase 1`] = `
       </div>
       <!---->
       <div class=\\"v-input__details\\">
-        <transition-group-stub name=\\"slide-y-transition\\" tag=\\"div\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" class=\\"v-messages\\">
+        <transition-group-stub name=\\"slide-y-transition\\" tag=\\"div\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" class=\\"v-messages\\" role=\\"alert\\" aria-live=\\"polite\\" id=\\"radio-group-0-messages\\">
           <!---->
         </transition-group-stub>
         <!---->
@@ -128,11 +128,11 @@ exports[`SelectActivity > renders full component: points decrease 1`] = `
       <!---->
       <div class=\\"v-input__control\\">
         <!---->
-        <div class=\\"v-selection-control-group\\" aria-labelled-by=\\"radio-group-0\\" role=\\"radiogroup\\">
+        <div class=\\"v-selection-control-group\\" role=\\"radiogroup\\" aria-describedby=\\"radio-group-0-messages\\">
           <div class=\\"v-selection-control v-selection-control--density-default v-radio\\">
             <div class=\\"v-selection-control__wrapper\\">
               <!---->
-              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input id=\\"input-3\\" aria-readonly=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Visit Laurie &amp; Reto\\">
+              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input id=\\"input-3\\" aria-disabled=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Visit Laurie &amp; Reto\\">
                 <!---->
               </div>
             </div><label class=\\"v-label v-label--clickable\\" for=\\"input-3\\">
@@ -142,7 +142,7 @@ exports[`SelectActivity > renders full component: points decrease 1`] = `
           <div class=\\"v-selection-control v-selection-control--density-default v-radio\\">
             <div class=\\"v-selection-control__wrapper\\">
               <!---->
-              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input id=\\"input-4\\" aria-readonly=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Cycle up the Uetliberg\\">
+              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input id=\\"input-4\\" aria-disabled=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Cycle up the Uetliberg\\">
                 <!---->
               </div>
             </div><label class=\\"v-label v-label--clickable\\" for=\\"input-4\\">
@@ -152,7 +152,7 @@ exports[`SelectActivity > renders full component: points decrease 1`] = `
           <div class=\\"v-selection-control v-selection-control--density-default v-radio\\">
             <div class=\\"v-selection-control__wrapper\\">
               <!---->
-              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input id=\\"input-5\\" aria-readonly=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Take a nap\\">
+              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input id=\\"input-5\\" aria-disabled=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Take a nap\\">
                 <!---->
               </div>
             </div><label class=\\"v-label v-label--clickable\\" for=\\"input-5\\">
@@ -162,7 +162,7 @@ exports[`SelectActivity > renders full component: points decrease 1`] = `
           <div class=\\"v-selection-control v-selection-control--density-default v-radio\\">
             <div class=\\"v-selection-control__wrapper\\">
               <!---->
-              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input id=\\"input-6\\" aria-readonly=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Have your bike cleaned\\">
+              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input id=\\"input-6\\" aria-disabled=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Have your bike cleaned\\">
                 <!---->
               </div>
             </div><label class=\\"v-label v-label--clickable\\" for=\\"input-6\\">
@@ -172,7 +172,7 @@ exports[`SelectActivity > renders full component: points decrease 1`] = `
           <div class=\\"v-selection-control v-selection-control--disabled v-selection-control--density-default v-radio\\">
             <div class=\\"v-selection-control__wrapper\\">
               <!---->
-              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input disabled=\\"\\" id=\\"input-7\\" aria-readonly=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Cycle to the next city\\">
+              <div class=\\"v-selection-control__input\\"><i class=\\"mdi-radiobox-blank mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i><input disabled=\\"\\" id=\\"input-7\\" aria-disabled=\\"false\\" type=\\"radio\\" name=\\"radio-group-0\\" value=\\"Cycle to the next city\\">
                 <!---->
               </div>
             </div><label class=\\"v-label v-label--clickable\\" for=\\"input-7\\">
@@ -183,7 +183,7 @@ exports[`SelectActivity > renders full component: points decrease 1`] = `
       </div>
       <!---->
       <div class=\\"v-input__details\\">
-        <transition-group-stub name=\\"slide-y-transition\\" tag=\\"div\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" class=\\"v-messages\\">
+        <transition-group-stub name=\\"slide-y-transition\\" tag=\\"div\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" class=\\"v-messages\\" role=\\"alert\\" aria-live=\\"polite\\" id=\\"radio-group-0-messages\\">
           <!---->
         </transition-group-stub>
         <!---->
