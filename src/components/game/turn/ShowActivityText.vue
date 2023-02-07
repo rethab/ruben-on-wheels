@@ -29,7 +29,7 @@ interface Props {
 
 const props = defineProps<Props>();
 
-defineEmits(["next-player"]);
+defineEmits(["nextPlayer"]);
 
 let cityActivityText = "";
 
