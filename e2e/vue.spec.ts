@@ -11,10 +11,10 @@ test("plays a game", async ({ page }) => {
 
   await expect(page.getByText("Start new Game")).toBeVisible();
 
-  await page.getByLabel("Player 1").fill("Alice");
-  await page.getByLabel("Player 2").fill("Bob");
+  await page.getByLabel("Player 1").first().fill("Alice");
+  await page.getByLabel("Player 2").first().fill("Bob");
   await page.getByRole("button", { name: "Add More Players" }).click();
-  await page.getByLabel("Player 3").fill("Carl");
+  await page.getByLabel("Player 3").first().fill("Carl");
 
   await page.getByRole("button", { name: "Start" }).click();
 
