@@ -23,7 +23,7 @@
     "@playwright/test": "^1.29.2",
     "@rushstack/eslint-patch": "^1.2.0",
     "@types/jsdom": "^20.0.1",
-    "@types/node": "^18.11.18",
+    "@types/node": "^18.13.0",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vitest/coverage-c8": "^0.28.3",
     "@vue/eslint-config-prettier": "^7.0.0",
