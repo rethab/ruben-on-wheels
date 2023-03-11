@@ -1,4 +1,4 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`CardSubtitle > renders full component if lost 1`] = `"<div class=\\"v-card-subtitle\\"><span class=\\"text-red\\"> Points: 123, Motivation: 13, City: Zurich</span></div>"`;
 
