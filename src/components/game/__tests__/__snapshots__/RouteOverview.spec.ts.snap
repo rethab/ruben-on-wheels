@@ -31,9 +31,9 @@ exports[`RouteOverview > renders full component 1`] = `
       <div class=\\"v-timeline-divider\\">
         <div class=\\"v-timeline-divider__before\\"></div>
         <div class=\\"v-timeline-divider__dot v-timeline-divider__dot--size-x-small\\">
-          <div class=\\"v-timeline-divider__inner-dot bg-grey-lighten-2\\">
-            <!---->
-          </div>
+          <div class=\\"v-timeline-divider__inner-dot bg-grey-lighten-2\\"><i class=\\"v-icon notranslate v-theme--light v-icon--size-x-small\\" aria-hidden=\\"true\\">
+              <!---->
+            </i></div>
         </div>
         <div class=\\"v-timeline-divider__after\\"></div>
       </div>
@@ -67,9 +67,9 @@ exports[`RouteOverview > renders full component 1`] = `
       <div class=\\"v-timeline-divider\\">
         <div class=\\"v-timeline-divider__before\\"></div>
         <div class=\\"v-timeline-divider__dot v-timeline-divider__dot--size-x-small\\">
-          <div class=\\"v-timeline-divider__inner-dot bg-orange-lighten-2\\">
-            <!---->
-          </div>
+          <div class=\\"v-timeline-divider__inner-dot bg-orange-lighten-2\\"><i class=\\"v-icon notranslate v-theme--light v-icon--size-x-small\\" aria-hidden=\\"true\\">
+              <!---->
+            </i></div>
         </div>
         <div class=\\"v-timeline-divider__after\\"></div>
       </div>
@@ -103,9 +103,9 @@ exports[`RouteOverview > renders full component 1`] = `
       <div class=\\"v-timeline-divider\\">
         <div class=\\"v-timeline-divider__before\\"></div>
         <div class=\\"v-timeline-divider__dot v-timeline-divider__dot--size-x-small\\">
-          <div class=\\"v-timeline-divider__inner-dot bg-grey-lighten-2\\">
-            <!---->
-          </div>
+          <div class=\\"v-timeline-divider__inner-dot bg-grey-lighten-2\\"><i class=\\"v-icon notranslate v-theme--light v-icon--size-x-small\\" aria-hidden=\\"true\\">
+              <!---->
+            </i></div>
         </div>
         <div class=\\"v-timeline-divider__after\\"></div>
       </div>
