@@ -37,7 +37,9 @@ jobs:
     name: E2E / Playwright
     needs: build
     timeout-minutes: 10
-    runs-on: ubuntu-latest
+    # Pinned to 22.04: the project's Playwright (1.33) predates ubuntu-24.04 and
+    # `playwright install --with-deps` requests apt packages that no longer exist there.
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
 
