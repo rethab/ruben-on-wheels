@@ -6,12 +6,12 @@ import PointsOverview from "../PointsOverview.vue";
 import vuetify from "@/plugins/vuetify";
 
 function mountComponent() {
-  return mount(PointsOverview as any, {
+  return mount(PointsOverview, {
     props: {
       players: [
         { name: "Alice", currentCity: "Zurich", motivation: 10, points: 131 },
-        { name: "Bob", currentCity: "Basel" },
-        { name: "Carl", currentCity: "Cologne" },
+        { name: "Bob", currentCity: "Basel", motivation: 60, points: 400 },
+        { name: "Carl", currentCity: "Cologne", motivation: 50, points: 300 },
       ],
       currentPlayerIndex: 1,
     },

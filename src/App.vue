@@ -74,7 +74,8 @@ function quit() {
   top: 0;
   z-index: 50;
   border-bottom: 1px solid var(--line-soft);
-  background: linear-gradient(180deg, rgba(10, 14, 26, 0.97), rgba(10, 14, 26, 0.92));
+  background: linear-gradient(180deg, rgba(10, 14, 26, 0.88), rgba(10, 14, 26, 0.72));
+  backdrop-filter: blur(12px);
 }
 
 .topbar-inner {

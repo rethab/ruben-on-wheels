@@ -13,7 +13,7 @@ const mockRouter = {
 };
 
 function mountComponent(winner: string) {
-  return mount(GameWinner as any, {
+  return mount(GameWinner, {
     props: {
       winner,
     },

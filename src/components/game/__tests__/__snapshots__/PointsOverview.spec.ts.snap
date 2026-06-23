@@ -10,12 +10,12 @@ exports[`PointsOverview > renders full component 1`] = `
       </header>
       <div data-v-afe22b88="" class="tel-gauges">
         <div data-v-afe22b88="" class="gauge gauge--cyan">
-          <div data-v-afe22b88="" class="gauge-head"><span data-v-afe22b88="" class="gauge-label">Motivation</span><span data-v-afe22b88="" class="gauge-val num">%</span></div>
-          <div data-v-afe22b88="" class="gauge-track"><span data-v-afe22b88="" class="gauge-fill"></span></div>
+          <div data-v-afe22b88="" class="gauge-head"><span data-v-afe22b88="" class="gauge-label">Motivation</span><span data-v-afe22b88="" class="gauge-val num">60%</span></div>
+          <div data-v-afe22b88="" class="gauge-track"><span data-v-afe22b88="" class="gauge-fill" style="width: 60%;"></span></div>
         </div>
         <div data-v-afe22b88="" class="gauge gauge--amber">
-          <div data-v-afe22b88="" class="gauge-head"><span data-v-afe22b88="" class="gauge-label">Points</span><span data-v-afe22b88="" class="gauge-val num"></span></div>
-          <div data-v-afe22b88="" class="gauge-track"><span data-v-afe22b88="" class="gauge-fill"></span></div>
+          <div data-v-afe22b88="" class="gauge-head"><span data-v-afe22b88="" class="gauge-label">Points</span><span data-v-afe22b88="" class="gauge-val num">400</span></div>
+          <div data-v-afe22b88="" class="gauge-track"><span data-v-afe22b88="" class="gauge-fill" style="width: 80%;"></span></div>
         </div>
       </div>
     </article>
@@ -26,12 +26,12 @@ exports[`PointsOverview > renders full component 1`] = `
       </header>
       <div data-v-afe22b88="" class="tel-gauges">
         <div data-v-afe22b88="" class="gauge gauge--idle">
-          <div data-v-afe22b88="" class="gauge-head"><span data-v-afe22b88="" class="gauge-label">Motivation</span><span data-v-afe22b88="" class="gauge-val num">%</span></div>
-          <div data-v-afe22b88="" class="gauge-track"><span data-v-afe22b88="" class="gauge-fill"></span></div>
+          <div data-v-afe22b88="" class="gauge-head"><span data-v-afe22b88="" class="gauge-label">Motivation</span><span data-v-afe22b88="" class="gauge-val num">50%</span></div>
+          <div data-v-afe22b88="" class="gauge-track"><span data-v-afe22b88="" class="gauge-fill" style="width: 50%;"></span></div>
         </div>
         <div data-v-afe22b88="" class="gauge gauge--idle">
-          <div data-v-afe22b88="" class="gauge-head"><span data-v-afe22b88="" class="gauge-label">Points</span><span data-v-afe22b88="" class="gauge-val num"></span></div>
-          <div data-v-afe22b88="" class="gauge-track"><span data-v-afe22b88="" class="gauge-fill"></span></div>
+          <div data-v-afe22b88="" class="gauge-head"><span data-v-afe22b88="" class="gauge-label">Points</span><span data-v-afe22b88="" class="gauge-val num">300</span></div>
+          <div data-v-afe22b88="" class="gauge-track"><span data-v-afe22b88="" class="gauge-fill" style="width: 60%;"></span></div>
         </div>
       </div>
     </article>

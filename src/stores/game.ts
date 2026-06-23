@@ -1,14 +1,40 @@
 import { computed, ref, watch } from "vue";
 import { defineStore } from "pinia";
-import type { Player } from "@/services/types";
+import type { Action, Player } from "@/services/types";
 import { cities } from "@/services/cities";
 
 const STORAGE_KEY = "ruben-on-wheels:game";
+
+// In-progress turn state. Kept in the store (not in the GameAction component)
+// so a refresh resumes exactly where the player was, rather than silently
+// re-running the turn — which would apply a fresh city action on top of the
+// one already committed. Activities are referenced by name because their
+// `text()` thunk is not serialisable.
+interface TurnState {
+  step: number;
+  action: Action | null;
+  activityName: string | null;
+  pointsCost: number;
+  motivationCost: number;
+  looser: string | null;
+}
+
+function freshTurn(): TurnState {
+  return {
+    step: 0,
+    action: null,
+    activityName: null,
+    pointsCost: 0,
+    motivationCost: 0,
+    looser: null,
+  };
+}
 
 interface PersistedGame {
   players: Player[];
   currentPlayerIndex: number;
   gameId: string;
+  turn: TurnState;
 }
 
 function loadPersisted(): PersistedGame | null {
@@ -29,6 +55,7 @@ export const useGameStore = defineStore("game", () => {
   const players = ref<Player[]>(saved?.players ?? []);
   const currentPlayerIndex = ref(saved?.currentPlayerIndex ?? 0);
   const gameId = ref<string | undefined>(saved?.gameId);
+  const turn = ref<TurnState>(saved?.turn ?? freshTurn());
 
   // GETTERS
 
@@ -63,6 +90,7 @@ export const useGameStore = defineStore("game", () => {
           players: players.value,
           currentPlayerIndex: currentPlayerIndex.value,
           gameId: gameId.value,
+          turn: turn.value,
         })
       );
     } catch {
@@ -70,7 +98,7 @@ export const useGameStore = defineStore("game", () => {
     }
   }
 
-  watch([players, currentPlayerIndex, gameId], persist, { deep: true });
+  watch([players, currentPlayerIndex, gameId, turn], persist, { deep: true });
 
   // ACTIONS
 
@@ -81,6 +109,7 @@ export const useGameStore = defineStore("game", () => {
     console.log(`registered ${newPlayers.length} players`);
 
     currentPlayerIndex.value = 0;
+    turn.value = freshTurn();
     gameId.value = crypto.randomUUID();
 
     return gameId.value;
@@ -89,6 +118,7 @@ export const useGameStore = defineStore("game", () => {
   function endGame() {
     players.value = [];
     currentPlayerIndex.value = 0;
+    turn.value = freshTurn();
     gameId.value = undefined;
   }
 
@@ -111,6 +141,7 @@ export const useGameStore = defineStore("game", () => {
     if (currentPlayerIndex.value === players.value.length) {
       currentPlayerIndex.value = 0;
     }
+    turn.value = freshTurn();
   }
 
   function nextPlayer() {
@@ -118,11 +149,13 @@ export const useGameStore = defineStore("game", () => {
     if (currentPlayerIndex.value >= players.value.length) {
       currentPlayerIndex.value = 0;
     }
+    turn.value = freshTurn();
   }
 
   return {
     players,
     gameId,
+    turn,
     playerOut,
     isGameRunning,
     winner,

@@ -6,7 +6,7 @@ import CardSubtitle from "../CardSubtitle.vue";
 import vuetify from "@/plugins/vuetify";
 
 function mountComponent(lost?: boolean) {
-  return mount(CardSubtitle as any, {
+  return mount(CardSubtitle, {
     props: {
       player: {
         name: "Alice",

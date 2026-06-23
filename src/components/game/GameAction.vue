@@ -24,9 +24,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from "vue";
-import { selectRandomAction } from "@/services/cities";
-import type { Action, Activity, Player } from "@/services/types";
+import { computed } from "vue";
+import { getCityActivities, selectRandomAction } from "@/services/cities";
+import type { Activity, Player } from "@/services/types";
 import CityIntro from "@/components/game/turn/CityIntro.vue";
 import SelectActivity from "@/components/game/turn/SelectActivity.vue";
 import ShowActivityText from "@/components/game/turn/ShowActivityText.vue";
@@ -42,24 +42,33 @@ const props = defineProps<Props>();
 
 const emits = defineEmits(["playerOut", "nextPlayer"]);
 
-const gameService = new GameService(useGameStore());
+const store = useGameStore();
+const gameService = new GameService(store);
 
-const step = ref<number>(0);
-const action = ref<Action>();
-const activity = ref<Activity>();
-const pointsCost = ref<number>(0);
-const motivationCost = ref<number>(0);
-const looser = ref<string>();
+// Turn progress lives in the store so a refresh resumes mid-turn instead of
+// re-running it. The selected activity is re-resolved from its name since the
+// persisted state only holds serialisable data.
+const step = computed(() => store.turn.step);
+const action = computed(() => store.turn.action ?? undefined);
+const looser = computed(() => store.turn.looser ?? undefined);
+const pointsCost = computed(() => store.turn.pointsCost);
+const motivationCost = computed(() => store.turn.motivationCost);
+
+const activity = computed<Activity | undefined>(() => {
+  const name = store.turn.activityName;
+  if (!name) return undefined;
+  return getCityActivities(props.player.currentCity).find(
+    (a) => a.name === name
+  );
+});
 
 function exploreCity() {
-  action.value = selectRandomAction(props.player.currentCity);
-  console.log(
-    `Picked action ${action.value.text} for player ${props.player.name}`
-  );
+  const picked = selectRandomAction(props.player.currentCity);
+  gameService.runActionOnPlayer(picked, props.player);
 
-  gameService.runActionOnPlayer(action.value, props.player);
-
-  step.value++;
+  store.turn.action = picked;
+  store.turn.step = 1;
+  checkLost();
 }
 
 function runActivity(selectedActivity: Activity) {
@@ -68,33 +77,25 @@ function runActivity(selectedActivity: Activity) {
 
   gameService.runActivityOnPlayer(selectedActivity, props.player);
 
-  activity.value = selectedActivity;
-  pointsCost.value = pointsBefore - props.player.points;
-  motivationCost.value = motivationBefore - props.player.motivation;
-
-  step.value++;
+  store.turn.activityName = selectedActivity.name;
+  store.turn.pointsCost = pointsBefore - props.player.points;
+  store.turn.motivationCost = motivationBefore - props.player.motivation;
+  store.turn.step = 2;
+  checkLost();
 }
 
 function nextPlayer() {
-  step.value = 0;
-  action.value = undefined;
-  activity.value = undefined;
-  pointsCost.value = 0;
-  motivationCost.value = 0;
-
+  // store.nextPlayer()/playerOut() reset the turn for the next rider.
   if (looser.value) {
     emits("playerOut");
-    looser.value = "";
   } else {
     emits("nextPlayer");
   }
 }
 
-watch(step, () => {
-  const lost = props.player.points <= 0 || props.player.motivation <= 0;
-
-  if (lost) {
-    looser.value = props.player.name;
+function checkLost() {
+  if (props.player.points <= 0 || props.player.motivation <= 0) {
+    store.turn.looser = props.player.name;
   }
-});
+}
 </script>

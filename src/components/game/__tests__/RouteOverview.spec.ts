@@ -6,18 +6,24 @@ import RouteOverview from "../RouteOverview.vue";
 import vuetify from "@/plugins/vuetify";
 
 function mountComponent() {
-  return mount(RouteOverview as any, {
+  return mount(RouteOverview, {
     props: {
       players: [
-        { name: "Alice", currentCity: "Zurich" },
-        { name: "Bob", currentCity: "Basel" },
-        { name: "Carl", currentCity: "Basel" },
+        { name: "Alice", currentCity: "Zurich", points: 500, motivation: 75 },
+        { name: "Bob", currentCity: "Basel", points: 400, motivation: 60 },
+        { name: "Carl", currentCity: "Basel", points: 300, motivation: 50 },
       ],
       currentPlayer: {
         name: "Bob",
         currentCity: "Basel",
+        points: 400,
+        motivation: 60,
       },
-      cities: [{ name: "Zurich" }, { name: "Basel" }, { name: "Köln" }],
+      cities: [
+        { name: "Zurich", actions: [], activities: [] },
+        { name: "Basel", actions: [], activities: [] },
+        { name: "Köln", actions: [], activities: [] },
+      ],
     },
     global: {
       plugins: [vuetify],

@@ -6,7 +6,7 @@ import CityIntro from "../CityIntro.vue";
 import vuetify from "@/plugins/vuetify";
 
 function mountComponent() {
-  return mount(CityIntro as any, {
+  return mount(CityIntro, {
     props: {
       player: {
         name: "Alice",

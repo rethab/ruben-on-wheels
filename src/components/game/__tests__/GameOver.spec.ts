@@ -13,7 +13,7 @@ const mockRouter = {
 };
 
 function mountComponent() {
-  return mount(GameOver as any, {
+  return mount(GameOver, {
     global: {
       plugins: [vuetify],
       mocks: {

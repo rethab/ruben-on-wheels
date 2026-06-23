@@ -6,10 +6,8 @@
     </div>
 
     <p class="eyebrow finish-eyebrow">Stage Result · Wageningen</p>
-    <h1 class="finish-headline">
-      <span class="display finish-name">{{ winner }}</span
-      ><span class="finish-line num">&#32;has arrived in Wageningen 🚲</span>
-    </h1>
+    <p class="finish-name display" aria-hidden="true">{{ winner }}</p>
+    <h1 class="finish-line num">{{ winner }} has arrived in Wageningen 🚲</h1>
 
     <p class="finish-note">
       <template v-if="isRuben">Of course he wins his own game.</template>
@@ -63,16 +61,11 @@ const isRuben = computed(() => props.winner.toLowerCase() === "ruben");
   color: var(--hiviz);
 }
 
-.finish-headline {
-  margin: 12px 0 22px;
-  font-weight: 700;
-}
-
 .finish-name {
-  display: block;
   font-size: clamp(3rem, 9vw, 5.5rem);
+  font-weight: 700;
   line-height: 1;
-  margin-bottom: 8px;
+  margin: 12px 0 6px;
   background: linear-gradient(100deg, var(--dawn-1), var(--dawn-2), var(--hiviz));
   -webkit-background-clip: text;
   background-clip: text;
@@ -80,11 +73,11 @@ const isRuben = computed(() => props.winner.toLowerCase() === "ruben");
 }
 
 .finish-line {
-  display: block;
   font-size: 1.1rem;
   font-weight: 500;
   letter-spacing: 0.04em;
   color: var(--text);
+  margin: 0 0 22px;
 }
 
 .finish-note {

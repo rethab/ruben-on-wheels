@@ -7,7 +7,7 @@ import vuetify from "@/plugins/vuetify";
 import type { Action } from "../../../../services/types";
 
 function mountComponent(action: Action) {
-  return mount(SelectActivity as any, {
+  return mount(SelectActivity, {
     props: {
       player: {
         name: "Alice",

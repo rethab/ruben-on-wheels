@@ -16,13 +16,5 @@ export default defineConfigWithVueTs(
   },
   pluginVue.configs["flat/essential"],
   vueTsConfigs.recommended,
-  {
-    name: "app/tests",
-    files: ["**/__tests__/**", "**/*.spec.ts"],
-    rules: {
-      // Component mounting in tests relies on `as any` casts.
-      "@typescript-eslint/no-explicit-any": "off",
-    },
-  },
   skipFormatting
 );
