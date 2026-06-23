@@ -31,7 +31,7 @@ describe("CityIntro", () => {
   it("emits exploreCity event when clicking button", async () => {
     const wrapper = mountComponent();
 
-    await wrapper.find(".v-btn").trigger("click");
+    await wrapper.find("button").trigger("click");
 
     expect(wrapper.emitted()).toHaveProperty("exploreCity");
   });

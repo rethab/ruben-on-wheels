@@ -1,34 +1,28 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`CityIntro > renders full component 1`] = `
-"<div class=\\"v-card v-theme--light v-card--density-default v-card--variant-elevated\\">
-  <!---->
-  <div class=\\"v-card__loader\\">
-    <div class=\\"v-progress-linear v-theme--light\\" style=\\"top: 0px; height: 0px; --v-progress-linear-height: 2px; left: 50%; transform: translateX(-50%);\\" role=\\"progressbar\\" aria-hidden=\\"true\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\">
-      <!---->
-      <div class=\\"v-progress-linear__background\\" style=\\"width: 100%;\\"></div>
-      <transition-stub name=\\"fade-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-        <div class=\\"v-progress-linear__indeterminate\\">
-          <div class=\\"v-progress-linear__indeterminate long\\"></div>
-          <div class=\\"v-progress-linear__indeterminate short\\"></div>
-        </div>
-      </transition-stub>
-      <!---->
+"<section data-v-cdb47a53=\\"\\" class=\\"panel turn\\"><span data-v-cdb47a53=\\"\\" class=\\"panel-rail\\" aria-hidden=\\"true\\"></span>
+  <header data-v-cdb47a53=\\"\\" class=\\"turn-head\\"><span data-v-cdb47a53=\\"\\" class=\\"turn-avatar num\\">A</span>
+    <div data-v-cdb47a53=\\"\\" class=\\"turn-id\\">
+      <h2 data-v-cdb47a53=\\"\\" class=\\"turn-name display\\">Alice's Turn</h2><span data-v-cdb47a53=\\"\\" class=\\"turn-loc\\">Checkpoint · Zurich</span>
+    </div>
+    <ol data-v-cdb47a53=\\"\\" class=\\"steps\\" aria-label=\\"Turn progress\\">
+      <li data-v-cdb47a53=\\"\\" class=\\"step step--on\\"><span data-v-cdb47a53=\\"\\" class=\\"step-dot\\"></span><span data-v-cdb47a53=\\"\\" class=\\"step-label\\">Scout</span></li>
+      <li data-v-cdb47a53=\\"\\" class=\\"step\\"><span data-v-cdb47a53=\\"\\" class=\\"step-dot\\"></span><span data-v-cdb47a53=\\"\\" class=\\"step-label\\">Decide</span></li>
+      <li data-v-cdb47a53=\\"\\" class=\\"step\\"><span data-v-cdb47a53=\\"\\" class=\\"step-dot\\"></span><span data-v-cdb47a53=\\"\\" class=\\"step-label\\">Outcome</span></li>
+    </ol>
+  </header>
+  <div data-v-cdb47a53=\\"\\" class=\\"stat-strip\\">
+    <div data-v-cdb47a53=\\"\\" class=\\"stat stat--low\\"><span data-v-cdb47a53=\\"\\" class=\\"stat-label\\">Motivation</span><span data-v-cdb47a53=\\"\\" class=\\"stat-val num\\">13%</span>
+      <div data-v-cdb47a53=\\"\\" class=\\"stat-track\\"><span data-v-cdb47a53=\\"\\" class=\\"stat-fill stat-fill--cyan\\" style=\\"width: 13%;\\"></span></div>
+    </div>
+    <div data-v-cdb47a53=\\"\\" class=\\"stat\\"><span data-v-cdb47a53=\\"\\" class=\\"stat-label\\">Points</span><span data-v-cdb47a53=\\"\\" class=\\"stat-val num\\">143</span>
+      <div data-v-cdb47a53=\\"\\" class=\\"stat-track\\"><span data-v-cdb47a53=\\"\\" class=\\"stat-fill stat-fill--amber\\" style=\\"width: 28.599999999999998%;\\"></span></div>
     </div>
   </div>
-  <!---->
-  <!---->
-  <div class=\\"v-card-title\\">Alice's turn</div>
-  <div class=\\"v-card-subtitle\\"><span class=\\"\\"> Points: 143, Motivation: 13, City: Zurich</span></div>
-  <div class=\\"v-card-text\\"> You are currently in <strong>Zurich</strong>. Click below to explore Zurich and decide what activity to do next. </div>
-  <div class=\\"v-card-actions\\">
-    <div class=\\"flex-grow-1\\"></div><button type=\\"button\\" class=\\"v-btn v-theme--light text-primary v-btn--density-default v-btn--size-default v-btn--variant-tonal\\"><span class=\\"v-btn__overlay\\"></span><span class=\\"v-btn__underlay\\"></span>
-      <!----><span class=\\"v-btn__content\\" data-no-activator=\\"\\">Explore Zurich</span>
-      <!---->
-      <!---->
-    </button>
+  <div data-v-cdb47a53=\\"\\" class=\\"turn-body\\">
+    <p> You've rolled into <strong>Zurich</strong>. Scout the streets to see what the road throws at you, then decide your next move. </p>
   </div>
-  <!---->
-  <!----><span class=\\"v-card__underlay\\"></span>
-</div>"
+  <footer data-v-cdb47a53=\\"\\" class=\\"turn-actions\\"><button class=\\"btn btn-primary\\"><span aria-hidden=\\"true\\">⌖</span> Explore Zurich</button></footer>
+</section>"
 `;

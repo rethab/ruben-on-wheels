@@ -31,34 +31,27 @@ describe("PointsOverview", () => {
   it("shows current player first", () => {
     const wrapper = mountComponent();
 
-    expect(wrapper.findAll(".v-card-title")[0].text()).toContain("Bob");
-    expect(wrapper.findAll(".v-card-title")[1].text()).toContain("Carl");
-    expect(wrapper.findAll(".v-card-title")[2].text()).toContain("Alice");
+    expect(wrapper.findAll(".tel-name")[0].text()).toContain("Bob");
+    expect(wrapper.findAll(".tel-name")[1].text()).toContain("Carl");
+    expect(wrapper.findAll(".tel-name")[2].text()).toContain("Alice");
   });
 
   it("current player is highlighted", () => {
     const wrapper = mountComponent();
+    const cards = wrapper.findAll(".tel-card");
 
-    expect(
-      wrapper.findAll(".v-card-text")[0].find(".bg-orange").exists()
-    ).toBeTruthy();
-    expect(
-      wrapper.findAll(".v-card-text")[1].find(".bg-orange").exists()
-    ).toBeFalsy();
-    expect(
-      wrapper.findAll(".v-card-text")[2].find(".bg-orange").exists()
-    ).toBeFalsy();
+    expect(cards[0].classes()).toContain("panel--lit");
+    expect(cards[1].classes()).not.toContain("panel--lit");
+    expect(cards[2].classes()).not.toContain("panel--lit");
   });
 
   it("shows attributes of player", () => {
     const wrapper = mountComponent();
-    expect(wrapper.findAll(".v-card-title")[2].text()).toContain("Alice");
-    expect(wrapper.findAll(".v-card-subtitle")[2].text()).toContain(
-      "City: Zurich"
-    );
-    expect(wrapper.findAll(".v-card-text")[2].text()).toContain(
-      "10 Motivation"
-    );
-    expect(wrapper.findAll(".v-card-text")[2].text()).toContain("131 Points");
+    const alice = wrapper.findAll(".tel-card")[2];
+
+    expect(alice.find(".tel-name").text()).toContain("Alice");
+    expect(alice.find(".tel-city").text()).toContain("Zurich");
+    expect(alice.text()).toContain("10%");
+    expect(alice.text()).toContain("131");
   });
 });

@@ -1,32 +1,10 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`GameOver > renders full component 1`] = `
-"<div class=\\"v-card v-theme--light v-card--density-default v-card--variant-elevated\\">
-  <!---->
-  <div class=\\"v-card__loader\\">
-    <div class=\\"v-progress-linear v-theme--light\\" style=\\"top: 0px; height: 0px; --v-progress-linear-height: 2px; left: 50%; transform: translateX(-50%);\\" role=\\"progressbar\\" aria-hidden=\\"true\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\">
-      <!---->
-      <div class=\\"v-progress-linear__background\\" style=\\"width: 100%;\\"></div>
-      <transition-stub name=\\"fade-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-        <div class=\\"v-progress-linear__indeterminate\\">
-          <div class=\\"v-progress-linear__indeterminate long\\"></div>
-          <div class=\\"v-progress-linear__indeterminate short\\"></div>
-        </div>
-      </transition-stub>
-      <!---->
-    </div>
-  </div>
-  <!---->
-  <!---->
-  <div class=\\"v-card-title\\">Game Over</div>
-  <div class=\\"v-card-text\\">Unfortunately, nobody is going to visit Ruben this time 🥲</div>
-  <div class=\\"v-card-actions\\">
-    <div class=\\"flex-grow-1\\"></div><button type=\\"button\\" class=\\"v-btn v-theme--light text-primary v-btn--density-default v-btn--size-default v-btn--variant-tonal\\"><span class=\\"v-btn__overlay\\"></span><span class=\\"v-btn__underlay\\"></span><span class=\\"v-btn__prepend\\"><i class=\\"mdi-play mdi v-icon notranslate v-theme--light v-icon--size-default\\" aria-hidden=\\"true\\"></i></span><span class=\\"v-btn__content\\" data-no-activator=\\"\\">Play Again</span>
-      <!---->
-      <!---->
-    </button>
-  </div>
-  <!---->
-  <!----><span class=\\"v-card__underlay\\"></span>
-</div>"
+"<section data-v-0fed1593=\\"\\" class=\\"over panel\\"><span class=\\"panel-rail\\" aria-hidden=\\"true\\" data-v-0fed1593=\\"\\"></span><span class=\\"over-icon\\" aria-hidden=\\"true\\" data-v-0fed1593=\\"\\">🚆</span>
+  <p class=\\"eyebrow over-eyebrow\\" data-v-0fed1593=\\"\\">Race Neutralised</p>
+  <h1 class=\\"display over-title\\" data-v-0fed1593=\\"\\">Game Over</h1>
+  <p class=\\"over-note\\" data-v-0fed1593=\\"\\"> Every rider ran out of road. Nobody is going to visit Ruben this time 🥲 </p>
+  <div data-v-0fed1593=\\"\\" class=\\"over-actions\\"><button data-v-0fed1593=\\"\\" class=\\"btn btn-primary\\"><span aria-hidden=\\"true\\">▸</span> Play Again</button></div>
+</section>"
 `;

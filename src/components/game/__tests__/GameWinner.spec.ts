@@ -5,9 +5,9 @@ import GameWinner from "../GameWinner.vue";
 
 import vuetify from "@/plugins/vuetify";
 
-const pushedRoutes: string[] = [];
+const pushedRoutes: unknown[] = [];
 const mockRouter = {
-  push: (route: string) => {
+  push: (route: unknown) => {
     pushedRoutes.push(route);
   },
 };
@@ -36,15 +36,15 @@ describe("GameWinner", () => {
   it.each(["ruben", "Ruben"])("%s wins his own game", (winner) => {
     const wrapper = mountComponent(winner);
 
-    expect(wrapper.find(".v-card-subtitle").text()).toBe(
-      "Of course he wins his own Game."
+    expect(wrapper.find(".finish-note").text()).toContain(
+      "Of course he wins his own game."
     );
   });
 
   it("other players need to pay Ruben a visit", () => {
     const wrapper = mountComponent("Alice");
 
-    expect(wrapper.find(".v-card-subtitle").text()).toBe(
+    expect(wrapper.find(".finish-note").text()).toContain(
       "Don't forget to pay Ruben a visit!"
     );
   });
@@ -52,8 +52,8 @@ describe("GameWinner", () => {
   it("clicking on Play Again redirects to the init view", async () => {
     const wrapper = mountComponent("Alice");
 
-    await wrapper.find(".v-btn").trigger("click");
+    await wrapper.find("button").trigger("click");
 
-    expect(pushedRoutes).toContain("init");
+    expect(pushedRoutes).toContainEqual({ name: "init" });
   });
 });

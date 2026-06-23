@@ -1,12 +1,34 @@
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import { defineStore } from "pinia";
 import type { Player } from "@/services/types";
 import { cities } from "@/services/cities";
 
+const STORAGE_KEY = "ruben-on-wheels:game";
+
+interface PersistedGame {
+  players: Player[];
+  currentPlayerIndex: number;
+  gameId: string;
+}
+
+function loadPersisted(): PersistedGame | null {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return null;
+    const data = JSON.parse(raw) as PersistedGame;
+    if (!data.gameId || !Array.isArray(data.players)) return null;
+    return data;
+  } catch {
+    return null;
+  }
+}
+
 export const useGameStore = defineStore("game", () => {
-  const players = ref([] as Player[]);
-  const currentPlayerIndex = ref(0);
-  const gameId = ref();
+  const saved = loadPersisted();
+
+  const players = ref<Player[]>(saved?.players ?? []);
+  const currentPlayerIndex = ref(saved?.currentPlayerIndex ?? 0);
+  const gameId = ref<string | undefined>(saved?.gameId);
 
   // GETTERS
 
@@ -27,6 +49,29 @@ export const useGameStore = defineStore("game", () => {
     );
   });
 
+  // PERSISTENCE — keep the browser copy in sync so a refresh can resume.
+
+  function persist() {
+    try {
+      if (!gameId.value) {
+        localStorage.removeItem(STORAGE_KEY);
+        return;
+      }
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify({
+          players: players.value,
+          currentPlayerIndex: currentPlayerIndex.value,
+          gameId: gameId.value,
+        })
+      );
+    } catch {
+      /* storage unavailable — game still playable in-memory */
+    }
+  }
+
+  watch([players, currentPlayerIndex, gameId], persist, { deep: true });
+
   // ACTIONS
 
   function createGame(newPlayers: { name: string }[]): string {
@@ -35,9 +80,16 @@ export const useGameStore = defineStore("game", () => {
     });
     console.log(`registered ${newPlayers.length} players`);
 
+    currentPlayerIndex.value = 0;
     gameId.value = crypto.randomUUID();
 
     return gameId.value;
+  }
+
+  function endGame() {
+    players.value = [];
+    currentPlayerIndex.value = 0;
+    gameId.value = undefined;
   }
 
   function updatePlayer(
@@ -70,10 +122,12 @@ export const useGameStore = defineStore("game", () => {
 
   return {
     players,
+    gameId,
     playerOut,
     isGameRunning,
     winner,
     createGame,
+    endGame,
     currentPlayer,
     currentPlayerIndex,
     nextPlayer,

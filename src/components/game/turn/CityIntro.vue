@@ -1,26 +1,21 @@
 <template>
-  <v-card>
-    <v-card-title>{{ player.name }}'s turn</v-card-title>
-    <CardSubtitle :player="player" />
+  <TurnCard :player="player" :step="0">
+    <p>
+      You've rolled into <strong>{{ player.currentCity }}</strong>. Scout the
+      streets to see what the road throws at you, then decide your next move.
+    </p>
 
-    <v-card-text>
-      You are currently in <strong>{{ player.currentCity }}</strong
-      >. Click below to explore {{ player.currentCity }} and decide what
-      activity to do next.
-    </v-card-text>
-
-    <v-card-actions>
-      <v-spacer />
-      <v-btn @click="$emit('exploreCity')" color="primary" variant="tonal"
-        >Explore {{ player.currentCity }}</v-btn
-      >
-    </v-card-actions>
-  </v-card>
+    <template #actions>
+      <button class="btn btn-primary" @click="$emit('exploreCity')">
+        <span aria-hidden="true">⌖</span> Explore {{ player.currentCity }}
+      </button>
+    </template>
+  </TurnCard>
 </template>
 
 <script setup lang="ts">
 import type { Player } from "@/services/types";
-import CardSubtitle from "@/components/game/turn/CardSubtitle.vue";
+import TurnCard from "@/components/game/turn/TurnCard.vue";
 
 interface Props {
   player: Player;

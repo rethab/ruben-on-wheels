@@ -5,9 +5,9 @@ import GameOver from "../GameOver.vue";
 
 import vuetify from "@/plugins/vuetify";
 
-const pushedRoutes: string[] = [];
+const pushedRoutes: unknown[] = [];
 const mockRouter = {
-  push: (route: string) => {
+  push: (route: unknown) => {
     pushedRoutes.push(route);
   },
 };
@@ -33,8 +33,8 @@ describe("GameOver", () => {
   it("clicking on Play Again redirects to the init view", async () => {
     const wrapper = mountComponent();
 
-    await wrapper.find(".v-btn").trigger("click");
+    await wrapper.find("button").trigger("click");
 
-    expect(pushedRoutes).toContain("init");
+    expect(pushedRoutes).toContainEqual({ name: "init" });
   });
 });

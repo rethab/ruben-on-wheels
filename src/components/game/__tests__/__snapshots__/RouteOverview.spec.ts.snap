@@ -1,116 +1,44 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`RouteOverview > renders full component 1`] = `
-"<div>
-  <div class=\\"v-timeline v-timeline--vertical v-timeline--align-center v-timeline--justify-auto v-theme--light v-timeline--density-compact v-timeline--side-end\\" style=\\"--v-timeline-line-thickness: 2px;\\">
-    <div class=\\"v-timeline-item\\" style=\\"--v-timeline-dot-size: 0px; --v-timeline-line-inset: 0px;\\">
-      <div class=\\"v-timeline-item__body\\">
-        <div class=\\"v-card v-theme--light v-card--density-compact v-card--variant-elevated\\">
-          <!---->
-          <div class=\\"v-card__loader\\">
-            <div class=\\"v-progress-linear v-theme--light\\" style=\\"top: 0px; height: 0px; --v-progress-linear-height: 2px; left: 50%; transform: translateX(-50%);\\" role=\\"progressbar\\" aria-hidden=\\"true\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\">
-              <!---->
-              <div class=\\"v-progress-linear__background\\" style=\\"width: 100%;\\"></div>
-              <transition-stub name=\\"fade-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-                <div class=\\"v-progress-linear__indeterminate\\">
-                  <div class=\\"v-progress-linear__indeterminate long\\"></div>
-                  <div class=\\"v-progress-linear__indeterminate short\\"></div>
-                </div>
-              </transition-stub>
-              <!---->
-            </div>
-          </div>
-          <!---->
-          <!---->
-          <div class=\\"v-card-subtitle\\">Zurich</div>
-          <div class=\\"v-card-text\\">Alice</div>
-          <!---->
-          <!----><span class=\\"v-card__underlay\\"></span>
-        </div>
-      </div>
-      <div class=\\"v-timeline-divider\\">
-        <div class=\\"v-timeline-divider__before\\"></div>
-        <div class=\\"v-timeline-divider__dot v-timeline-divider__dot--size-x-small\\">
-          <div class=\\"v-timeline-divider__inner-dot bg-grey-lighten-2\\"><i class=\\"v-icon notranslate v-theme--light v-icon--size-x-small\\" aria-hidden=\\"true\\">
-              <!---->
-            </i></div>
-        </div>
-        <div class=\\"v-timeline-divider__after\\"></div>
-      </div>
-      <!---->
-    </div>
-    <div class=\\"v-timeline-item\\" style=\\"--v-timeline-dot-size: 0px; --v-timeline-line-inset: 0px;\\">
-      <div class=\\"v-timeline-item__body\\">
-        <div class=\\"v-card v-theme--light v-card--density-compact v-card--variant-elevated\\">
-          <!---->
-          <div class=\\"v-card__loader\\">
-            <div class=\\"v-progress-linear v-theme--light\\" style=\\"top: 0px; height: 0px; --v-progress-linear-height: 2px; left: 50%; transform: translateX(-50%);\\" role=\\"progressbar\\" aria-hidden=\\"true\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\">
-              <!---->
-              <div class=\\"v-progress-linear__background\\" style=\\"width: 100%;\\"></div>
-              <transition-stub name=\\"fade-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-                <div class=\\"v-progress-linear__indeterminate\\">
-                  <div class=\\"v-progress-linear__indeterminate long\\"></div>
-                  <div class=\\"v-progress-linear__indeterminate short\\"></div>
-                </div>
-              </transition-stub>
-              <!---->
-            </div>
-          </div>
-          <!---->
-          <!---->
-          <div class=\\"v-card-subtitle\\">Basel</div>
-          <div class=\\"v-card-text\\">Bob, Carl</div>
-          <!---->
-          <!----><span class=\\"v-card__underlay\\"></span>
-        </div>
-      </div>
-      <div class=\\"v-timeline-divider\\">
-        <div class=\\"v-timeline-divider__before\\"></div>
-        <div class=\\"v-timeline-divider__dot v-timeline-divider__dot--size-x-small\\">
-          <div class=\\"v-timeline-divider__inner-dot bg-orange-lighten-2\\"><i class=\\"v-icon notranslate v-theme--light v-icon--size-x-small\\" aria-hidden=\\"true\\">
-              <!---->
-            </i></div>
-        </div>
-        <div class=\\"v-timeline-divider__after\\"></div>
-      </div>
-      <!---->
-    </div>
-    <div class=\\"v-timeline-item\\" style=\\"--v-timeline-dot-size: 0px; --v-timeline-line-inset: 0px;\\">
-      <div class=\\"v-timeline-item__body\\">
-        <div class=\\"v-card v-theme--light v-card--density-compact v-card--variant-elevated\\">
-          <!---->
-          <div class=\\"v-card__loader\\">
-            <div class=\\"v-progress-linear v-theme--light\\" style=\\"top: 0px; height: 0px; --v-progress-linear-height: 2px; left: 50%; transform: translateX(-50%);\\" role=\\"progressbar\\" aria-hidden=\\"true\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\">
-              <!---->
-              <div class=\\"v-progress-linear__background\\" style=\\"width: 100%;\\"></div>
-              <transition-stub name=\\"fade-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-                <div class=\\"v-progress-linear__indeterminate\\">
-                  <div class=\\"v-progress-linear__indeterminate long\\"></div>
-                  <div class=\\"v-progress-linear__indeterminate short\\"></div>
-                </div>
-              </transition-stub>
-              <!---->
-            </div>
-          </div>
-          <!---->
-          <!---->
-          <div class=\\"v-card-subtitle\\">Köln</div>
-          <div class=\\"v-card-text\\"></div>
-          <!---->
-          <!----><span class=\\"v-card__underlay\\"></span>
-        </div>
-      </div>
-      <div class=\\"v-timeline-divider\\">
-        <div class=\\"v-timeline-divider__before\\"></div>
-        <div class=\\"v-timeline-divider__dot v-timeline-divider__dot--size-x-small\\">
-          <div class=\\"v-timeline-divider__inner-dot bg-grey-lighten-2\\"><i class=\\"v-icon notranslate v-theme--light v-icon--size-x-small\\" aria-hidden=\\"true\\">
-              <!---->
-            </i></div>
-        </div>
-        <div class=\\"v-timeline-divider__after\\"></div>
-      </div>
-      <!---->
-    </div>
-  </div>
-</div>"
+"<div data-v-b7806af2=\\"\\" class=\\"route route--play\\"><svg data-v-b7806af2=\\"\\" viewBox=\\"0 0 1000 200\\" class=\\"route-svg\\" preserveAspectRatio=\\"xMidYMid meet\\" role=\\"img\\" aria-label=\\"Elevation profile of the route from Zurich to Wageningen\\">
+    <defs data-v-b7806af2=\\"\\">
+      <linearGradient id=\\"routeArea\\" x1=\\"0\\" y1=\\"0\\" x2=\\"0\\" y2=\\"1\\" data-v-b7806af2=\\"\\">
+        <stop offset=\\"0%\\" stop-color=\\"rgba(198,242,78,0.22)\\" data-v-b7806af2=\\"\\"></stop>
+        <stop offset=\\"100%\\" stop-color=\\"rgba(198,242,78,0)\\" data-v-b7806af2=\\"\\"></stop>
+      </linearGradient>
+      <linearGradient id=\\"routeLine\\" x1=\\"0\\" y1=\\"0\\" x2=\\"1\\" y2=\\"0\\" data-v-b7806af2=\\"\\">
+        <stop offset=\\"0%\\" stop-color=\\"#4de1ff\\" data-v-b7806af2=\\"\\"></stop>
+        <stop offset=\\"55%\\" stop-color=\\"#c6f24e\\" data-v-b7806af2=\\"\\"></stop>
+        <stop offset=\\"100%\\" stop-color=\\"#ff3d7f\\" data-v-b7806af2=\\"\\"></stop>
+      </linearGradient>
+    </defs><!-- horizon baseline -->
+    <line data-v-b7806af2=\\"\\" x1=\\"60\\" x2=\\"940\\" y1=\\"156\\" y2=\\"156\\" stroke=\\"var(--line)\\" stroke-dasharray=\\"2 6\\"></line><!-- elevation area + ridge -->
+    <path data-v-b7806af2=\\"\\" d=\\"M 60 46 C 133.33333333333331 53.68649669499528, 353.33333333333337 73.78564683663834, 500 92.11898016997166 C 646.6666666666666 110.45231350330499, 866.6666666666666 145.35316336166196, 940 156 L 940 156 L 60 156 Z\\" fill=\\"url(#routeArea)\\" class=\\"route-area\\"></path>
+    <path data-v-b7806af2=\\"\\" d=\\"M 60 46 C 133.33333333333331 53.68649669499528, 353.33333333333337 73.78564683663834, 500 92.11898016997166 C 646.6666666666666 110.45231350330499, 866.6666666666666 145.35316336166196, 940 156\\" fill=\\"none\\" stroke=\\"url(#routeLine)\\" stroke-width=\\"2.5\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"route-ridge\\"></path><!-- checkpoints -->
+    <g data-v-b7806af2=\\"\\">
+      <line data-v-b7806af2=\\"\\" x1=\\"60\\" x2=\\"60\\" y1=\\"46\\" y2=\\"156\\" stroke=\\"var(--line)\\" stroke-width=\\"1\\" opacity=\\"0.6\\"></line>
+      <circle data-v-b7806af2=\\"\\" cx=\\"60\\" cy=\\"46\\" r=\\"4.5\\" class=\\"route-node route-node--done\\"></circle><text data-v-b7806af2=\\"\\" x=\\"60\\" y=\\"178\\" text-anchor=\\"middle\\" class=\\"route-label\\">Zurich</text>
+      <!--v-if-->
+    </g>
+    <g data-v-b7806af2=\\"\\">
+      <line data-v-b7806af2=\\"\\" x1=\\"500\\" x2=\\"500\\" y1=\\"92.11898016997166\\" y2=\\"156\\" stroke=\\"var(--line)\\" stroke-width=\\"1\\" opacity=\\"0.6\\"></line>
+      <circle data-v-b7806af2=\\"\\" cx=\\"500\\" cy=\\"92.11898016997166\\" r=\\"7\\" class=\\"route-node route-node--active\\"></circle><text data-v-b7806af2=\\"\\" x=\\"500\\" y=\\"178\\" text-anchor=\\"middle\\" class=\\"route-label route-label--active\\">Basel</text>
+      <!--v-if-->
+    </g>
+    <g data-v-b7806af2=\\"\\">
+      <line data-v-b7806af2=\\"\\" x1=\\"940\\" x2=\\"940\\" y1=\\"156\\" y2=\\"156\\" stroke=\\"var(--line)\\" stroke-width=\\"1\\" opacity=\\"0.6\\"></line>
+      <circle data-v-b7806af2=\\"\\" cx=\\"940\\" cy=\\"156\\" r=\\"4.5\\" class=\\"route-node\\"></circle><text data-v-b7806af2=\\"\\" x=\\"940\\" y=\\"178\\" text-anchor=\\"middle\\" class=\\"route-label\\">Köln</text>
+      <!--v-if-->
+    </g><!-- rider markers -->
+    <g data-v-b7806af2=\\"\\" class=\\"rider\\" transform=\\"translate(60, 20)\\">
+      <circle data-v-b7806af2=\\"\\" r=\\"9\\" class=\\"rider-dot\\"></circle><text data-v-b7806af2=\\"\\" text-anchor=\\"middle\\" dy=\\"0.35em\\" class=\\"rider-initial\\">A</text>
+    </g>
+    <g data-v-b7806af2=\\"\\" class=\\"rider\\" transform=\\"translate(489, 66.11898016997166)\\">
+      <circle data-v-b7806af2=\\"\\" r=\\"9\\" class=\\"rider-dot rider-dot--active\\"></circle><text data-v-b7806af2=\\"\\" text-anchor=\\"middle\\" dy=\\"0.35em\\" class=\\"rider-initial\\">B</text>
+    </g>
+    <g data-v-b7806af2=\\"\\" class=\\"rider\\" transform=\\"translate(511, 66.11898016997166)\\">
+      <circle data-v-b7806af2=\\"\\" r=\\"9\\" class=\\"rider-dot\\"></circle><text data-v-b7806af2=\\"\\" text-anchor=\\"middle\\" dy=\\"0.35em\\" class=\\"rider-initial\\">C</text>
+    </g>
+  </svg></div>"
 `;

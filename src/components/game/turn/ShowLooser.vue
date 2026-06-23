@@ -1,24 +1,24 @@
 <template>
-  <v-card>
-    <v-card-title>{{ player.name }}'s turn</v-card-title>
-    <CardSubtitle :lost="true" :player="player" />
+  <TurnCard :player="player" :lost="true">
+    <div class="dnf">
+      <span class="dnf-icon" aria-hidden="true">🚆</span>
+      <p class="dnf-text">
+        Oh no, {{ player.name }}! You've run out of road. You have to take the
+        train from <strong>{{ player.currentCity }}</strong> to Wageningen —
+        you're out of the race.
+      </p>
+    </div>
 
-    <v-card-text
-      >😭 Oh no, {{ player.name }}! You have to take the train from
-      {{ player.currentCity }} to Wageningen.
-    </v-card-text>
-
-    <v-card-actions>
-      <v-spacer />
-      <v-btn @click="$emit('nextPlayer')" color="primary" variant="tonal"
-        >Next Player</v-btn
-      >
-    </v-card-actions>
-  </v-card>
+    <template #actions>
+      <button class="btn btn-primary" @click="$emit('nextPlayer')">
+        Next Player <span aria-hidden="true">→</span>
+      </button>
+    </template>
+  </TurnCard>
 </template>
 
 <script setup lang="ts">
-import CardSubtitle from "@/components/game/turn/CardSubtitle.vue";
+import TurnCard from "@/components/game/turn/TurnCard.vue";
 import type { Player } from "@/services/types";
 
 interface Props {
@@ -27,3 +27,25 @@ interface Props {
 defineProps<Props>();
 defineEmits(["nextPlayer"]);
 </script>
+
+<style scoped>
+.dnf {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 18px 20px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 84, 112, 0.3);
+  background: rgba(255, 84, 112, 0.06);
+}
+
+.dnf-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.dnf-text {
+  margin: 0;
+  line-height: 1.65;
+}
+</style>

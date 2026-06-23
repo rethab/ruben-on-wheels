@@ -32,41 +32,27 @@ describe("RouteOverview", () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it("players are shown in their city", () => {
+  it("all cities are plotted on the route", () => {
     const wrapper = mountComponent();
-    const [zurich, basel, cologne] = wrapper.findAll(".v-timeline-item");
 
-    expect(zurich.find(".v-card-subtitle").text()).toBe("Zurich");
-    expect(zurich.find(".v-card-text").text()).toBe("Alice");
+    const labels = wrapper.findAll(".route-label").map((l) => l.text());
+    expect(labels).toEqual(["Zurich", "Basel", "Köln"]);
+  });
 
-    expect(basel.find(".v-card-subtitle").text()).toBe("Basel");
-    expect(basel.find(".v-card-text").text()).toBe("Bob, Carl");
+  it("every player is shown as a rider on the route", () => {
+    const wrapper = mountComponent();
 
-    expect(cologne.find(".v-card-subtitle").text()).toBe("Köln");
-    expect(cologne.find(".v-card-text").text()).toBe("");
+    const initials = wrapper.findAll(".rider-initial").map((r) => r.text());
+    expect(initials.sort()).toEqual(["A", "B", "C"]);
   });
 
   it("city of current player is highlighted", () => {
     const wrapper = mountComponent();
 
-    const [zurich, basel, cologne] = wrapper.findAll(".v-timeline-item");
-    expect(
-      zurich
-        .find(".v-timeline-divider__dot")
-        .find(".bg-orange-lighten-2")
-        .exists()
-    ).toBeFalsy();
-    expect(
-      basel
-        .find(".v-timeline-divider__dot")
-        .find(".bg-orange-lighten-2")
-        .exists()
-    ).toBeTruthy();
-    expect(
-      cologne
-        .find(".v-timeline-divider__dot")
-        .find(".bg-orange-lighten-2")
-        .exists()
-    ).toBeFalsy();
+    const active = wrapper.findAll(".route-node--active");
+    expect(active).toHaveLength(1);
+
+    // and the active rider (Bob) is emphasised
+    expect(wrapper.findAll(".rider-dot--active")).toHaveLength(1);
   });
 });

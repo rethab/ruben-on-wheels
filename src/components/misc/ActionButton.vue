@@ -1,11 +1,7 @@
 <template>
-  <v-btn
-    color="primary"
-    variant="tonal"
-    @click="$router.push(link)"
-    prepend-icon="mdi-play"
-    >{{ text }}</v-btn
-  >
+  <button class="btn btn-primary" @click="$router.push({ name: link })">
+    <span aria-hidden="true">▸</span> {{ text }}
+  </button>
 </template>
 
 <script setup lang="ts">

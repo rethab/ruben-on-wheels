@@ -1,0 +1,353 @@
+/* ============================================================
+   RIDE OS — Ruben on Wheels · v2
+   Design system: a pre-dawn cycling head-unit / race telemetry HUD
+   ============================================================ */
+
+:root {
+  /* Twilight ride palette */
+  --ink: #0a0e1a;
+  --ink-2: #0e1424;
+  --panel: #161d33;
+  --panel-2: #1b2440;
+  --line: #283353;
+  --line-soft: #1e2740;
+
+  --text: #eaf0ff;
+  --muted: #8793b5;
+  --faint: #5b688c;
+
+  /* Hi-vis cyclist lime — the live signal, active rider, primary action */
+  --hiviz: #c6f24e;
+  --hiviz-dim: #9bc23a;
+
+  /* Dawn gradient — the road ahead, hero + finish atmosphere */
+  --dawn-1: #ff7a4d;
+  --dawn-2: #ff3d7f;
+
+  /* Telemetry hues — two stats, two signals */
+  --cyan: #4de1ff;   /* motivation */
+  --amber: #ffb13d;  /* points / budget */
+  --danger: #ff5470;
+
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow: 0 24px 60px -28px rgba(0, 0, 0, 0.85);
+  --shadow-glow: 0 0 0 1px rgba(198, 242, 78, 0.18), 0 18px 50px -22px rgba(198, 242, 78, 0.25);
+
+  --font-display: "Chakra Petch", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: var(--ink);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Ambient atmosphere: pre-dawn sky + topographic contour glow */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(1100px 620px at 78% -8%, rgba(255, 61, 127, 0.16), transparent 60%),
+    radial-gradient(900px 520px at 12% 4%, rgba(77, 225, 255, 0.1), transparent 55%),
+    radial-gradient(1200px 900px at 50% 120%, rgba(198, 242, 78, 0.08), transparent 60%),
+    linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.5;
+  background-image:
+    linear-gradient(rgba(40, 51, 83, 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(40, 51, 83, 0.18) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(circle at 50% 30%, #000 0%, transparent 78%);
+  mask-image: radial-gradient(circle at 50% 30%, #000 0%, transparent 78%);
+}
+
+::selection {
+  background: rgba(198, 242, 78, 0.28);
+  color: #fff;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ---------- Typographic primitives ---------- */
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.num {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+.display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+/* ---------- Glass panel ---------- */
+
+.panel {
+  position: relative;
+  background: linear-gradient(180deg, rgba(27, 36, 64, 0.92), rgba(18, 24, 42, 0.92));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+}
+
+.panel--lit {
+  border-color: rgba(198, 242, 78, 0.4);
+  box-shadow: var(--shadow-glow), var(--shadow);
+}
+
+/* A thin telemetry rail at the top edge of a panel */
+.panel-rail {
+  position: absolute;
+  top: 0;
+  left: 18px;
+  right: 18px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line), transparent);
+}
+
+/* ---------- Chips / badges ---------- */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0.32em 0.7em;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(10, 14, 26, 0.5);
+}
+
+.chip .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--hiviz);
+  box-shadow: 0 0 10px var(--hiviz);
+}
+
+.chip--live {
+  color: var(--hiviz);
+  border-color: rgba(198, 242, 78, 0.35);
+}
+
+.chip--live .dot {
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.8); }
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  font-size: 0.92rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55em;
+  padding: 0.82em 1.5em;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.16s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--hiviz);
+  color: #0a0e1a;
+  box-shadow: 0 10px 30px -12px rgba(198, 242, 78, 0.7);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 14px 38px -10px rgba(198, 242, 78, 0.9);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: var(--line);
+  color: var(--text);
+}
+
+.btn-ghost:hover {
+  border-color: var(--muted);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+
+.btn[disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ---------- Stat gauges ---------- */
+
+.gauge {
+  display: block;
+}
+
+.gauge-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.gauge-label {
+  font-family: var(--font-display);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.gauge-val {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: 1.02rem;
+}
+
+.gauge-track {
+  position: relative;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(10, 14, 26, 0.75);
+  overflow: hidden;
+  border: 1px solid var(--line-soft);
+}
+
+.gauge-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: 999px;
+  transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.gauge--cyan .gauge-val { color: var(--cyan); }
+.gauge--cyan .gauge-fill {
+  background: linear-gradient(90deg, #2aa6d9, var(--cyan));
+  box-shadow: 0 0 14px rgba(77, 225, 255, 0.6);
+}
+.gauge--amber .gauge-val { color: var(--amber); }
+.gauge--amber .gauge-fill {
+  background: linear-gradient(90deg, #d98a1f, var(--amber));
+  box-shadow: 0 0 14px rgba(255, 177, 61, 0.55);
+}
+
+.gauge--idle .gauge-val,
+.gauge--idle .gauge-label { color: var(--faint); }
+.gauge--idle .gauge-fill {
+  background: var(--line);
+  box-shadow: none;
+}
+
+/* ---------- Layout helpers ---------- */
+
+.shell {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.stack > * + * {
+  margin-top: var(--gap, 1rem);
+}
+
+@media (max-width: 600px) {
+  .shell { padding: 0 16px; }
+}
+
+/* ---------- Vuetify overrides to match the HUD ---------- */
+
+.v-application {
+  background: transparent !important;
+  font-family: var(--font-body) !important;
+}
+
+.v-field {
+  border-radius: var(--radius-sm) !important;
+  font-family: var(--font-body) !important;
+}
+
+.v-label,
+.v-field-label {
+  font-family: var(--font-display) !important;
+  letter-spacing: 0.04em;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
