@@ -12,8 +12,9 @@ import { devices } from "@playwright/test";
  */
 const config: PlaywrightTestConfig = {
   testDir: "./e2e",
-  /* Maximum time one test can run for. */
-  timeout: 30_000,
+  /* Maximum time one test can run for. The full playthrough drives ~25
+     sequential actions across three browser engines. */
+  timeout: 60_000,
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
@@ -36,6 +37,10 @@ const config: PlaywrightTestConfig = {
     actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: "http://localhost:5173",
+
+    /* The UI uses ambient animations; prefer reduced motion so actionability
+       checks see elements as "stable" (notably on WebKit). */
+    reducedMotion: "reduce",
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
