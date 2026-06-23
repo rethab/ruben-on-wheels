@@ -130,7 +130,6 @@ body::after {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  backdrop-filter: blur(8px);
 }
 
 .panel--lit {
