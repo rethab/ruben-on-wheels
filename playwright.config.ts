@@ -12,9 +12,10 @@ import { devices } from "@playwright/test";
  */
 const config: PlaywrightTestConfig = {
   testDir: "./e2e",
-  /* Maximum time one test can run for. The full playthrough drives ~25
-     sequential actions across three browser engines. */
-  timeout: 60_000,
+  /* Maximum time one test can run for. The full playthrough drives ~140
+     sequential actions; WebKit on CI runners is ~10x slower than local, so
+     give it generous headroom. */
+  timeout: 120_000,
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
