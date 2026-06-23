@@ -1,8 +1,7 @@
-import { defineConfig } from "vite";
+import { fileURLToPath, URL } from "node:url";
+import { defineConfig } from "vitest/config";
 import vue from "@vitejs/plugin-vue";
 import vuetify from "vite-plugin-vuetify";
-
-const path = require("path");
 
 export default defineConfig({
   plugins: [
@@ -14,13 +13,15 @@ export default defineConfig({
   define: { "process.env": {} },
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "src"),
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
   test: {
-    setupFiles: path.resolve(__dirname, "vuetify.config.js"),
-    deps: {
-      inline: ["vuetify"],
+    setupFiles: fileURLToPath(new URL("./vuetify.config.js", import.meta.url)),
+    server: {
+      deps: {
+        inline: ["vuetify"],
+      },
     },
     globals: true,
   },

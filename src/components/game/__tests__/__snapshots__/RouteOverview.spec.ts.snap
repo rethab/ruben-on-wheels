@@ -1,44 +1,44 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`RouteOverview > renders full component 1`] = `
-"<div data-v-b7806af2=\\"\\" class=\\"route route--play\\"><svg data-v-b7806af2=\\"\\" viewBox=\\"0 0 1000 200\\" class=\\"route-svg\\" preserveAspectRatio=\\"xMidYMid meet\\" role=\\"img\\" aria-label=\\"Elevation profile of the route from Zurich to Wageningen\\">
-    <defs data-v-b7806af2=\\"\\">
-      <linearGradient id=\\"routeArea\\" x1=\\"0\\" y1=\\"0\\" x2=\\"0\\" y2=\\"1\\" data-v-b7806af2=\\"\\">
-        <stop offset=\\"0%\\" stop-color=\\"rgba(198,242,78,0.22)\\" data-v-b7806af2=\\"\\"></stop>
-        <stop offset=\\"100%\\" stop-color=\\"rgba(198,242,78,0)\\" data-v-b7806af2=\\"\\"></stop>
+"<div data-v-b7806af2="" class="route route--play"><svg data-v-b7806af2="" viewBox="0 0 1000 200" class="route-svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Elevation profile of the route from Zurich to Wageningen">
+    <defs data-v-b7806af2="">
+      <linearGradient id="routeArea" x1="0" y1="0" x2="0" y2="1" data-v-b7806af2="">
+        <stop offset="0%" stop-color="rgba(198,242,78,0.22)" data-v-b7806af2=""></stop>
+        <stop offset="100%" stop-color="rgba(198,242,78,0)" data-v-b7806af2=""></stop>
       </linearGradient>
-      <linearGradient id=\\"routeLine\\" x1=\\"0\\" y1=\\"0\\" x2=\\"1\\" y2=\\"0\\" data-v-b7806af2=\\"\\">
-        <stop offset=\\"0%\\" stop-color=\\"#4de1ff\\" data-v-b7806af2=\\"\\"></stop>
-        <stop offset=\\"55%\\" stop-color=\\"#c6f24e\\" data-v-b7806af2=\\"\\"></stop>
-        <stop offset=\\"100%\\" stop-color=\\"#ff3d7f\\" data-v-b7806af2=\\"\\"></stop>
+      <linearGradient id="routeLine" x1="0" y1="0" x2="1" y2="0" data-v-b7806af2="">
+        <stop offset="0%" stop-color="#4de1ff" data-v-b7806af2=""></stop>
+        <stop offset="55%" stop-color="#c6f24e" data-v-b7806af2=""></stop>
+        <stop offset="100%" stop-color="#ff3d7f" data-v-b7806af2=""></stop>
       </linearGradient>
     </defs><!-- horizon baseline -->
-    <line data-v-b7806af2=\\"\\" x1=\\"60\\" x2=\\"940\\" y1=\\"156\\" y2=\\"156\\" stroke=\\"var(--line)\\" stroke-dasharray=\\"2 6\\"></line><!-- elevation area + ridge -->
-    <path data-v-b7806af2=\\"\\" d=\\"M 60 46 C 133.33333333333331 53.68649669499528, 353.33333333333337 73.78564683663834, 500 92.11898016997166 C 646.6666666666666 110.45231350330499, 866.6666666666666 145.35316336166196, 940 156 L 940 156 L 60 156 Z\\" fill=\\"url(#routeArea)\\" class=\\"route-area\\"></path>
-    <path data-v-b7806af2=\\"\\" d=\\"M 60 46 C 133.33333333333331 53.68649669499528, 353.33333333333337 73.78564683663834, 500 92.11898016997166 C 646.6666666666666 110.45231350330499, 866.6666666666666 145.35316336166196, 940 156\\" fill=\\"none\\" stroke=\\"url(#routeLine)\\" stroke-width=\\"2.5\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"route-ridge\\"></path><!-- checkpoints -->
-    <g data-v-b7806af2=\\"\\">
-      <line data-v-b7806af2=\\"\\" x1=\\"60\\" x2=\\"60\\" y1=\\"46\\" y2=\\"156\\" stroke=\\"var(--line)\\" stroke-width=\\"1\\" opacity=\\"0.6\\"></line>
-      <circle data-v-b7806af2=\\"\\" cx=\\"60\\" cy=\\"46\\" r=\\"4.5\\" class=\\"route-node route-node--done\\"></circle><text data-v-b7806af2=\\"\\" x=\\"60\\" y=\\"178\\" text-anchor=\\"middle\\" class=\\"route-label\\">Zurich</text>
+    <line data-v-b7806af2="" x1="60" x2="940" y1="156" y2="156" stroke="var(--line)" stroke-dasharray="2 6"></line><!-- elevation area + ridge -->
+    <path data-v-b7806af2="" d="M 60 46 C 133.33333333333331 53.68649669499528, 353.33333333333337 73.78564683663834, 500 92.11898016997166 C 646.6666666666666 110.45231350330499, 866.6666666666666 145.35316336166196, 940 156 L 940 156 L 60 156 Z" fill="url(#routeArea)" class="route-area"></path>
+    <path data-v-b7806af2="" d="M 60 46 C 133.33333333333331 53.68649669499528, 353.33333333333337 73.78564683663834, 500 92.11898016997166 C 646.6666666666666 110.45231350330499, 866.6666666666666 145.35316336166196, 940 156" fill="none" stroke="url(#routeLine)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="route-ridge"></path><!-- checkpoints -->
+    <g data-v-b7806af2="">
+      <line data-v-b7806af2="" x1="60" x2="60" y1="46" y2="156" stroke="var(--line)" stroke-width="1" opacity="0.6"></line>
+      <circle data-v-b7806af2="" cx="60" cy="46" r="4.5" class="route-node route-node--done"></circle><text data-v-b7806af2="" x="60" y="178" text-anchor="middle" class="route-label">Zurich</text>
       <!--v-if-->
     </g>
-    <g data-v-b7806af2=\\"\\">
-      <line data-v-b7806af2=\\"\\" x1=\\"500\\" x2=\\"500\\" y1=\\"92.11898016997166\\" y2=\\"156\\" stroke=\\"var(--line)\\" stroke-width=\\"1\\" opacity=\\"0.6\\"></line>
-      <circle data-v-b7806af2=\\"\\" cx=\\"500\\" cy=\\"92.11898016997166\\" r=\\"7\\" class=\\"route-node route-node--active\\"></circle><text data-v-b7806af2=\\"\\" x=\\"500\\" y=\\"178\\" text-anchor=\\"middle\\" class=\\"route-label route-label--active\\">Basel</text>
+    <g data-v-b7806af2="">
+      <line data-v-b7806af2="" x1="500" x2="500" y1="92.11898016997166" y2="156" stroke="var(--line)" stroke-width="1" opacity="0.6"></line>
+      <circle data-v-b7806af2="" cx="500" cy="92.11898016997166" r="7" class="route-node route-node--active"></circle><text data-v-b7806af2="" x="500" y="178" text-anchor="middle" class="route-label route-label--active">Basel</text>
       <!--v-if-->
     </g>
-    <g data-v-b7806af2=\\"\\">
-      <line data-v-b7806af2=\\"\\" x1=\\"940\\" x2=\\"940\\" y1=\\"156\\" y2=\\"156\\" stroke=\\"var(--line)\\" stroke-width=\\"1\\" opacity=\\"0.6\\"></line>
-      <circle data-v-b7806af2=\\"\\" cx=\\"940\\" cy=\\"156\\" r=\\"4.5\\" class=\\"route-node\\"></circle><text data-v-b7806af2=\\"\\" x=\\"940\\" y=\\"178\\" text-anchor=\\"middle\\" class=\\"route-label\\">Köln</text>
+    <g data-v-b7806af2="">
+      <line data-v-b7806af2="" x1="940" x2="940" y1="156" y2="156" stroke="var(--line)" stroke-width="1" opacity="0.6"></line>
+      <circle data-v-b7806af2="" cx="940" cy="156" r="4.5" class="route-node"></circle><text data-v-b7806af2="" x="940" y="178" text-anchor="middle" class="route-label">Köln</text>
       <!--v-if-->
     </g><!-- rider markers -->
-    <g data-v-b7806af2=\\"\\" class=\\"rider\\" transform=\\"translate(60, 20)\\">
-      <circle data-v-b7806af2=\\"\\" r=\\"9\\" class=\\"rider-dot\\"></circle><text data-v-b7806af2=\\"\\" text-anchor=\\"middle\\" dy=\\"0.35em\\" class=\\"rider-initial\\">A</text>
+    <g data-v-b7806af2="" class="rider" transform="translate(60, 20)">
+      <circle data-v-b7806af2="" r="9" class="rider-dot"></circle><text data-v-b7806af2="" text-anchor="middle" dy="0.35em" class="rider-initial">A</text>
     </g>
-    <g data-v-b7806af2=\\"\\" class=\\"rider\\" transform=\\"translate(489, 66.11898016997166)\\">
-      <circle data-v-b7806af2=\\"\\" r=\\"9\\" class=\\"rider-dot rider-dot--active\\"></circle><text data-v-b7806af2=\\"\\" text-anchor=\\"middle\\" dy=\\"0.35em\\" class=\\"rider-initial\\">B</text>
+    <g data-v-b7806af2="" class="rider" transform="translate(489, 66.11898016997166)">
+      <circle data-v-b7806af2="" r="9" class="rider-dot rider-dot--active"></circle><text data-v-b7806af2="" text-anchor="middle" dy="0.35em" class="rider-initial">B</text>
     </g>
-    <g data-v-b7806af2=\\"\\" class=\\"rider\\" transform=\\"translate(511, 66.11898016997166)\\">
-      <circle data-v-b7806af2=\\"\\" r=\\"9\\" class=\\"rider-dot\\"></circle><text data-v-b7806af2=\\"\\" text-anchor=\\"middle\\" dy=\\"0.35em\\" class=\\"rider-initial\\">C</text>
+    <g data-v-b7806af2="" class="rider" transform="translate(511, 66.11898016997166)">
+      <circle data-v-b7806af2="" r="9" class="rider-dot"></circle><text data-v-b7806af2="" text-anchor="middle" dy="0.35em" class="rider-initial">C</text>
     </g>
   </svg></div>"
 `;

@@ -1,28 +1,28 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`CityIntro > renders full component 1`] = `
-"<section data-v-cdb47a53=\\"\\" class=\\"panel turn\\"><span data-v-cdb47a53=\\"\\" class=\\"panel-rail\\" aria-hidden=\\"true\\"></span>
-  <header data-v-cdb47a53=\\"\\" class=\\"turn-head\\"><span data-v-cdb47a53=\\"\\" class=\\"turn-avatar num\\">A</span>
-    <div data-v-cdb47a53=\\"\\" class=\\"turn-id\\">
-      <h2 data-v-cdb47a53=\\"\\" class=\\"turn-name display\\">Alice's Turn</h2><span data-v-cdb47a53=\\"\\" class=\\"turn-loc\\">Checkpoint · Zurich</span>
+"<section data-v-cdb47a53="" class="panel turn"><span data-v-cdb47a53="" class="panel-rail" aria-hidden="true"></span>
+  <header data-v-cdb47a53="" class="turn-head"><span data-v-cdb47a53="" class="turn-avatar num">A</span>
+    <div data-v-cdb47a53="" class="turn-id">
+      <h2 data-v-cdb47a53="" class="turn-name display">Alice's Turn</h2><span data-v-cdb47a53="" class="turn-loc">Checkpoint · Zurich</span>
     </div>
-    <ol data-v-cdb47a53=\\"\\" class=\\"steps\\" aria-label=\\"Turn progress\\">
-      <li data-v-cdb47a53=\\"\\" class=\\"step step--on\\"><span data-v-cdb47a53=\\"\\" class=\\"step-dot\\"></span><span data-v-cdb47a53=\\"\\" class=\\"step-label\\">Scout</span></li>
-      <li data-v-cdb47a53=\\"\\" class=\\"step\\"><span data-v-cdb47a53=\\"\\" class=\\"step-dot\\"></span><span data-v-cdb47a53=\\"\\" class=\\"step-label\\">Decide</span></li>
-      <li data-v-cdb47a53=\\"\\" class=\\"step\\"><span data-v-cdb47a53=\\"\\" class=\\"step-dot\\"></span><span data-v-cdb47a53=\\"\\" class=\\"step-label\\">Outcome</span></li>
+    <ol data-v-cdb47a53="" class="steps" aria-label="Turn progress">
+      <li data-v-cdb47a53="" class="step step--on"><span data-v-cdb47a53="" class="step-dot"></span><span data-v-cdb47a53="" class="step-label">Scout</span></li>
+      <li data-v-cdb47a53="" class="step"><span data-v-cdb47a53="" class="step-dot"></span><span data-v-cdb47a53="" class="step-label">Decide</span></li>
+      <li data-v-cdb47a53="" class="step"><span data-v-cdb47a53="" class="step-dot"></span><span data-v-cdb47a53="" class="step-label">Outcome</span></li>
     </ol>
   </header>
-  <div data-v-cdb47a53=\\"\\" class=\\"stat-strip\\">
-    <div data-v-cdb47a53=\\"\\" class=\\"stat stat--low\\"><span data-v-cdb47a53=\\"\\" class=\\"stat-label\\">Motivation</span><span data-v-cdb47a53=\\"\\" class=\\"stat-val num\\">13%</span>
-      <div data-v-cdb47a53=\\"\\" class=\\"stat-track\\"><span data-v-cdb47a53=\\"\\" class=\\"stat-fill stat-fill--cyan\\" style=\\"width: 13%;\\"></span></div>
+  <div data-v-cdb47a53="" class="stat-strip">
+    <div data-v-cdb47a53="" class="stat stat--low"><span data-v-cdb47a53="" class="stat-label">Motivation</span><span data-v-cdb47a53="" class="stat-val num">13%</span>
+      <div data-v-cdb47a53="" class="stat-track"><span data-v-cdb47a53="" class="stat-fill stat-fill--cyan" style="width: 13%;"></span></div>
     </div>
-    <div data-v-cdb47a53=\\"\\" class=\\"stat\\"><span data-v-cdb47a53=\\"\\" class=\\"stat-label\\">Points</span><span data-v-cdb47a53=\\"\\" class=\\"stat-val num\\">143</span>
-      <div data-v-cdb47a53=\\"\\" class=\\"stat-track\\"><span data-v-cdb47a53=\\"\\" class=\\"stat-fill stat-fill--amber\\" style=\\"width: 28.599999999999998%;\\"></span></div>
+    <div data-v-cdb47a53="" class="stat"><span data-v-cdb47a53="" class="stat-label">Points</span><span data-v-cdb47a53="" class="stat-val num">143</span>
+      <div data-v-cdb47a53="" class="stat-track"><span data-v-cdb47a53="" class="stat-fill stat-fill--amber" style="width: 28.599999999999998%;"></span></div>
     </div>
   </div>
-  <div data-v-cdb47a53=\\"\\" class=\\"turn-body\\">
+  <div data-v-cdb47a53="" class="turn-body">
     <p> You've rolled into <strong>Zurich</strong>. Scout the streets to see what the road throws at you, then decide your next move. </p>
   </div>
-  <footer data-v-cdb47a53=\\"\\" class=\\"turn-actions\\"><button class=\\"btn btn-primary\\"><span aria-hidden=\\"true\\">⌖</span> Explore Zurich</button></footer>
+  <footer data-v-cdb47a53="" class="turn-actions"><button class="btn btn-primary"><span aria-hidden="true">⌖</span> Explore Zurich</button></footer>
 </section>"
 `;

@@ -1,10 +1,10 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`GameOver > renders full component 1`] = `
-"<section data-v-0fed1593=\\"\\" class=\\"over panel\\"><span class=\\"panel-rail\\" aria-hidden=\\"true\\" data-v-0fed1593=\\"\\"></span><span class=\\"over-icon\\" aria-hidden=\\"true\\" data-v-0fed1593=\\"\\">🚆</span>
-  <p class=\\"eyebrow over-eyebrow\\" data-v-0fed1593=\\"\\">Race Neutralised</p>
-  <h1 class=\\"display over-title\\" data-v-0fed1593=\\"\\">Game Over</h1>
-  <p class=\\"over-note\\" data-v-0fed1593=\\"\\"> Every rider ran out of road. Nobody is going to visit Ruben this time 🥲 </p>
-  <div data-v-0fed1593=\\"\\" class=\\"over-actions\\"><button data-v-0fed1593=\\"\\" class=\\"btn btn-primary\\"><span aria-hidden=\\"true\\">▸</span> Play Again</button></div>
+"<section data-v-0fed1593="" class="over panel"><span class="panel-rail" aria-hidden="true" data-v-0fed1593=""></span><span class="over-icon" aria-hidden="true" data-v-0fed1593="">🚆</span>
+  <p class="eyebrow over-eyebrow" data-v-0fed1593="">Race Neutralised</p>
+  <h1 class="display over-title" data-v-0fed1593="">Game Over</h1>
+  <p class="over-note" data-v-0fed1593=""> Every rider ran out of road. Nobody is going to visit Ruben this time 🥲 </p>
+  <div data-v-0fed1593="" class="over-actions"><button data-v-0fed1593="" class="btn btn-primary"><span aria-hidden="true">▸</span> Play Again</button></div>
 </section>"
 `;

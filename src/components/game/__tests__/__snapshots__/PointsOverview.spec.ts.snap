@@ -1,53 +1,53 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`PointsOverview > renders full component 1`] = `
-"<div data-v-afe22b88=\\"\\" class=\\"roster-tel\\">
-  <h2 data-v-afe22b88=\\"\\" class=\\"eyebrow roster-tel-title\\">Rider Telemetry</h2>
-  <div data-v-afe22b88=\\"\\" class=\\"tel-grid\\">
-    <article data-v-afe22b88=\\"\\" class=\\"panel tel-card panel--lit\\">
-      <header data-v-afe22b88=\\"\\" class=\\"tel-card-head\\"><span data-v-afe22b88=\\"\\" class=\\"tel-avatar num tel-avatar--active\\">B</span>
-        <div data-v-afe22b88=\\"\\" class=\\"tel-id\\"><span data-v-afe22b88=\\"\\" class=\\"tel-name\\">Bob</span><span data-v-afe22b88=\\"\\" class=\\"tel-city\\">Basel</span></div><span data-v-afe22b88=\\"\\" class=\\"chip chip--live tel-flag\\"><span data-v-afe22b88=\\"\\" class=\\"dot\\"></span>On road</span>
+"<div data-v-afe22b88="" class="roster-tel">
+  <h2 data-v-afe22b88="" class="eyebrow roster-tel-title">Rider Telemetry</h2>
+  <div data-v-afe22b88="" class="tel-grid">
+    <article data-v-afe22b88="" class="panel tel-card panel--lit">
+      <header data-v-afe22b88="" class="tel-card-head"><span data-v-afe22b88="" class="tel-avatar num tel-avatar--active">B</span>
+        <div data-v-afe22b88="" class="tel-id"><span data-v-afe22b88="" class="tel-name">Bob</span><span data-v-afe22b88="" class="tel-city">Basel</span></div><span data-v-afe22b88="" class="chip chip--live tel-flag"><span data-v-afe22b88="" class="dot"></span>On road</span>
       </header>
-      <div data-v-afe22b88=\\"\\" class=\\"tel-gauges\\">
-        <div data-v-afe22b88=\\"\\" class=\\"gauge gauge--cyan\\">
-          <div data-v-afe22b88=\\"\\" class=\\"gauge-head\\"><span data-v-afe22b88=\\"\\" class=\\"gauge-label\\">Motivation</span><span data-v-afe22b88=\\"\\" class=\\"gauge-val num\\">%</span></div>
-          <div data-v-afe22b88=\\"\\" class=\\"gauge-track\\"><span data-v-afe22b88=\\"\\" class=\\"gauge-fill\\"></span></div>
+      <div data-v-afe22b88="" class="tel-gauges">
+        <div data-v-afe22b88="" class="gauge gauge--cyan">
+          <div data-v-afe22b88="" class="gauge-head"><span data-v-afe22b88="" class="gauge-label">Motivation</span><span data-v-afe22b88="" class="gauge-val num">%</span></div>
+          <div data-v-afe22b88="" class="gauge-track"><span data-v-afe22b88="" class="gauge-fill"></span></div>
         </div>
-        <div data-v-afe22b88=\\"\\" class=\\"gauge gauge--amber\\">
-          <div data-v-afe22b88=\\"\\" class=\\"gauge-head\\"><span data-v-afe22b88=\\"\\" class=\\"gauge-label\\">Points</span><span data-v-afe22b88=\\"\\" class=\\"gauge-val num\\"></span></div>
-          <div data-v-afe22b88=\\"\\" class=\\"gauge-track\\"><span data-v-afe22b88=\\"\\" class=\\"gauge-fill\\"></span></div>
+        <div data-v-afe22b88="" class="gauge gauge--amber">
+          <div data-v-afe22b88="" class="gauge-head"><span data-v-afe22b88="" class="gauge-label">Points</span><span data-v-afe22b88="" class="gauge-val num"></span></div>
+          <div data-v-afe22b88="" class="gauge-track"><span data-v-afe22b88="" class="gauge-fill"></span></div>
         </div>
       </div>
     </article>
-    <article data-v-afe22b88=\\"\\" class=\\"panel tel-card\\">
-      <header data-v-afe22b88=\\"\\" class=\\"tel-card-head\\"><span data-v-afe22b88=\\"\\" class=\\"tel-avatar num\\">C</span>
-        <div data-v-afe22b88=\\"\\" class=\\"tel-id\\"><span data-v-afe22b88=\\"\\" class=\\"tel-name tel-name--idle\\">Carl</span><span data-v-afe22b88=\\"\\" class=\\"tel-city\\">Cologne</span></div>
+    <article data-v-afe22b88="" class="panel tel-card">
+      <header data-v-afe22b88="" class="tel-card-head"><span data-v-afe22b88="" class="tel-avatar num">C</span>
+        <div data-v-afe22b88="" class="tel-id"><span data-v-afe22b88="" class="tel-name tel-name--idle">Carl</span><span data-v-afe22b88="" class="tel-city">Cologne</span></div>
         <!--v-if-->
       </header>
-      <div data-v-afe22b88=\\"\\" class=\\"tel-gauges\\">
-        <div data-v-afe22b88=\\"\\" class=\\"gauge gauge--idle\\">
-          <div data-v-afe22b88=\\"\\" class=\\"gauge-head\\"><span data-v-afe22b88=\\"\\" class=\\"gauge-label\\">Motivation</span><span data-v-afe22b88=\\"\\" class=\\"gauge-val num\\">%</span></div>
-          <div data-v-afe22b88=\\"\\" class=\\"gauge-track\\"><span data-v-afe22b88=\\"\\" class=\\"gauge-fill\\"></span></div>
+      <div data-v-afe22b88="" class="tel-gauges">
+        <div data-v-afe22b88="" class="gauge gauge--idle">
+          <div data-v-afe22b88="" class="gauge-head"><span data-v-afe22b88="" class="gauge-label">Motivation</span><span data-v-afe22b88="" class="gauge-val num">%</span></div>
+          <div data-v-afe22b88="" class="gauge-track"><span data-v-afe22b88="" class="gauge-fill"></span></div>
         </div>
-        <div data-v-afe22b88=\\"\\" class=\\"gauge gauge--idle\\">
-          <div data-v-afe22b88=\\"\\" class=\\"gauge-head\\"><span data-v-afe22b88=\\"\\" class=\\"gauge-label\\">Points</span><span data-v-afe22b88=\\"\\" class=\\"gauge-val num\\"></span></div>
-          <div data-v-afe22b88=\\"\\" class=\\"gauge-track\\"><span data-v-afe22b88=\\"\\" class=\\"gauge-fill\\"></span></div>
+        <div data-v-afe22b88="" class="gauge gauge--idle">
+          <div data-v-afe22b88="" class="gauge-head"><span data-v-afe22b88="" class="gauge-label">Points</span><span data-v-afe22b88="" class="gauge-val num"></span></div>
+          <div data-v-afe22b88="" class="gauge-track"><span data-v-afe22b88="" class="gauge-fill"></span></div>
         </div>
       </div>
     </article>
-    <article data-v-afe22b88=\\"\\" class=\\"panel tel-card\\">
-      <header data-v-afe22b88=\\"\\" class=\\"tel-card-head\\"><span data-v-afe22b88=\\"\\" class=\\"tel-avatar num\\">A</span>
-        <div data-v-afe22b88=\\"\\" class=\\"tel-id\\"><span data-v-afe22b88=\\"\\" class=\\"tel-name tel-name--idle\\">Alice</span><span data-v-afe22b88=\\"\\" class=\\"tel-city\\">Zurich</span></div>
+    <article data-v-afe22b88="" class="panel tel-card">
+      <header data-v-afe22b88="" class="tel-card-head"><span data-v-afe22b88="" class="tel-avatar num">A</span>
+        <div data-v-afe22b88="" class="tel-id"><span data-v-afe22b88="" class="tel-name tel-name--idle">Alice</span><span data-v-afe22b88="" class="tel-city">Zurich</span></div>
         <!--v-if-->
       </header>
-      <div data-v-afe22b88=\\"\\" class=\\"tel-gauges\\">
-        <div data-v-afe22b88=\\"\\" class=\\"gauge gauge--idle\\">
-          <div data-v-afe22b88=\\"\\" class=\\"gauge-head\\"><span data-v-afe22b88=\\"\\" class=\\"gauge-label\\">Motivation</span><span data-v-afe22b88=\\"\\" class=\\"gauge-val num\\">10%</span></div>
-          <div data-v-afe22b88=\\"\\" class=\\"gauge-track\\"><span data-v-afe22b88=\\"\\" class=\\"gauge-fill\\" style=\\"width: 10%;\\"></span></div>
+      <div data-v-afe22b88="" class="tel-gauges">
+        <div data-v-afe22b88="" class="gauge gauge--idle">
+          <div data-v-afe22b88="" class="gauge-head"><span data-v-afe22b88="" class="gauge-label">Motivation</span><span data-v-afe22b88="" class="gauge-val num">10%</span></div>
+          <div data-v-afe22b88="" class="gauge-track"><span data-v-afe22b88="" class="gauge-fill" style="width: 10%;"></span></div>
         </div>
-        <div data-v-afe22b88=\\"\\" class=\\"gauge gauge--idle\\">
-          <div data-v-afe22b88=\\"\\" class=\\"gauge-head\\"><span data-v-afe22b88=\\"\\" class=\\"gauge-label\\">Points</span><span data-v-afe22b88=\\"\\" class=\\"gauge-val num\\">131</span></div>
-          <div data-v-afe22b88=\\"\\" class=\\"gauge-track\\"><span data-v-afe22b88=\\"\\" class=\\"gauge-fill\\" style=\\"width: 26.200000000000003%;\\"></span></div>
+        <div data-v-afe22b88="" class="gauge gauge--idle">
+          <div data-v-afe22b88="" class="gauge-head"><span data-v-afe22b88="" class="gauge-label">Points</span><span data-v-afe22b88="" class="gauge-val num">131</span></div>
+          <div data-v-afe22b88="" class="gauge-track"><span data-v-afe22b88="" class="gauge-fill" style="width: 26.200000000000003%;"></span></div>
         </div>
       </div>
     </article>
